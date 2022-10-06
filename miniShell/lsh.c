@@ -24,8 +24,8 @@ void sh_loop(void)
     int status;
 
     printf("> ");
-    line = sh_read_line();
-    args = sh_split_line(line);
+    line = readline("> ");
+    args = ft_split(line, ' ');
     status = sh_execute(args);
 
     free(line);
