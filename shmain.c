@@ -125,7 +125,7 @@ int lsh_execute(char **args)
 }
 
 #define LSH_TOK_BUFSIZE 64
-#define LSH_TOK_DELIM " \t\r\n\a"
+#define LSH_TOK_DELIM " \'\"\t\r\n\a"
 /**
    @brief Split a line into tokens (very naively).
    @param line The line.
