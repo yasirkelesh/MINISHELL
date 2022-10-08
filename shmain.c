@@ -1,87 +1,17 @@
-/***************************************************************************//**
-  @file         main.c
-  @author       Stephen Brennan
-  @date         Thursday,  8 January 2015
-  @brief        LSH (Libstephen SHell)
-*******************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   shmain.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/08 12:19:51 by mukeles           #+#    #+#             */
+/*   Updated: 2022/10/08 13:33:15 by mukeles          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
 
-
-int lsh_cd(char **args);
-int lsh_help(char **args);
-int lsh_exit(char **args);
-
-/*
-  List of builtin commands, followed by their corresponding functions.
- */
-char *builtin_str[] = {
-  "cd",
-  "help",
-  "exit"
-};
-
-int (*builtin_func[]) (char **) = {
-  &lsh_cd,
-  &lsh_help,
-  &lsh_exit
-};
-
-int lsh_num_builtins() {
-  return sizeof(builtin_str) / sizeof(char *);
-}
-
-/*
-  Builtin function implementations.
-*/
-
-
-int lsh_cd(char **args)
-{
-  if (args[1] == NULL) {
-    fprintf(stderr, "lsh: expected argument to \"cd\"\n");
-  } else {
-    if (chdir(args[1]) != 0) {
-      perror("lsh");
-    }
-  }
-  return 1;
-}
-
-/**
-   @brief Builtin command: print help.
-   @param args List of args.  Not examined.
-   @return Always returns 1, to continue executing.
- */
-int lsh_help(char **args)
-{
-  int i;
-  printf("Stephen Brennan's LSH\n");
-  printf("Type program names and arguments, and hit enter.\n");
-  printf("The following are built in:\n");
-
-  for (i = 0; i < lsh_num_builtins(); i++) {
-    printf("  %s\n", builtin_str[i]);
-  }
-
-  printf("Use the man command for information on other programs.\n");
-  return 1;
-}
-
-/**
-   @brief Builtin command: exit.
-   @param args List of args.  Not examined.
-   @return Always returns 0, to terminate execution.
- */
-int lsh_exit(char **args)
-{
-  return 0;
-}
-
-/**
-  @brief Launch a program and wait for it to terminate.
-  @param args Null terminated list of arguments (including program).
-  @return Always returns 1, to continue execution.
- */
 int lsh_launch(char **args)
 {
   pid_t pid;
@@ -98,39 +28,15 @@ int lsh_launch(char **args)
     // Error forking
     perror("lsh");
   } else {
-    do {
+    waitpid(pid, &status, WUNTRACED);
+    while (!WIFEXITED(status) && !WIFSIGNALED(status)){
       waitpid(pid, &status, WUNTRACED);
-    } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+    } 
   }
 
   return 1;
 }
 
-int lsh_execute(char **args)
-{
-  int i;
-
-  if (args[0] == NULL) {
-    // An empty command was entered.
-    return 1;
-  }
-
-  for (i = 0; i < lsh_num_builtins(); i++) {
-    if (strcmp(args[0], builtin_str[i]) == 0) {
-      return (*builtin_func[i])(args);
-    }
-  }
-
-  return lsh_launch(args);
-}
-
-#define LSH_TOK_BUFSIZE 64
-#define LSH_TOK_DELIM " \'\"\t\r\n\a"
-/**
-   @brief Split a line into tokens (very naively).
-   @param line The line.
-   @return Null-terminated array of tokens.
- */
 char **lsh_split_line(char *line)
 {
   int bufsize = LSH_TOK_BUFSIZE, position = 0;
@@ -149,7 +55,7 @@ char **lsh_split_line(char *line)
     if (position >= bufsize) {
       bufsize += LSH_TOK_BUFSIZE;
       tokens_backup = tokens;
-      tokens = realloc(tokens, bufsize * sizeof(char*));
+      tokens = ft_realloc(tokens, bufsize * sizeof(char*));
       if (!tokens) {
         free(tokens_backup);
         exit(EXIT_FAILURE);
@@ -162,16 +68,12 @@ char **lsh_split_line(char *line)
   return tokens;
 }
 
-/**
-   @brief Loop getting input and executing it.
- */
 void lsh_loop(void)
 {
   char *line;
   char **args;
   int status;
 
-   // printf("> ");
     line = readline("> ");
     args = lsh_split_line(line);
     status = lsh_execute(args);
@@ -180,7 +82,6 @@ void lsh_loop(void)
     free(args);
 
   while (status){
-    //printf("> ");
     line = readline("> ");
     args = lsh_split_line(line);
     status = lsh_execute(args);
@@ -189,12 +90,6 @@ void lsh_loop(void)
     free(args);
   } 
 }
-/**
-   @brief Main entry point.
-   @param argc Argument count.
-   @param argv Argument vector.
-   @return status code
- */
 int main(int argc, char **argv)
 {
   lsh_loop();
