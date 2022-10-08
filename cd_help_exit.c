@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/08 13:26:39 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/08 14:54:39 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char *builtin_str[] = {
   "help",
   "exit"
 };
+
 
 int lsh_num_builtins() {
   return sizeof(builtin_str) / sizeof(char *);
