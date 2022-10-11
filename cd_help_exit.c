@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 12:39:09 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 21:06:39 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 char *builtin_str[] = {
   "cd",
-  "help",
-  "exit"
+  "exit",
+  "echo",
+  "pwd",
+  "export",
+  "unset",
+  "env"
 };
 
 
@@ -23,31 +27,20 @@ int lsh_num_builtins() {
   return sizeof(builtin_str) / sizeof(char *);
 }
 
-int lsh_cd(char **args)
+void lsh_cd(char **arr)
 {
-  if (args[1] == NULL) {
-    fprintf(stderr, "lsh: expected argument to \"cd\"\n");
-  } else {
-    if (chdir(args[1]) != 0) {
-      perror("lsh");
-    }
-  }
-  return 1;
-}
+	int size;
 
-int lsh_help(char **args)
-{
-  int i = 0;
-  printf("YASİR KELES's LSH\n");
-  printf("Type program names and arguments, and hit enter.\n");
-  printf("The following are built in:\n");
-
-    while(i < lsh_num_builtins())
-        printf("  %s\n", builtin_str[i++]);
-
-
-  printf("Use the man command for information on other programs.\n");
-  return 1;
+	size = 0;
+	while(arr[size])
+		size++;
+	if (size > 2)
+		printf("arguments\n");
+	else
+	{
+		if (chdir(arr[1]))
+			printf("error\n");
+	}
 }
 
 int lsh_exit(char **args)
@@ -55,25 +48,33 @@ int lsh_exit(char **args)
   return 0;
 }
 
+
+
 int lsh_execute(char **args)
 {
   int i = 0;
 
-  if (args[0] == NULL) {
-    return 1;
-  }
+  if (args[0] == NULL) 
+        return 1;
   while(i < lsh_num_builtins())
   {
-    if (strcmp(args[0], builtin_str[i]) == 0) {
+    if (strcmp(args[0], builtin_str[i]) == 0) 
+    {
         if(i == 0)
             lsh_cd(args);
         else if(i == 1)
-            lsh_help(args);
-        else if(i == 2)
+        {
             lsh_exit(args);
+            return 0;
+        }
+        else if(i == 2)
+            echo(args);
+        else if (i == 3)
+            pwd();
     }
     i++;
   }
 
   return lsh_launch(args);
+
 }

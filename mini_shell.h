@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 16:25:12 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 21:07:07 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ int lsh_execute(char **args);
 void* ft_realloc(void* ptr, size_t size);
 char	**ft_split(char const *s, char c);
 char *my_strtok(char *str,  char *delim);
-int lsh_cd(char **args);
+int lsh_num_builtins();
+void lsh_cd(char **arr);
 int lsh_help(char **args);
 int lsh_exit(char **args);
+void pwd();
+void echo(char **arr);
 
 #endif
