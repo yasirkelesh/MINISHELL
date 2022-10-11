@@ -6,11 +6,12 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:51 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 22:31:53 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 23:32:16 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
+extern char **environ;
 
 char *builtin_str2[] = {
     "cd",
@@ -20,7 +21,8 @@ char *builtin_str2[] = {
     "export",
     "unset",
     "-n",
-    "env"};
+    "env"
+    };
 
 int lsh_launch(char **args)
 {

@@ -1,30 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd_help_exit.c                                     :+:      :+:    :+:   */
+/*   cd_exit_evn.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 22:20:25 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 23:25:36 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
+
+t_list *g_env;
 
 char *builtin_str[] = {
   "cd",
   "exit",
   "echo",
   "pwd",
+  "env",
   "export",
-  "unset",
-  "env"
+  "unset"
+  
 };
 
 
 int lsh_num_builtins() {
   return sizeof(builtin_str) / sizeof(char *);
+}
+
+void env()
+{
+	t_list *tmp;
+
+	tmp = g_env;
+	while(tmp)
+	{
+		printf("%s\n", (char*)tmp->content);
+		tmp = tmp->next;
+	}
 }
 
 void lsh_cd(char **arr)
@@ -58,6 +73,7 @@ int lsh_execute(char **args)
         return 1;
   while(i < lsh_num_builtins())
   {
+    printf("argv : %s\n", args[0]);
     if (strcmp(args[0], builtin_str[i]) == 0) 
     {
         if(i == 0)
@@ -73,6 +89,8 @@ int lsh_execute(char **args)
         }
         else if (i == 3)
             pwd();
+        else if (i == 4)
+            env();
     }
     i++;
   }

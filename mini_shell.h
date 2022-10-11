@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 21:07:07 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 23:31:57 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define LSH_TOK_DELIM " \'\"\t\r\n\a"
 
 #define DICT_LEN 256
-extern char **environ;
+
 
 #include <sys/wait.h>
 #include <unistd.h>
@@ -30,6 +30,13 @@ extern char **environ;
 #include <readline/history.h>
 #include <string.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+
 
 
 int lsh_launch(char **args);
@@ -39,6 +46,7 @@ char	**ft_split(char const *s, char c);
 char *my_strtok(char *str,  char *delim);
 int lsh_num_builtins();
 void lsh_cd(char **arr);
+void env();
 int lsh_help(char **args);
 int lsh_exit(char **args);
 void pwd();
