@@ -6,29 +6,28 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:51 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/08 18:03:10 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:58:38 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-/* char *envList[] = { 
-    "PATH=/bin:/sbin",
-    NULL 
-};
-char *b_str[] = {
-  "ls",
-  NULL
-}; */
+
 int lsh_launch(char **args)
 {
   pid_t pid;
   int status;
+  
+  char str1[100] = "/bin/";
+  strcat(str1, args[0]);
 
   pid = fork();
   if (pid == 0) {
-    // Child process
-    printf("Child pid %d\n benim pid %d\n args %s\n args %s\n", pid, getpid(),args[0],args[1]);
-    if (execvp(args[0], args) == -1) {
+    
+    wait(NULL);
+    usleep(100);
+    printf("baba pid %d\nbenim pid %d\n", pid, getpid());
+    printf("str1 %s\n", str1);
+    if (execve(str1, args,environ ) == -1) {
       perror("error");
     }
     exit(EXIT_FAILURE);
@@ -37,7 +36,9 @@ int lsh_launch(char **args)
     perror("lsh");
   } else {
     //parent
-    printf("parent pid %d\n benim pid %d\n", pid, getpid());
+    
+    wait(NULL);
+    printf("baba pid %d\nbenim pid %d\n", pid, getpid());
     waitpid(pid, &status, WUNTRACED);
     while (!WIFEXITED(status) && !WIFSIGNALED(status)){
       waitpid(pid, &status, WUNTRACED);

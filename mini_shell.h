@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/08 14:53:56 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:25:12 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #define LSH_TOK_DELIM " \'\"\t\r\n\a"
 
 #define DICT_LEN 256
+extern char **environ;
 
 #include <sys/wait.h>
 #include <unistd.h>
@@ -27,6 +28,7 @@
 #include <string.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <string.h>
 
 
 
