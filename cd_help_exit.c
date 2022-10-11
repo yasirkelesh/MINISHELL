@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 21:06:39 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 22:20:25 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ int lsh_execute(char **args)
             return 0;
         }
         else if(i == 2)
-            echo(args);
+        {  
+           echo(args);
+        }
         else if (i == 3)
             pwd();
     }

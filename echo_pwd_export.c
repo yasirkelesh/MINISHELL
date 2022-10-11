@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:41:52 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 20:56:41 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 21:53:49 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ void pwd()
 }
 void echo(char **arr)
 {
+    
 	  int size;
 	  int	i;
 	  int	n;
-
+    usleep(1000);
 	  size = 0;
 	  n = 0;
 	  while(arr[size])
@@ -37,7 +38,7 @@ void echo(char **arr)
 		  size++;
 	  }
 	  i = 1;
-	  while (!strncmp(arr[i], "-n", 3))
+	  while (strncmp(arr[i], "-n", 3 ) == 0)
 	  {
 		  n = 1;
 		  i++;

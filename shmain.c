@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:51 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 20:51:31 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/11 22:31:53 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char *builtin_str2[] = {
     "pwd",
     "export",
     "unset",
+    "-n",
     "env"};
 
 int lsh_launch(char **args)
@@ -29,7 +30,10 @@ int lsh_launch(char **args)
   int k = 0;
   char str1[100] = "/bin/";
   strcat(str1, args[0]);
-  while (i < lsh_num_builtins())
+
+  if (strcmp(args[0], "echo") == 0 && strcmp(args[1], "-n") == 0)
+    k++;
+  while (i < lsh_num_builtins() && k == 0)
   {
     if (strcmp(args[0], builtin_str2[i]) == 0)
       k++;
@@ -39,15 +43,18 @@ int lsh_launch(char **args)
   pid = fork();
   if (pid == 0)
   {
-
     wait(NULL);
+    /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid()); */
     if (k == 0)
     {
+
       if (execve(str1, args, environ) == -1)
       {
         perror("error");
       }
     }
+    else
+      return 1;
 
     exit(EXIT_FAILURE);
   }
@@ -56,8 +63,10 @@ int lsh_launch(char **args)
     // Error forking
     perror("lsh");
   }
-  else
+ else
   {
+    wait(NULL);
+    /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid()); */
     waitpid(pid, &status, WUNTRACED);
     while (!WIFEXITED(status) && !WIFSIGNALED(status))
     {
@@ -108,7 +117,7 @@ void lsh_loop(void)
   char *line;
   char **args;
   int status;
-
+  usleep(5000);
   line = readline("> ");
   args = lsh_split_line(line);
   status = lsh_execute(args);
@@ -118,6 +127,7 @@ void lsh_loop(void)
 
   while (status)
   {
+    usleep(5000);
     line = readline("> ");
     args = lsh_split_line(line);
     status = lsh_execute(args);
