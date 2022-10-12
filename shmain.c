@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 12:19:51 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 23:32:16 by mukeles          ###   ########.fr       */
+/*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
+/*   Updated: 2022/10/12 11:52:39 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 extern char **environ;
 
 char *builtin_str2[] = {
-    "cd",
-    "exit",
-    "echo",
-    "pwd",
-    "export",
-    "unset",
-    "-n",
-    "env"
-    };
+  "cd",
+  "exit",
+  "echo",
+  "pwd",
+  "env",
+  "export",
+  "unset",
+  "-n"
+  };
 
 int lsh_launch(char **args)
 {
@@ -30,11 +30,9 @@ int lsh_launch(char **args)
   int status;
   int i = 0;
   int k = 0;
-  char str1[100] = "/bin/";
+  char str1[100] = "/bin/";//bu çok boktan bir yöntem  :-(
   strcat(str1, args[0]);
-
-  if (strcmp(args[0], "echo") == 0 && strcmp(args[1], "-n") == 0)
-    k++;
+  
   while (i < lsh_num_builtins() && k == 0)
   {
     if (strcmp(args[0], builtin_str2[i]) == 0)
@@ -46,7 +44,7 @@ int lsh_launch(char **args)
   if (pid == 0)
   {
     wait(NULL);
-    /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid()); */
+    usleep(1000);
     if (k == 0)
     {
 
@@ -143,8 +141,10 @@ void lsh_loop(void)
     }
   }
 }
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
+  g_env = get_new_env(env);
   lsh_loop();
   return EXIT_SUCCESS;
+  
 }

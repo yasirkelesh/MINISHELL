@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 23:31:57 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/12 11:19:56 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #define LSH_TOK_DELIM " \'\"\t\r\n\a"
 
 #define DICT_LEN 256
+
 
 
 #include <sys/wait.h>
@@ -36,7 +37,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-
+t_list *g_env;
 
 
 int lsh_launch(char **args);
@@ -51,5 +52,9 @@ int lsh_help(char **args);
 int lsh_exit(char **args);
 void pwd();
 void echo(char **arr);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstnew(void *content);
+t_list *get_new_env(char **env);
+
 
 #endif
