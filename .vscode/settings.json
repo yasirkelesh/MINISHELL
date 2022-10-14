@@ -2,6 +2,7 @@
     "files.associations": {
         "cstdlib": "c",
         "__locale": "c",
-        "cstring": "c"
+        "cstring": "c",
+        "sstream": "c"
     }
 }

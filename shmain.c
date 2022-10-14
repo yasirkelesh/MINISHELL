@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/12 11:52:39 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/14 18:05:55 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int lsh_launch(char **args)
   int i = 0;
   int k = 0;
   char str1[100] = "/bin/";//bu çok boktan bir yöntem  :-(
+
   strcat(str1, args[0]);
-  
   while (i < lsh_num_builtins() && k == 0)
   {
     if (strcmp(args[0], builtin_str2[i]) == 0)
@@ -47,7 +47,7 @@ int lsh_launch(char **args)
     usleep(1000);
     if (k == 0)
     {
-
+      printf(" benim pid %d\ngetpid() %d\n", pid, getpid()); 
       if (execve(str1, args, environ) == -1)
       {
         perror("error");
@@ -117,8 +117,8 @@ void lsh_loop(void)
   char *line;
   char **args;
   int status;
-  usleep(5000);
   line = readline("> ");
+  add_history(line);
   args = lsh_split_line(line);
   status = lsh_execute(args);
 
@@ -127,8 +127,8 @@ void lsh_loop(void)
 
   while (status)
   {
-    usleep(5000);
     line = readline("> ");
+    add_history(line);
     args = lsh_split_line(line);
     status = lsh_execute(args);
     if (!line)

@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:41:52 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/11 21:53:49 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/14 15:12:53 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void echo(char **arr)
 	  int size;
 	  int	i;
 	  int	n;
-    usleep(1000);
+      usleep(1000);
 	  size = 0;
 	  n = 0;
 	  while(arr[size])

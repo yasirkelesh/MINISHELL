@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/12 11:19:56 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/14 14:39:57 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define MINI_SHELL_H
 
 #define LSH_TOK_BUFSIZE 64
-#define LSH_TOK_DELIM " \'\"\t\r\n\a"
+#define LSH_TOK_DELIM " \"\t\r\n\a"
 
 #define DICT_LEN 256
 
