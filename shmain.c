@@ -6,39 +6,28 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/14 18:05:55 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/21 00:09:39 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 extern char **environ;
 
-char *builtin_str2[] = {
-  "cd",
-  "exit",
-  "echo",
-  "pwd",
-  "env",
-  "export",
-  "unset",
-  "-n"
-  };
 
-int lsh_launch(char **args)
+int lsh_launch(char **args, t_builtin_str *str)
 {
   pid_t pid;
   int status;
   int i = 0;
   int k = 0;
-  char str1[100] = "/bin/";//bu çok boktan bir yöntem  :-(
+  char str1[100] = "/bin/"; // bu çok boktan bir yöntem  :-(
 
   strcat(str1, args[0]);
-  while (i < lsh_num_builtins() && k == 0)
+  if ((lsh_num_builtins(str, args[0]) != -1)&& k == 0)
   {
-    if (strcmp(args[0], builtin_str2[i]) == 0)
       k++;
-    i++;
   }
+
 
   pid = fork();
   if (pid == 0)
@@ -47,7 +36,7 @@ int lsh_launch(char **args)
     usleep(1000);
     if (k == 0)
     {
-      printf(" benim pid %d\ngetpid() %d\n", pid, getpid()); 
+      //printf(" benim pid %d\ngetpid() %d\n", pid, getpid());
       if (execve(str1, args, environ) == -1)
       {
         perror("error");
@@ -63,7 +52,7 @@ int lsh_launch(char **args)
     // Error forking
     perror("lsh");
   }
- else
+  else
   {
     wait(NULL);
     /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid()); */
@@ -72,7 +61,7 @@ int lsh_launch(char **args)
     {
       waitpid(pid, &status, WUNTRACED);
     }
-  } 
+  }
 
   return 1;
 }
@@ -112,7 +101,7 @@ char **lsh_split_line(char *line)
   return tokens;
 }
 
-void lsh_loop(void)
+void lsh_loop(t_builtin_str *str)
 {
   char *line;
   char **args;
@@ -120,7 +109,7 @@ void lsh_loop(void)
   line = readline("> ");
   add_history(line);
   args = lsh_split_line(line);
-  status = lsh_execute(args);
+  status = lsh_execute(args, str);
 
   free(line);
   free(args);
@@ -130,7 +119,7 @@ void lsh_loop(void)
     line = readline("> ");
     add_history(line);
     args = lsh_split_line(line);
-    status = lsh_execute(args);
+    status = lsh_execute(args, str);
     if (!line)
       free(line);
     int i = 0;
@@ -143,8 +132,16 @@ void lsh_loop(void)
 }
 int main(int argc, char **argv, char **env)
 {
+  t_builtin_str *str;
+
+  str = malloc(sizeof(t_builtin_str));
+  str->builtin_str = malloc(sizeof(char)*999);
+  if (!str)
+    return (0);
+  init(str);
+
   g_env = get_new_env(env);
-  lsh_loop();
+
+  lsh_loop(str);
   return EXIT_SUCCESS;
-  
 }
