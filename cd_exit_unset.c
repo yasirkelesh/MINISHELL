@@ -6,22 +6,13 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/21 00:06:29 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:09:44 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-/* char *builtin_str[] = {
-  "cd",
-  "exit",
-  "echo",
-  "pwd",
-  "env",
-  "export",
-  "unset"
 
-}; */
 
 int lsh_num_builtins(t_builtin_str *str, char *args)
 {

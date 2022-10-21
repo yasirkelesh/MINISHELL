@@ -6,13 +6,12 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/21 00:09:39 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/21 13:48:50 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 extern char **environ;
-
 
 int lsh_launch(char **args, t_builtin_str *str)
 {
@@ -20,14 +19,13 @@ int lsh_launch(char **args, t_builtin_str *str)
   int status;
   int i = 0;
   int k = 0;
-  char str1[100] = "/bin/"; // bu çok boktan bir yöntem  :-(
+  char str1[100] = "/bin/";
 
   strcat(str1, args[0]);
-  if ((lsh_num_builtins(str, args[0]) != -1)&& k == 0)
+  if ((lsh_num_builtins(str, args[0]) != -1) && k == 0)
   {
-      k++;
+    k++;
   }
-
 
   pid = fork();
   if (pid == 0)
@@ -36,10 +34,10 @@ int lsh_launch(char **args, t_builtin_str *str)
     usleep(1000);
     if (k == 0)
     {
-      //printf(" benim pid %d\ngetpid() %d\n", pid, getpid());
+      // printf(" benim pid %d\ngetpid() %d\n", pid, getpid());
       if (execve(str1, args, environ) == -1)
       {
-        perror("error");
+        perror("");
       }
     }
     else
@@ -109,6 +107,10 @@ void lsh_loop(t_builtin_str *str)
   line = readline("> ");
   add_history(line);
   args = lsh_split_line(line);
+  if (!line_check(line))
+  {
+    dq_loop(args[0]);
+  }
   status = lsh_execute(args, str);
 
   free(line);
@@ -119,6 +121,10 @@ void lsh_loop(t_builtin_str *str)
     line = readline("> ");
     add_history(line);
     args = lsh_split_line(line);
+    if (!line_check(line))
+    {
+      dq_loop(args[0]);
+    }
     status = lsh_execute(args, str);
     if (!line)
       free(line);
@@ -135,7 +141,7 @@ int main(int argc, char **argv, char **env)
   t_builtin_str *str;
 
   str = malloc(sizeof(t_builtin_str));
-  str->builtin_str = malloc(sizeof(char)*999);
+  str->builtin_str = malloc(sizeof(char) * 999);
   if (!str)
     return (0);
   init(str);

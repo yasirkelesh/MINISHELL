@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 00:21:03 by mukeles           #+#    #+#             */
+/*   Updated: 2022/10/21 13:27:37 by mukeles          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
 
 void	init(t_builtin_str *str)
@@ -9,4 +21,4 @@ void	init(t_builtin_str *str)
     str->builtin_str[4] = "env";
     str->builtin_str[5] = "export";
     str->builtin_str[6] = "unset";
-}
+} 
