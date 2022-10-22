@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 13:27:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/22 17:41:35 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/22 18:18:06 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ int line_check(char *line)
         return 1;
     return 0;
 }
-void dq_loop(char *arg)
+void dq_loop(char **args)
 {
     char *newline;
-    char **args;
     int fd;
-    if (!strcmp(arg, "echo"))
+    if (!strcmp(args[0], "echo"))
     {
         while (1)
         {
@@ -44,6 +43,7 @@ void dq_loop(char *arg)
             }
             else
             {
+                line_write(newline);
                 fd = open("yasir.txt", O_RDWR, 0777);
                 get_next_line(fd);
                 close(fd);

@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/22 17:34:00 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/22 18:13:07 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int line_check(char *line);
 int lsh_launch(char **args, t_builtin_str *str);
 int lsh_execute(char **args, t_builtin_str *str);
 void *ft_realloc(void *ptr, size_t size);
-void dq_loop(char *arg);
+void dq_loop(char **args);
 
 char **lsh_split_line(char *line);
 char **ft_split(char const *s, char c);
