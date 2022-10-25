@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/22 18:14:03 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/26 00:45:53 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,73 +66,48 @@ int lsh_launch(char **args, t_builtin_str *str)
 
 char **lsh_split_line(char *line)
 {
-  int bufsize = LSH_TOK_BUFSIZE, position = 0;
-  char **tokens = malloc(bufsize * sizeof(char *));
-  char *token, **tokens_backup;
+  int i;
+  int j;
+  int size;
+  char **arr;
 
-  if (!tokens)
+  size = get_cmd_num(line);
+  arr = malloc(sizeof(char *) * (size + 1));
+  if (!arr)
+    return NULL;
+  j = 0;
+  i = 0;
+  while (line[i])
   {
-    exit(EXIT_FAILURE);
+    while (line[i] == ' ')
+      i++;
+    arr[j++] = command(line, &i);
   }
-
-  token = my_strtok(line, LSH_TOK_DELIM);
-  while (token != NULL)
-  {
-    tokens[position] = token;
-    position++;
-
-    if (position >= bufsize)
-    {
-      bufsize += LSH_TOK_BUFSIZE;
-      tokens_backup = tokens;
-      tokens = ft_realloc(tokens, bufsize * sizeof(char *));
-      if (!tokens)
-      {
-        free(tokens_backup);
-        exit(EXIT_FAILURE);
-      }
-    }
-
-    token = my_strtok(NULL, LSH_TOK_DELIM);
-  }
-  tokens[position] = NULL;
-  return tokens;
+  arr[j] = NULL;
+  return (arr);
 }
 
 void lsh_loop(t_builtin_str *str)
 {
   char *line;
   char **args;
+  int i;
   int status;
-  line = readline("> ");
-  add_history(line);
-  args = lsh_split_line(line);
-  if (!line_check(line))
-  {
-    dq_loop(args);
-  }
-  status = lsh_execute(args, str);
-
-  free(line);
-  free(args);
 
   while (status)
   {
     line = readline("> ");
     add_history(line);
     args = lsh_split_line(line);
-    if (!line_check(line))
+    if (check_valid(line))
     {
-      dq_loop(args);
-    }
-    status = lsh_execute(args, str);
-    if (!line)
-      free(line);
-    int i = 0;
-    if (!args[i])
-    {
+      i = 0;
       while (args[i])
-        free(args[i++]);
+      {
+        args[i] = parser(args[i]);
+        i++;
+      }
+      status = lsh_execute(args, str);
     }
   }
 }

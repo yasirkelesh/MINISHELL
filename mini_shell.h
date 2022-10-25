@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/22 18:13:07 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/25 23:05:56 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_list
 	void *content;
 	struct s_list *next;
 } t_list;
+
 
 t_list *g_env;
 
@@ -76,4 +77,15 @@ size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *str, int ch);
 char	*ft_strjoin(char *s1, char *s2); 
 
+int	check_valid(char *str);
+int get_cmd_num(const char *str);
+char *command(char *str, int *i);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char *parser(char *str);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+char *dollar(char *str, int *i);
+char *get_value(char *key);
+char *double_quotes(char *str, int *i);
+char *slash(char *str, int *i);
+char *quotes(char *str, int *i);
 #endif

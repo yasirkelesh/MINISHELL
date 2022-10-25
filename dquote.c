@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 13:27:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/22 18:18:06 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/25 23:13:12 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ void dq_loop(char **args)
             }
             else
             {
+                
                 line_write(newline);
                 fd = open("yasir.txt", O_RDWR, 0777);
                 get_next_line(fd);
+                close(fd);
+                fd = open("yasir.txt", O_TRUNC, 0777);
                 close(fd);
                 break;
             }
@@ -55,7 +58,7 @@ void dq_loop(char **args)
     {
         while (1)
         {
-            printf("test");
+
             newline = readline("dquote> ");
             if (!line_check(newline))
                 break;
