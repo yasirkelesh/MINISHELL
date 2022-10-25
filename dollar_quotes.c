@@ -45,7 +45,7 @@ char *double_quotes(char *str, int *i)
         if (str[*i] == '$')
         {
             printf("test");
-            str = dollar(str, i);
+            str = dollar(str, i); 
         }
     }
     tmp = ft_substr(str, 0, j);
