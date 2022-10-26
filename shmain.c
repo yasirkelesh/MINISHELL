@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/26 00:45:53 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/26 11:57:02 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void lsh_loop(t_builtin_str *str)
       while (args[i])
       {
         args[i] = parser(args[i]);
+        printf("args : %s\n",args[i]);
         i++;
       }
       status = lsh_execute(args, str);

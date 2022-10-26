@@ -20,6 +20,7 @@ char *command(char *str, int *i)
 		(*i)++;
 	}
 	tmp = ft_substr(str, j, *i - j);
+	printf("tmp : %s\n",tmp);
 	return (tmp);
 }
 

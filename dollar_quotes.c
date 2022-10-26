@@ -41,10 +41,8 @@ char *double_quotes(char *str, int *i)
     j = *i;
     while (str[++(*i)] != '\"')
     {
-
         if (str[*i] == '$')
         {
-            printf("test");
             str = dollar(str, i); 
         }
     }
