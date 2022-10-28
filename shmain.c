@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/26 11:57:02 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/28 19:54:10 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char **lsh_split_line(char *line)
 {
   int i;
   int j;
+  int k;
   int size;
   char **arr;
 
@@ -77,12 +78,15 @@ char **lsh_split_line(char *line)
     return NULL;
   j = 0;
   i = 0;
+  k = 0;
   while (line[i])
   {
     while (line[i] == ' ')
       i++;
     arr[j++] = command(line, &i);
+    //printf("arr : %s\n", arr[j - 1]);
   }
+
   arr[j] = NULL;
   return (arr);
 }
@@ -105,7 +109,6 @@ void lsh_loop(t_builtin_str *str)
       while (args[i])
       {
         args[i] = parser(args[i]);
-        printf("args : %s\n",args[i]);
         i++;
       }
       status = lsh_execute(args, str);

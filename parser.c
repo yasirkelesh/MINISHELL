@@ -6,7 +6,7 @@ char *parser(char *str)
     i = 0;
     while (str[i])
     {
-        //printf("%c*", str[i]);
+
         if (str[i] == '\"')
             str = double_quotes(str, &i);
         else if (str[i] == '$')
@@ -18,5 +18,11 @@ char *parser(char *str)
 
         i++;
     }
+    i = 0;
+    if (str[i] == '$')
+    {   
+        str = dollar(str, &i);
+    }
+    printf("str == %s\n",str);
     return str;
 }

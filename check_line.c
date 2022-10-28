@@ -1,26 +1,32 @@
 #include "mini_shell.h"
 
+
 char *command(char *str, int *i)
 {
 	char *tmp;
 	char c;
 	int j;
+	int k;
 
 	j = *i;
-	while (str[*i] && str[*i] != ' ')
+	while (str[*i] && str[*i] != ' ' )
 	{
 
 		if (str[*i] == '"' || str[*i] == '\'')
 		{
 
 			c = str[(*i)++];
+			//printf("c : %c\n", c);
 			while (str[*i] != c)
 				(*i)++;
 		}
 		(*i)++;
+		if(str[*i] == '"' || str[*i] == '$')
+			break;
 	}
 	tmp = ft_substr(str, j, *i - j);
-	printf("tmp : %s\n",tmp);
+	//(*i)--;
+	//printf("tmp : %s\n", tmp);
 	return (tmp);
 }
 

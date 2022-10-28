@@ -40,12 +40,15 @@ char *double_quotes(char *str, int *i)
 
     j = *i;
     while (str[++(*i)] != '\"')
-    {
-        if (str[*i] == '$')
-        {
-            str = dollar(str, i); 
-        }
-    }
+        ;
+    /*     {
+            printf("str quotes : %c\n", str[*i]);
+           if (str[*i] == '$')
+            {
+                printf("str quotes dollar : %s\n", str);
+                str = dollar(str, i);
+            }
+        }  */
     tmp = ft_substr(str, 0, j);
     tmp1 = ft_substr(str, j + 1, *i - j - 1);
     tmp2 = strdup(str + *i + 1);
@@ -82,7 +85,6 @@ char *dollar(char *str, int *i)
     char *tmp;
     char *key;
     char *value;
-
     j = *i;
 
     tmp = ft_substr(str, j + 1, *i - j - 1);
@@ -98,5 +100,6 @@ char *dollar(char *str, int *i)
         return NULL;
     tmp = ft_strjoin(tmp, value);
     tmp = ft_strjoin(tmp, str + *i);
+    printf("tmp == %s\n", tmp);
     return (tmp);
 }
