@@ -85,10 +85,11 @@ char *dollar(char *str, int *i)
     char *tmp;
     char *key;
     char *value;
+    //printf("str dolar == %s\n", str);
     j = *i;
 
     tmp = ft_substr(str, j + 1, *i - j - 1);
-
+    //printf("tmp == %s\n", tmp);
     while (str[++(*i)] && str[*i] != ' ')
         ;
 
@@ -98,8 +99,10 @@ char *dollar(char *str, int *i)
 
     if (!value)
         return NULL;
-    tmp = ft_strjoin(tmp, value);
-    tmp = ft_strjoin(tmp, str + *i);
-    printf("tmp == %s\n", tmp);
-    return (tmp);
+    //printf("value == %s\n", value);
+    //tmp = ft_strjoin(tmp, value);
+    //printf("tmp == %s\n", tmp);
+    //tmp = ft_strjoin(tmp, str + *i);
+    //printf("tmp == %s\n", tmp);
+    return (value);
 }

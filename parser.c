@@ -23,6 +23,6 @@ char *parser(char *str)
     {   
         str = dollar(str, &i);
     }
-    printf("str == %s\n",str);
+    //printf("str == %s\n",str);
     return str;
 }
