@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/28 19:14:41 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/10/29 12:01:37 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #include <readline/history.h>
 #include <string.h>
 #include <fcntl.h>
+#include <signal.h>
 
 typedef struct s_list
 {
@@ -89,4 +90,11 @@ char *get_value(char *key);
 char *double_quotes(char *str, int *i);
 char *slash(char *str, int *i);
 char *quotes(char *str, int *i);
+
+//signal
+int	ctrl_d(void);
+void	ctrl_c(int sig);
+void	sig_handler(int sig_num);
+void	sig_handler_heredoc(int sig_num);
+
 #endif
