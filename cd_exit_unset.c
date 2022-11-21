@@ -46,6 +46,7 @@ void lsh_cd(char **arr)
 
 int lsh_exit(char **args)
 {
+  (void)args;
   return 0;
 }
 

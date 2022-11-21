@@ -29,18 +29,29 @@
 #include <fcntl.h>
 #include <signal.h>
 
+#define EXIT_SYNTAX_ERROR 258
+#define EXIT_CMD_NOT_FOUND 127
+#define EXIT_CTRL_D 130
+
 typedef struct s_list
 {
 	void *content;
 	struct s_list *next;
 } t_list;
 
-
 t_list *g_env;
+typedef struct shelldup
+{
+	int std_in;
+	int std_out;
+	int f_in;
+	int f_out;
 
+} shelldup;
 typedef struct s_builtin_str
 {
 	char **builtin_str;
+
 } t_builtin_str;
 
 void init(t_builtin_str *str);
@@ -66,35 +77,36 @@ void ft_lstadd_back(t_list **lst, t_list *new);
 
 t_list *ft_lstnew(void *content);
 t_list *get_new_env(char **env);
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 500
-# endif
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 500
+#endif
 
-char	*get_next_line(int fd);
-char	*ft_new_left_str(char *left_str);
-char	*ft_search_n_str(int fd, char *left_str);
-char	*ft_get_one_line(char *left_str);
+char *get_next_line(int fd);
+char *ft_new_left_str(char *left_str);
+char *ft_search_n_str(int fd, char *left_str);
+char *ft_get_one_line(char *left_str);
 
-size_t	ft_strlen(const char *str);
-char	*ft_strchr(const char *str, int ch);
-char	*ft_strjoin(char *s1, char *s2); 
+size_t ft_strlen(const char *str);
+char *ft_strchr(const char *str, int ch);
+char *ft_strjoin(char *s1, char *s2);
 
-int	check_valid(char *str);
+int check_valid(char *str);
 int get_cmd_num(const char *str);
 char *command(char *str, int *i);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char *ft_substr(char const *s, unsigned int start, size_t len);
 char *parser(char *str);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int ft_strncmp(const char *s1, const char *s2, size_t n);
 char *dollar(char *str, int *i);
 char *get_value(char *key);
 char *double_quotes(char *str, int *i);
 char *slash(char *str, int *i);
 char *quotes(char *str, int *i);
+int	ft_isalnum(int str);
 
-//signal
-int	ctrl_d(void);
-void	ctrl_c(int sig);
-void	sig_handler(int sig_num);
-void	sig_handler_heredoc(int sig_num);
+// signal
+void ctrl_d(void);
+void ctrl_c(int sig);
+void sig_handler(int sig_num);
+void sig_handler_heredoc(int sig_num);
 
 #endif

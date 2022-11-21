@@ -4,6 +4,7 @@
         "__locale": "c",
         "cstring": "c",
         "sstream": "c",
-        "mini_shell.h": "c"
+        "mini_shell.h": "c",
+        "readline.h": "c"
     }
 }

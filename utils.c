@@ -107,3 +107,13 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
+int	ft_isalnum(int str)
+{
+	if (str >= 'a' && str <= 'z')
+		return (1);
+	else if (str >= 'A' && str <= 'Z')
+		return (1);
+	else if (str >= '0' && str <= '9')
+		return (1);
+	return (0);
+}

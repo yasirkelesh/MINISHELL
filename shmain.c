@@ -74,6 +74,7 @@ char **lsh_split_line(char *line)
 
   size = get_cmd_num(line);
   arr = malloc(sizeof(char *) * (size + 1));
+
   if (!arr)
     return NULL;
   j = 0;
@@ -87,7 +88,9 @@ char **lsh_split_line(char *line)
     // printf("arr : %s\n", arr[j - 1]);
   }
 
+ 
   arr[j] = NULL;
+
   return (arr);
 }
 
@@ -103,9 +106,15 @@ void lsh_loop(t_builtin_str *str)
     signal(SIGQUIT, SIG_IGN);
     signal(SIGINT, &ctrl_c);
     line = readline("> ");
+    if (!line)
+    {
+      printf("exit\n");
+      exit(1);
+    }
     add_history(line);
     args = lsh_split_line(line);
-    if (check_valid(line))
+    i = 0;
+    if (check_valid(line) && line)
     {
       i = 0;
       while (args[i])
