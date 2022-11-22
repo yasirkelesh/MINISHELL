@@ -88,7 +88,6 @@ char **lsh_split_line(char *line)
     // printf("arr : %s\n", arr[j - 1]);
   }
 
- 
   arr[j] = NULL;
 
   return (arr);
@@ -99,6 +98,7 @@ void lsh_loop(t_builtin_str *str)
   char *line;
   char **args;
   int i;
+  int d;
   int status;
 
   while (status)
@@ -119,8 +119,17 @@ void lsh_loop(t_builtin_str *str)
       i = 0;
       while (args[i])
       {
-        args[i] = parser(args[i]);
-        i++;
+        // args[i] = parser(args[i]);
+        if (parser(args[i]))
+        {
+          args[i] = parser(args[i]);
+          i++;
+        }
+
+        else
+        {
+          i++;
+        }
       }
       status = lsh_execute(args, str);
     }

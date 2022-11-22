@@ -26,30 +26,36 @@ void pwd()
 }
 void echo(char **arr)
 {
-    
-	  int size;
-	  int	i;
-	  int	n;
-      usleep(1000);
-	  size = 0;
-	  n = 0;
-	  while(arr[size])
-	  {
-		  size++;
-	  }
-	  i = 1;
-	  while (strncmp(arr[i], "-n", 3 ) == 0)
-	  {
-		  n = 1;
-		  i++;
-	  }
-	  while (arr[i])
-	  {
-		  printf("%s", arr[i]);
-		  if (i != size - 1)
-			printf(" ");
-		  i++;
-	  }
-	  if (!n)
-		  printf("\n");
+
+	int size;
+	int i;
+	int n;
+	usleep(1000);
+	size = 0;
+	n = 0;
+	while (arr[size])
+	{
+		printf("echo ya gelenler : %s\n", arr[size]);
+		size++;
+	}
+	i = 1;
+	while (strncmp(arr[i], "-n", 3) == 0)
+	{
+		n = 1;
+		i++;
+	}
+	while (arr[i])
+	{
+		if(arr[i][0] != '$')//dolar gelirse atlasın diye
+		{
+			printf("%s", arr[i]);
+/* 			if (i != size - 1)
+				printf(" "); */
+			i++;
+		}
+		else
+			i++;
+	}
+	if (!n)
+		printf("\n");
 }

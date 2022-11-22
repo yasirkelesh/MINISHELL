@@ -61,6 +61,7 @@ int get_cmd_num(const char *str)
 			while (str[i] != ' ' && str[i] != '\0' && str[i] != '"' && str[i] != '\'')
 				i++;
 	}
+	
 	return count;
 }
 int check_valid(char *line)

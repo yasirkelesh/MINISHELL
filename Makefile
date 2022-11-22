@@ -1,9 +1,9 @@
 NAME =  minishell
 CC =    gcc -g
-FLAGS = -I /Users/mukeles/goinfre/homebrew/opt/readline/include
+FLAGS = -I /goinfre/homebrew/opt/readline/include
 RM =        rm -rf
 SOURCE =    $(wildcard *.c)
-READLINE = -lreadline -L /Users/mukeles/goinfre/homebrew/opt/readline/lib
+READLINE = -lreadline -L /goinfre/homebrew/opt/readline/lib
 OBJECTS =   $(SOURCE:.c=.o)
 .c.o:
 			$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
