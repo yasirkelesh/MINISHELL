@@ -20,7 +20,7 @@ char *command(char *str, int *i)
 				(*i)++;
 		}
 		(*i)++;
-		if (str[*i] == '"' || str[*i] == '$')
+		if (!ft_isalnum(str[*i]))
 			break;
 	}
 	tmp = ft_substr(str, j, *i - j);
