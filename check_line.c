@@ -10,7 +10,7 @@ char *command(char *str, int *i)
 	j = *i;
 	while (str[*i] && str[*i] != ' ')
 	{
-
+		printf("command daki str %c\n", str[*i]);
 		if (str[*i] == '"' || str[*i] == '\'')
 		{
 
@@ -19,13 +19,22 @@ char *command(char *str, int *i)
 			while (str[*i] != c)
 				(*i)++;
 		}
-		(*i)++;
-		if (!ft_isalnum(str[*i]))
+		
+		if (str[*i] == '$')//dollar geldiği zaman nerede biteceğini belirler mesala $HOME* ize düzgün çaşlışır
+		{
+			(*i)++;
+
+			while (ft_isalnum(str[*i]))
+			{
+				(*i)++;
+			} 
 			break;
+		}
+		(*i)++;
 	}
 	tmp = ft_substr(str, j, *i - j);
 	//(*i)--;
-	// printf("tmp : %s\n", tmp);
+	printf("tmp : %s\n", tmp);
 	return (tmp);
 }
 
@@ -47,7 +56,8 @@ int get_cmd_num(const char *str)
 		{
 			if (str[i] == '$')
 			{
-				while(ft_isalnum(str[++i]));//$ bitii mi 
+				while (ft_isalnum(str[++i]))
+					; //$ bitii mi
 			}
 			else
 			{
@@ -61,7 +71,7 @@ int get_cmd_num(const char *str)
 			while (str[i] != ' ' && str[i] != '\0' && str[i] != '"' && str[i] != '\'')
 				i++;
 	}
-	
+
 	return count;
 }
 int check_valid(char *line)
