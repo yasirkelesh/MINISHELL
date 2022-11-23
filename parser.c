@@ -2,34 +2,47 @@
 char *parser(char *str)
 {
     int i;
-
+    char *tmp;
+    
+    while(str[i])
+    {
+        i++;
+    }
+    tmp = malloc(sizeof(char *) * (i + 1));
+    tmp = str;
     i = 0;
     // printf("fonk başı : %s\n", str);
-    while (str[i])
+    while (tmp[i])
     {
-        // printf("while içi : %c\n", str[i]);
-        if (str[i] == '\"')
-            str = double_quotes(str, &i);
-        else if (str[i] == '$')
+        
+        if (tmp[i] == '\"')
+        {
+            tmp = double_quotes(tmp, &i);           
+        }
+        else if (tmp[i] == '$')
             break;
-        else if (str[i] == '\\')
-            str = slash(str, &i);
-        else if (str[i] == '\'')
-            str = quotes(str, &i);
+        else if (tmp[i] == '\\')
+        {
+            tmp = slash(tmp, &i);
+
+        }
+        else if (tmp[i] == '\'')
+        {
+            tmp = quotes(tmp, &i);
+
+        }
 
         i++;
     }
 
-    if (str[i] == '$')
+    if (tmp[i] == '$')
     {
-        //printf("dolardan önce : %s\n", str);
-        str = dollar(str, &i);
+        // printf("dolardan önce : %s\n", str);
+        tmp = dollar(tmp, &i);
         i = 0;
         // printf("dolardan sonra : %c\n", str[i]);
-        if (str == NULL)
+        if (tmp == NULL)
             return 0;
     }
-
-
-    return str;
+    return tmp;
 }

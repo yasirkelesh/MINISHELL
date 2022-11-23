@@ -8,15 +8,22 @@ char *quotes(char *str, int *i)
     char *tmp2;
 
     j = *i;
-    (*i)++;
-    while (str[(*i)] != '\'')
-        ++(*i);
+    while (str[++(*i)] != '\'')
+        ;
+    /*     {
+            printf("str quotes : %c\n", str[*i]);
+           if (str[*i] == '$')
+            {
+                printf("str quotes dollar : %s\n", str);
+                str = dollar(str, i);
+            }
+        }  */
     tmp = ft_substr(str, 0, j);
     tmp1 = ft_substr(str, j + 1, *i - j - 1);
     tmp2 = strdup(str + *i + 1);
     tmp = ft_strjoin(tmp, tmp1);
     tmp = ft_strjoin(tmp, tmp2);
-    free(str);
+    //free(str);
     return (tmp);
 }
 
@@ -26,7 +33,7 @@ char *slash(char *str, int *i)
 
     tmp = ft_substr(str, 0, *i);
     ft_strjoin(tmp, str + *i + 1);
-    free(str);
+    //free(str);
     ++(*i);
     return (tmp);
 }
@@ -54,7 +61,7 @@ char *double_quotes(char *str, int *i)
     tmp2 = strdup(str + *i + 1);
     tmp = ft_strjoin(tmp, tmp1);
     tmp = ft_strjoin(tmp, tmp2);
-    free(str);
+    //free(str);
     return (tmp);
 }
 char *get_value(char *key)
