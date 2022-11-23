@@ -73,6 +73,8 @@ int lsh_execute(char **args, t_builtin_str *str)
     pwd();
   else if (i == 4)
     env();
+  else if(i == 5)
+    export(args);
 
   return lsh_launch(args, str);
 }

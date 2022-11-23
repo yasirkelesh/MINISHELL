@@ -58,3 +58,12 @@ void echo(char **arr)
 	if (!n)
 		printf("\n");
 }
+void export(char **args)
+{
+	t_list *tmp;
+	t_list *g_env;
+	tmp = (t_list *)malloc(sizeof(t_list)*ft_lstsize(g_env));
+	tmp = g_env;
+	
+
+}

@@ -117,3 +117,17 @@ int	ft_isalnum(int str)
 		return (1);
 	return (0);
 }
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	if (!lst)
+		return (0);
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}

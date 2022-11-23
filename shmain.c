@@ -123,7 +123,7 @@ void lsh_loop(t_builtin_str *str)
         if (parser(args[i]))
         {
           args[i] = parser(args[i]);
-          //printf("args[i]: %s\n", args[i]);
+          printf("args[i]: %s\n", args[i]);
           i++;
         }
 

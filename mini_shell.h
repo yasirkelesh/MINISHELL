@@ -69,6 +69,7 @@ int lsh_num_builtins(t_builtin_str *str, char *args);
 void lsh_cd(char **arr);
 void env();
 int lsh_help(char **args);
+void export(char **args);
 int lsh_exit(char **args);
 void pwd();
 void echo(char **arr);
@@ -89,6 +90,7 @@ char *ft_get_one_line(char *left_str);
 size_t ft_strlen(const char *str);
 char *ft_strchr(const char *str, int ch);
 char *ft_strjoin(char *s1, char *s2);
+int	ft_lstsize(t_list *lst);
 
 int check_valid(char *str);
 int get_cmd_num(const char *str);

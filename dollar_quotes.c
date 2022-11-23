@@ -62,6 +62,7 @@ char *double_quotes(char *str, int *i)
     tmp = ft_strjoin(tmp, tmp1);
     tmp = ft_strjoin(tmp, tmp2);
     //free(str);
+    
     return (tmp);
 }
 char *get_value(char *key)
