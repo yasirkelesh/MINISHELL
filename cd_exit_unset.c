@@ -44,7 +44,7 @@ void lsh_cd(char **arr)
   }
 }
 
-int lsh_exit(char **args)
+int   lsh_exit(char **args)
 {
   (void)args;
   return 0;
@@ -75,6 +75,25 @@ int lsh_execute(char **args, t_builtin_str *str)
     env();
   else if(i == 5)
     export(args);
+  else if(i == 6)
+    unset(args);
 
   return lsh_launch(args, str);
+}
+
+void unset(char **args)
+{
+  int i = 1;
+  t_list *new;
+
+  while(args[i])
+  {
+      if(exp_check(args[i]) == 0)
+      {
+        ft_list_remove_if(&g_env,args[i]);
+      }
+      else
+        printf("unset: `%s': not a valid identifier\n",args[i]);
+      i++;
+  } 
 }

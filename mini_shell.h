@@ -90,7 +90,10 @@ char *ft_get_one_line(char *left_str);
 size_t ft_strlen(const char *str);
 char *ft_strchr(const char *str, int ch);
 char *ft_strjoin(char *s1, char *s2);
-int	ft_lstsize(t_list *lst);
+int ft_lstsize(t_list *lst);
+void ft_lstadd_back(t_list **lst, t_list *new);
+void ft_lstdellone(t_list **lst, t_list *dell);
+void ft_list_remove_if(t_list **begin_list, void *data_ref);
 
 int check_valid(char *str);
 int get_cmd_num(const char *str);
@@ -103,7 +106,12 @@ char *get_value(char *key);
 char *double_quotes(char *str, int *i);
 char *slash(char *str, int *i);
 char *quotes(char *str, int *i);
-int	ft_isalnum(int str);
+int ft_isalnum(int str);
+void unset(char **args);
+int exp_check(char *str);
+int ft_strcmp(char *s1, char *s2);
+char *eq_cut(char *s1);
+char **ft_split(char const *s, char c);
 
 // signal
 void ctrl_d(void);

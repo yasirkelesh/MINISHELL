@@ -47,6 +47,6 @@ char *parser(char *str)
             if (tmp == NULL)
                 return 0;
         } */
-    printf("tmp : %s\n", tmp);
+    //printf("tmp : %s\n", tmp);
     return tmp;
 }

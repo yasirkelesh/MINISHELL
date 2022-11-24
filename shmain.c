@@ -85,7 +85,7 @@ char **lsh_split_line(char *line)
     while (line[i] == ' ')
       i++;
     arr[j++] = command(line, &i);
-    printf("arr : %s\n", arr[j - 1]);
+    //printf("arr : %s\n", arr[j - 1]);
   }
 
   arr[j] = NULL;
@@ -123,7 +123,7 @@ void lsh_loop(t_builtin_str *str)
         if (parser(args[i]))
         {
           args[i] = parser(args[i]);
-          printf("args[i]: %s\n", args[i]);
+          //printf("args[i]: %s\n", args[i]);
           i++;
         }
 

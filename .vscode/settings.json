@@ -5,6 +5,7 @@
         "cstring": "c",
         "sstream": "c",
         "mini_shell.h": "c",
-        "readline.h": "c"
+        "readline.h": "c",
+        "iterator": "c"
     }
 }

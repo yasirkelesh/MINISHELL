@@ -58,14 +58,45 @@ void echo(char **arr)
 	if (!n)
 		printf("\n");
 }
+int exp_check(char *str)
+{
+	int i = 0;
+	while(str[i])
+	{
+		if(str[i] == '=')
+		{
+			//printf("export str : %s\ni: %d\n", str,i);
+
+ 			if(i == 0)//
+				return -1; 
+			return 1;
+		}
+		i++;
+	}
+	return 0;
+}
+
 void export(char **args)
 {
-	t_list *tmp;
 
-	tmp = g_env;
-    tmp = tmp->next;
-	
-	
+	int i = 1;
+
+	t_list *new;
+
+
+	while(args[i])
+	{
+		if(exp_check(args[i]) == 1)
+		{
+			new = ft_lstnew(args[i]);
+			ft_lstadd_back(&g_env, new);
+		}
+		else if(exp_check(args[i]) == -1)
+			printf("export: `%s': not a valid identifier", args[i]);
+		i++;
+	}
+	//printf("exportaki : %s\n", args[1]);
+
 	//uygun formatta olanları listeye ekle
 
 
