@@ -82,10 +82,10 @@ char **lsh_split_line(char *line)
   k = 0;
   while (line[i])
   {
-    while (line[i] == ' ')
+     while (line[i] == ' ' && line[i] != '\0')
       i++;
     arr[j++] = command(line, &i);
-    //printf("arr : %s\n", arr[j - 1]);
+    printf("arr : %s\n", arr[j - 1]);
   }
 
   arr[j] = NULL;

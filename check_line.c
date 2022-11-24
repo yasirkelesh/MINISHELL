@@ -22,8 +22,8 @@ char *command(char *str, int *i)
 			k++;
 			//printf("str2[i] %c\ni : %d\n", str[*i], *i);
 		}
-		
-		if (str[*i] == '$')//dollar geldiği zaman nerede biteceğini belirler mesala $HOME* ize düzgün çaşlışır
+	
+		if (str[j] == '$')//dollar geldiği zaman nerede biteceğini belirler mesala $HOME* ize düzgün çaşlışır
 		{
 			(*i)++;
 
@@ -33,6 +33,8 @@ char *command(char *str, int *i)
 			} 
 			break;
 		}
+		else if(str[*i] == '$')//ilk argumandan sonra dolar gelirse ayırsın 
+			break;
 		(*i)++;
 	}
 	tmp = ft_substr(str, j, *i - j);
