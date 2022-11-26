@@ -61,7 +61,9 @@ int lsh_execute(char **args, t_builtin_str *str);
 void *ft_realloc(void *ptr, size_t size);
 void dq_loop(char **args);
 char *dolar_sp(char *arr);
+int dollar_query(char *tmp);
 
+void lsh_loop(t_builtin_str *str);
 char **lsh_split_line(char *line);
 char **ft_split(char const *s, char c);
 char *my_strtok(char *str, char *delim);
