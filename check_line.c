@@ -3,43 +3,46 @@
 char *command(char *str, int *i)
 {
 	char *tmp;
+
 	char c;
 	int j;
 	int k;
 
 	k = 0;
 	j = *i;
-	while (str[*i] && str[*i] != ' ' && k == 0) 
+	while (str[*i] && str[*i] != ' ' && k == 0)
 	{
 		if (str[*i] == '"' || str[*i] == '\'')
 		{
 
 			c = str[(*i)++];
-			//printf("c : %c\n", c);
-			//printf("str[i] %c\ni : %d\n", str[*i], *i);
+
 			while (str[*i] != c)
 				(*i)++;
-			k++;
-			//printf("str2[i] %c\ni : %d\n", str[*i], *i);
+			// k++;
 		}
-	
-		if (str[j] == '$')//dollar geldiği zaman nerede biteceğini belirler mesala $HOME* ize düzgün çaşlışır
+
+		if (str[j] == '$') // dollar geldiği zaman nerede biteceğini belirler mesala $HOME* ize düzgün çaşlışır
 		{
 			(*i)++;
 
 			while (ft_isalnum(str[*i]))
 			{
 				(*i)++;
-			} 
+			}
 			break;
 		}
-		else if(str[*i] == '$')//ilk argumandan sonra dolar gelirse ayırsın 
+		else if (str[*i] == '$') // ilk argumandan sonra dolar gelirse ayırsın
 			break;
 		(*i)++;
 	}
 	tmp = ft_substr(str, j, *i - j);
 	//(*i)--;
-	//printf("tmp : %s\n", tmp);
+	printf("tmp : %s\n", tmp);
+	if (tmp[0] == '\'' || tmp[0] == '"')
+	{
+		tmp = q_dollar(tmp);
+	}
 	return (tmp);
 }
 

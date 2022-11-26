@@ -112,7 +112,8 @@ int exp_check(char *str);
 int ft_strcmp(char *s1, char *s2);
 char *eq_cut(char *s1);
 char **ft_split(char const *s, char c);
-
+char* replaceWord(const char* s, const char* oldW, const char* newW);
+char *q_dollar(char *tmp);
 // signal
 void ctrl_d(void);
 void ctrl_c(int sig);
