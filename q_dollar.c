@@ -12,6 +12,10 @@ char *q_dollar(char *tmp)
     k++;
     while (dollar_query(tmp))    
     {
+        if(tmp[k] == '\'' || tmp[k] == '"')
+        {
+            k++;
+        }
         while (tmp[k] != '\0' && tmp[k] != '"' && tmp[k] != '\'')
         {
             printf("tmp1: %s\n", tmp);

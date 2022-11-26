@@ -8,6 +8,7 @@ int dollar_query(char *tmp)
     {
         if (tmp[i] == '$')
         {
+            //printf("test\n");
             if (tmp[i + 1] != '$' && tmp[i - 1] != '$' || 
                 tmp[i + 1] != '\'' && tmp[i - 1] != '\''||
                 tmp[i + 1] != '"' && tmp[i - 1] != '"')
@@ -15,6 +16,7 @@ int dollar_query(char *tmp)
         }
         i++;
     }
+    printf("%d\n", dollar);
     if(dollar == 0)
         return 0;
     else
