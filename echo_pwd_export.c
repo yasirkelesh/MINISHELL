@@ -48,7 +48,7 @@ void echo(char **arr)
 		if(arr[i][0] != '$')//dolar gelirse atlasın diye
 		{
 			printf("%s", arr[i]);
-			if (i != size - 1)
+ 			if (i != size - 1)
 				printf(" ");
 			i++;
 		}

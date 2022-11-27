@@ -26,7 +26,7 @@ int lsh_launch(char **args, t_builtin_str *str)
   {
     k++;
   }
-
+  // printf("str1 : %s",str1);
   pid = fork();
   if (pid == 0)
   {
@@ -80,12 +80,19 @@ char **lsh_split_line(char *line)
   j = 0;
   i = 0;
   k = 0;
+  printf("line : %s\n", line);
   while (line[i])
   {
-     while (line[i] == ' ' && line[i] != '\0')
-      i++;
+    if(line[i] == ' ' && line[i] != '\0')//(echo  $HOME          $HOME)
+    //("echo") (" ")("$HOME")(" ")("$HOME")
+    {
+      while (line[i] == ' ' && line[i] != '\0')
+        i++;
+      arr[j++] = " ";
+      printf("arr1 : *%s*\n", arr[j - 1]);
+    }
     arr[j++] = command(line, &i);
-    printf("arr : %s\n", arr[j - 1]);
+    printf("arr2 : *%s*\n", arr[j - 1]);
   }
 
   arr[j] = NULL;
@@ -96,7 +103,7 @@ char **lsh_split_line(char *line)
 int main(int argc, char **argv, char **env)
 {
   t_builtin_str *str;
-  
+
   str = malloc(sizeof(t_builtin_str));
   str->builtin_str = malloc(sizeof(char) * 999);
   if (!str)

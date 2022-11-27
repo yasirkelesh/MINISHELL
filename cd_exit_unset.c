@@ -54,7 +54,7 @@ int lsh_execute(char **args, t_builtin_str *str)
 {
   int i = 8;
 
-  if (args[0] == NULL || args[1] == NULL)//sadece ilk argüman varsa
+  if (!strcmp(args[0],"echo") && args[1] == NULL)//sadece ilk argüman varsa
     return 1;
   i = lsh_num_builtins(str,args[0]);  
   
