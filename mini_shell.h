@@ -28,6 +28,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <sys/stat.h>
 
 #define EXIT_SYNTAX_ERROR 258
 #define EXIT_CMD_NOT_FOUND 127
@@ -62,6 +63,11 @@ void *ft_realloc(void *ptr, size_t size);
 void dq_loop(char **args);
 char *dolar_sp(char *arr);
 int dollar_query(char *tmp);
+char    *env_find_value(char *key);
+char			*find_value(char *key);
+
+void	ft_free_str(char **str);
+char *find_path(char *cmdline);
 
 void lsh_loop(t_builtin_str *str);
 char **lsh_split_line(char *line);
@@ -111,6 +117,7 @@ char *quotes(char *str, int *i);
 int ft_isalnum(int str);
 void unset(char **args);
 int exp_check(char *str);
+char	*ft_strdup(char *str);
 int ft_strcmp(char *s1, char *s2);
 char *eq_cut(char *s1);
 char **ft_split(char const *s, char c);

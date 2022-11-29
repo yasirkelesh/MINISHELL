@@ -19,9 +19,9 @@ int lsh_launch(char **args, t_builtin_str *str)
   int status;
   int i = 0;
   int k = 0;
-  char str1[100] = "/bin/";
+  char *str1 = find_path(args[0]);
 
-  strcat(str1, args[0]);
+
   if ((lsh_num_builtins(str, args[0]) != -1) && k == 0)
   {
     k++;
@@ -81,20 +81,13 @@ char **lsh_split_line(char *line)
   i = 0;
   k = 0;
   printf("line : %s\n", line);
-  while (line[i])
+   while (line[i])
   {
-    if(line[i] == ' ' && line[i] != '\0')//(echo  $HOME          $HOME)
-    //("echo") (" ")("$HOME")(" ")("$HOME")
-    {
-      while (line[i] == ' ' && line[i] != '\0')
-        i++;
-      arr[j++] = " ";
-      printf("arr1 : *%s*\n", arr[j - 1]);
-    }
+    while (line[i] == ' ' && line[i] != '\0')
+      i++;
     arr[j++] = command(line, &i);
-    printf("arr2 : *%s*\n", arr[j - 1]);
-  }
-
+    printf("arr : %s\n", arr[j - 1]);
+  } 
   arr[j] = NULL;
 
   return (arr);
