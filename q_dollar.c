@@ -20,7 +20,7 @@ char *q_dollar(char *tmp)
             int t = 0;
             while (tmp[k] != '$' && tmp[k] != '\0')
                 k++;
-            printf("dollar öncesi tmp: %s\n", tmp);
+            //printf("dollar öncesi tmp: %s\n", tmp);
             if ((tmp[k + 1] == '"' && tmp[k - 1] == '"') || (tmp[k + 1] == '\'' && tmp[k - 1] == '\''))
                 return tmp;
 
@@ -33,16 +33,16 @@ char *q_dollar(char *tmp)
                 rst = ft_substr(tmp, j, k - j);
                 dlr = dollar(rst, &t);
 
-                printf("k: %d\n", k);
-                printf("j: %d\n", j);
-                printf("dlr: %s\n", dlr);
+                //printf("k: %d\n", k);
+                //printf("j: %d\n", j);
+                //printf("dlr: %s\n", dlr);
 
                 if (dlr)
                     tmp = replaceWord(tmp, rst, dlr);
                 else
                     tmp = replaceWord(tmp, rst, "");
 
-                printf("tmp2: %s\n", tmp);
+                //printf("tmp2: %s\n", tmp);
             }
             // printf("test");
         }

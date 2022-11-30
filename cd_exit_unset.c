@@ -83,7 +83,7 @@ int lsh_execute(char **args, t_builtin_str *str)
 
 void unset(char **args)
 {
-  int i = 1;
+  int i = 0;
   t_list *new;
 
   while(args[i])

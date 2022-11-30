@@ -43,7 +43,7 @@ char *command(char *str, int *i)
 	{
 		tmp = q_dollar(tmp);
 	}
-	printf("içerden gelen tmp : %s\n", tmp);
+	//printf("içerden gelen tmp : %s\n", tmp);
 	return (tmp);
 }
 

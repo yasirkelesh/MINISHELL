@@ -16,7 +16,7 @@ int dollar_query(char *tmp)
         }
         i++;
     }
-    printf("%d\n", dollar);
+    //printf("%d\n", dollar);
     if(dollar == 0)
         return 0;
     else

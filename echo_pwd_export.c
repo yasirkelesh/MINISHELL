@@ -82,10 +82,12 @@ void export(char **args)
 	int i = 1;
 
 	t_list *new;
+	char **updel;
 
-
+	
 	while(args[i])
 	{
+		unset(ft_split(args[i], '='));//güncellemek için unsete yolla 
 		if(exp_check(args[i]) == 1)
 		{
 			new = ft_lstnew(args[i]);

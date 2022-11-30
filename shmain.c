@@ -50,16 +50,17 @@ int lsh_launch(char **args, t_builtin_str *str)
     // Error forking
     perror("lsh");
   }
-  else
+   else
   {
     wait(NULL);
-    /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid()); */
+    /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid());  */
     waitpid(pid, &status, WUNTRACED);
-    while (!WIFEXITED(status) && !WIFSIGNALED(status))
+/*     while (!WIFEXITED(status) && !WIFSIGNALED(status))
     {
+      printf("test");
       waitpid(pid, &status, WUNTRACED);
-    }
-  }
+    }  */
+  } 
 
   return 1;
 }
@@ -80,13 +81,13 @@ char **lsh_split_line(char *line)
   j = 0;
   i = 0;
   k = 0;
-  printf("line : %s\n", line);
+  //printf("line : %s\n", line);
    while (line[i])
   {
     while (line[i] == ' ' && line[i] != '\0')
       i++;
     arr[j++] = command(line, &i);
-    printf("arr : %s\n", arr[j - 1]);
+    //printf("arr : %s\n", arr[j - 1]);
   } 
   arr[j] = NULL;
 
