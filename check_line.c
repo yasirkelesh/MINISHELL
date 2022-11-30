@@ -38,11 +38,12 @@ char *command(char *str, int *i)
 	}
 	tmp = ft_substr(str, j, *i - j);
 	//(*i)--;
-	printf("tmp : %s\n", tmp);
-	if(tmp[0] == '\'' || tmp[0] == '"')
+
+	if (tmp[0] == '\'' || tmp[0] == '"')
 	{
 		tmp = q_dollar(tmp);
 	}
+	printf("içerden gelen tmp : %s\n", tmp);
 	return (tmp);
 }
 

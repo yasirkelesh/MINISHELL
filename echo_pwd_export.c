@@ -43,18 +43,18 @@ void echo(char **arr)
 		n = 1;
 		i++;
 	}
-	while (arr[i])
+ 	while (arr[i])
 	{
-		if(arr[i][0] != '$')//dolar gelirse atlasın diye
+/* 		if(arr[i][0] != '$') *///dolar gelirse atlasın diye
 		{
 			printf("%s", arr[i]);
  			if (i != size - 1)
 				printf(" ");
 			i++;
 		}
-		else
-			i++;
-	}
+/* 		else
+			i++; */
+	} 
 	if (!n)
 		printf("\n");
 }

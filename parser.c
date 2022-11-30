@@ -17,7 +17,8 @@ char *parser(char *str)
 
         if (tmp[i] == '\"')
         {
-            tmp = double_quotes(tmp, &i);
+            if (tmp[i + 2] == '"')
+                return (double_quotes(tmp, &i));
         }
         else if (tmp[i] == '$')
         {
@@ -32,7 +33,12 @@ char *parser(char *str)
         }
         else if (tmp[i] == '\'')
         {
-            tmp = quotes(tmp, &i);
+            printf("tırnaklı tmp %s\n", tmp);
+            if (tmp[i + 2] == '\'')
+            {
+                printf("test");
+                return(quotes(tmp, &i));
+            }
         }
 
         i++;
@@ -47,6 +53,6 @@ char *parser(char *str)
             if (tmp == NULL)
                 return 0;
         } */
-    //printf("tmp : %s\n", tmp);
+    // printf("tmp : %s\n", tmp);
     return tmp;
 }

@@ -29,8 +29,9 @@ void lsh_loop(t_builtin_str *str)
         // args[i] = parser(args[i]);
         if (parser(args[i]))
         {
+          printf("parser dan önce args[i]: %s\n", args[i]);
           args[i] = parser(args[i]);
-          //printf("args[i]: %s\n", args[i]);
+          printf("args[i]: %s\n", args[i]);
           i++;
         }
 

@@ -1,7 +1,5 @@
 #include "mini_shell.h"
 
-
-
 char *q_dollar(char *tmp)
 {
     char *rst;
@@ -10,18 +8,22 @@ char *q_dollar(char *tmp)
     int j = 0;
 
     k++;
-    while (dollar_query(tmp))    
+    while (dollar_query(tmp))
     {
-        if(tmp[k] == '\'' || tmp[k] == '"')
+        if (tmp[k] == '\'' || tmp[k] == '"')
         {
             k++;
         }
         while (tmp[k] != '\0' && tmp[k] != '"' && tmp[k] != '\'')
         {
-            printf("tmp1: %s\n", tmp);
+
             int t = 0;
             while (tmp[k] != '$' && tmp[k] != '\0')
                 k++;
+            printf("dollar öncesi tmp: %s\n", tmp);
+            if ((tmp[k + 1] == '"' && tmp[k - 1] == '"') || (tmp[k + 1] == '\'' && tmp[k - 1] == '\''))
+                return tmp;
+
             if (tmp[k] == '$')
             {
                 j = k;
