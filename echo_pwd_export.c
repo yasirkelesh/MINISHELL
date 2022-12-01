@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_pwd_export.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:41:52 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/28 19:57:03 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/01 22:50:52 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,32 @@ void echo(char **arr)
 		n = 1;
 		i++;
 	}
- 	while (arr[i])
+	while (arr[i])
 	{
-/* 		if(arr[i][0] != '$') *///dolar gelirse atlasın diye
+		/* if(arr[i][0] != '$') */ // dolar gelirse atlasın diye
 		{
 			printf("%s", arr[i]);
- 			if (i != size - 1)
+			if (i != size - 1)
 				printf(" ");
 			i++;
 		}
-/* 		else
-			i++; */
-	} 
+		/* 		else
+					i++; */
+	}
 	if (!n)
 		printf("\n");
 }
 int exp_check(char *str)
 {
 	int i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i] == '=')
+		if (str[i] == '=')
 		{
-			//printf("export str : %s\ni: %d\n", str,i);
+			// printf("export str : %s\ni: %d\n", str,i);
 
- 			if(i == 0)//
-				return -1; 
+			if (i == 0) //
+				return -1;
 			return 1;
 		}
 		i++;
@@ -83,33 +83,32 @@ void export(char **args)
 
 	t_list *new;
 
-	printf("args[%d]: %s\n",0,args[0]);
-	printf("args[%d]: %s\n",1,args[1]);
-	printf("args[%d]: %s\n",2,args[2]);
-	while(args[i])
+	printf("args[%d]: %s\n", 0, args[0]);
+	printf("args[%d]: %s\n", 1, args[1]);
+	printf("args[%d]: %s\n", 2, args[2]);
+	printf("args[%d]: %s\n", 3, args[3]);
+	while (args[i])
 	{
-		unset(ft_split(args[i], '='));//güncellemek için unsete yolla
-		printf("%d\n",exp_env_check(args[i + 1]));
-		if(exp_env_check(args[i + 1]))
+		unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
+		printf("%d\n", exp_env_check(args[i + 1]));
+		if (exp_env_check(args[i + 1]))
 		{
-			//free(args[i]);
-			args[i] = strcat(args[i],args[i + 1]);
-			
-			printf("export args: %s\n",args[i]);
+			// free(args[i]);
+			args[i] = strcat(args[i], args[i + 1]);
+
+			printf("export args: %s\n", args[i]);
 		}
-		 
-		if(exp_check(args[i]) == 1)
+
+		if (exp_check(args[i]) == 1)
 		{
 			new = ft_lstnew(args[i]);
 			ft_lstadd_back(&g_env, new);
 		}
-		else if(exp_check(args[i]) == -1)
+		else if (exp_check(args[i]) == -1)
 			printf("export: `%s': not a valid identifier", args[i]);
 		i++;
 	}
-	//printf("exportaki : %s\n", args[1]);
+	// printf("exportaki : %s\n", args[1]);
 
-	//uygun formatta olanları listeye ekle
-
-
+	// uygun formatta olanları listeye ekle
 }
