@@ -82,12 +82,22 @@ void export(char **args)
 	int i = 1;
 
 	t_list *new;
-	char **updel;
 
-	
+	printf("args[%d]: %s\n",0,args[0]);
+	printf("args[%d]: %s\n",1,args[1]);
+	printf("args[%d]: %s\n",2,args[2]);
 	while(args[i])
 	{
-		unset(ft_split(args[i], '='));//güncellemek için unsete yolla 
+		unset(ft_split(args[i], '='));//güncellemek için unsete yolla
+		printf("%d\n",exp_env_check(args[i + 1]));
+		if(exp_env_check(args[i + 1]))
+		{
+			//free(args[i]);
+			args[i] = strcat(args[i],args[i + 1]);
+			
+			printf("export args: %s\n",args[i]);
+		}
+		 
 		if(exp_check(args[i]) == 1)
 		{
 			new = ft_lstnew(args[i]);
