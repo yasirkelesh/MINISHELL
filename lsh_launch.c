@@ -1,12 +1,13 @@
 #include "mini_shell.h"
+
 extern char **environ;
 int lsh_launch(char **args, t_builtin_str *str)
 {
+  pid_t pid;
   int status;
   int i = 0;
   int k = 0;
   char *str1 = find_path(args[0]);
-
 
   if ((lsh_num_builtins(str, args[0]) != -1) && k == 0)
   {
@@ -36,17 +37,17 @@ int lsh_launch(char **args, t_builtin_str *str)
     // Error forking
     perror("lsh");
   }
-   else
+  else
   {
     wait(NULL);
     /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid());  */
     waitpid(pid, &status, WUNTRACED);
-/*     while (!WIFEXITED(status) && !WIFSIGNALED(status))
-    {
-      printf("test");
-      waitpid(pid, &status, WUNTRACED);
-    }  */
-  } 
+    /*     while (!WIFEXITED(status) && !WIFSIGNALED(status))
+        {
+          printf("test");
+          waitpid(pid, &status, WUNTRACED);
+        }  */
+  }
 
   return 1;
 }

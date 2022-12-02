@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/02 16:07:58 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/02 16:31:34 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int lsh_launch(char **args, t_builtin_str *str);
 //lsh_split_line
 char **lsh_split_line(char *line);
 
+t_list *get_new_env(char **env);
+
 void init(t_builtin_str *str);
 int line_check(char *line);
 int lsh_execute(char **args, t_builtin_str *str);
@@ -89,7 +91,6 @@ void line_write(char *line);
 void ft_lstadd_back(t_list **lst, t_list *new);
 
 t_list *ft_lstnew(void *content);
-t_list *get_new_env(char **env);
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 500
 #endif
