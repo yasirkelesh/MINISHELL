@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/29 12:01:37 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/02 16:07:58 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,15 @@ typedef struct s_builtin_str
 	char **builtin_str;
 
 } t_builtin_str;
+//lsh_loop
+void lsh_loop(t_builtin_str *str);
+//lsh_launch
+int lsh_launch(char **args, t_builtin_str *str);
+//lsh_split_line
+char **lsh_split_line(char *line);
 
 void init(t_builtin_str *str);
 int line_check(char *line);
-int lsh_launch(char **args, t_builtin_str *str);
 int lsh_execute(char **args, t_builtin_str *str);
 void *ft_realloc(void *ptr, size_t size);
 void dq_loop(char **args);
@@ -70,8 +75,6 @@ int exp_env_check(char *str);
 void ft_free_str(char **str);
 char *find_path(char *cmdline);
 
-void lsh_loop(t_builtin_str *str);
-char **lsh_split_line(char *line);
 char **ft_split(char const *s, char c);
 char *my_strtok(char *str, char *delim);
 int lsh_num_builtins(t_builtin_str *str, char *args);
