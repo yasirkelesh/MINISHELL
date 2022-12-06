@@ -13,7 +13,6 @@
 #include "mini_shell.h"
 
 
-
 int lsh_num_builtins(t_builtin_str *str, char *args)
 {
   int i = 0;
@@ -79,21 +78,4 @@ int lsh_execute(char **args, t_builtin_str *str)
     unset(args);
 
   return lsh_launch(args, str);
-}
-
-void unset(char **args)
-{
-  int i = 0;
-  t_list *new;
-
-  while(args[i])
-  {
-      if(exp_check(args[i]) == 0)
-      {
-        ft_list_remove_if(&g_env,args[i]);
-      }
-      else
-        printf("unset: `%s': not a valid identifier\n",args[i]);
-      i++;
-  } 
 }

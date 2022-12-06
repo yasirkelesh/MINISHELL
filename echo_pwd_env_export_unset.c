@@ -58,23 +58,6 @@ void echo(char **arr)
 	if (!n)
 		printf("\n");
 }
-int exp_check(char *str)
-{
-	int i = 0;
-	while(str[i])
-	{
-		if(str[i] == '=')
-		{
-			//printf("export str : %s\ni: %d\n", str,i);
-
- 			if(i == 0)//
-				return -1; 
-			return 1;
-		}
-		i++;
-	}
-	return 0;
-}
 
 void export(char **args)
 {
@@ -112,4 +95,20 @@ void export(char **args)
 	//uygun formatta olanları listeye ekle
 
 
+}
+void unset(char **args)
+{
+  int i = 0;
+  t_list *new;
+
+  while(args[i])
+  {
+      if(exp_check(args[i]) == 0)
+      {
+        ft_list_remove_if(&g_env,args[i]);
+      }
+      else
+        printf("unset: `%s': not a valid identifier\n",args[i]);
+      i++;
+  } 
 }
