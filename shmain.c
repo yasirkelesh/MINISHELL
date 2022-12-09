@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shmain.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/08 18:58:00 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2022/12/09 11:01:27 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ int main(int argc, char **argv, char **env)
   g_env = get_new_env(env);
 
   lsh_loop(str);
+  
+  free(str->builtin_str);
+  free(str);
+  free(g_env);
   return EXIT_SUCCESS;
 }

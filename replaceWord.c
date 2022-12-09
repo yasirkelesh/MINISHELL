@@ -1,10 +1,10 @@
 #include "mini_shell.h"
 //halloldu
-char* replaceWord(const char* s, const char* oldW,
-				const char* newW)
+char* replaceWord(char* s, char* oldW, char* newW)
 {
 	char* result;
 	int i, cnt = 0;
+	int k= 0;
 	int newWlen = ft_strlen(newW);
 	int oldWlen = ft_strlen(oldW);
 
@@ -30,5 +30,9 @@ char* replaceWord(const char* s, const char* oldW,
 	}
 
 	result[i] = '\0';
+	
+	//free(s);
+	
+
 	return result;
 }

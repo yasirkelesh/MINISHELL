@@ -7,7 +7,7 @@ char *command(char *str, int *i)
 	char c;
 	int j;
 	int k;
-
+	
 	k = 0;
 	j = *i;
 	while (str[*i] && str[*i] != ' ' && k == 0)
@@ -43,6 +43,7 @@ char *command(char *str, int *i)
 	{
 		tmp = q_dollar(tmp);
 	}
-	//printf("içerden gelen tmp : %s\n", tmp);
+
+	
 	return (tmp);
 }

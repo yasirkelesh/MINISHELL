@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-//halloldu
+// halloldu
 char *q_dollar(char *tmp)
 {
     char *rst;
@@ -10,6 +10,8 @@ char *q_dollar(char *tmp)
     k++;
     while (dollar_query(tmp))
     {
+        int i = ft_strlen(tmp); // momoriyi düzenle;
+
         if (tmp[k] == '\'' || tmp[k] == '"')
         {
             k++;
@@ -20,7 +22,7 @@ char *q_dollar(char *tmp)
             int t = 0;
             while (tmp[k] != '$' && tmp[k] != '\0')
                 k++;
-            //printf("dollar öncesi tmp: %s\n", tmp);
+            printf("dollar öncesi tmp: %s\n", tmp);
             if ((tmp[k + 1] == '"' && tmp[k - 1] == '"') || (tmp[k + 1] == '\'' && tmp[k - 1] == '\''))
                 return tmp;
 
@@ -33,18 +35,19 @@ char *q_dollar(char *tmp)
                 rst = ft_substr(tmp, j, k - j);
                 dlr = dollar(rst, &t);
 
-                //printf("k: %d\n", k);
-                //printf("j: %d\n", j);
-                //printf("dlr: %s\n", dlr);
-
+                // printf("k: %d\n", k);
+                // printf("j: %d\n", j);
+                // printf("dlr: %s\n", dlr);
+                if (k >= i)
+                {
+                    printf("test");
+                    tmp = ft_realloc(tmp, i * 2);
+                }
                 if (dlr)
                     tmp = replaceWord(tmp, rst, dlr);
                 else
                     tmp = replaceWord(tmp, rst, "");
-
-                //printf("tmp2: %s\n", tmp);
             }
-            // printf("test");
         }
     }
     // while bağla içinde dolar bitene kadar dön

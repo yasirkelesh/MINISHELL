@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_shell.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/09 10:49:54 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:21:23 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char *q_dollar(char *tmp);// q_dollar
 int dollar_query(char *tmp);// dollar_query
 char *dollar(char *str, int *i);// dollar
 char *get_value(char *key);// dollar
-char *replaceWord(const char *s, const char *oldW, const char *newW);// replaceWord
+char* replaceWord(char* s, char* oldW, char* newW);// replaceWord
 int check_valid(char *line);// check_valid
 char *parser(char *str);// parser
 char *double_quotes(char *str, int *i);// double_quetes
@@ -97,6 +97,10 @@ char *find_value(char *key);// find_path_value
 void ft_free_str(char **str);// ft_free_str
 int exp_check(char *str);// exp_check
 void env();// env
+
+//mem_wide
+char **mem_wide(char **arr, int size);
+void* ft_realloc(void* ptr, size_t size);
 
 // burda kaldım
 char *ft_new_left_str(char *left_str);

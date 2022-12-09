@@ -22,9 +22,14 @@ char **lsh_split_line(char *line)
     while (line[i] == ' ' && line[i] != '\0')
       i++;
     arr[j++] = command(line, &i);
+    if(j >= size)
+    {
+      printf("test");
+      arr = mem_wide(arr,size);
+    }
     printf("arr : %s\n", arr[j - 1]);
   }
-   k = 0;
+  k = 0;
   while(arr[k])
   {
     printf("arr de ki : *%s*\n", arr[k]);
