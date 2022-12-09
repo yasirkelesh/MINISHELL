@@ -5,14 +5,16 @@ char *parser(char *str)
     int i;
     char *tmp;
 
-    while (str[i])
+/*     while (str[i])
     {
         i++;
-    }
+    } */
     tmp = malloc(sizeof(char *) * (i + 1));
+    if (!tmp)
+		return (tmp);
     tmp = str;
     i = 0;
-    // printf("fonk başı : %s\n", str);
+    //printf("tmp  : %s\n", tmp[i]);
     while (tmp[i])
     {
 
@@ -37,7 +39,7 @@ char *parser(char *str)
             printf("tırnaklı tmp %s\n", tmp);
             if (tmp[i + 2] == '\'')
             {
-                printf("test");
+                printf("test parser\n");
                 return(quotes(tmp, &i));
             }
         }
@@ -55,5 +57,6 @@ char *parser(char *str)
                 return 0;
         } */
     // printf("tmp : %s\n", tmp);
+
     return tmp;
 }

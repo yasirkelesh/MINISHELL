@@ -40,7 +40,7 @@ char *q_dollar(char *tmp)
                 // printf("dlr: %s\n", dlr);
                 if (k >= i)
                 {
-                    printf("test");
+                    printf("test dolar\n");
                     tmp = ft_realloc(tmp, i * 2);
                 }
                 if (dlr)

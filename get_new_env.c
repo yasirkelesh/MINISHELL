@@ -6,6 +6,8 @@ t_list *get_new_env(char **env)
 	int i;
 
 	new_env = malloc(sizeof(t_list));
+	if (!new_env)
+		return (new_env);
 	i = 0;
 	while(env[i])
 	{

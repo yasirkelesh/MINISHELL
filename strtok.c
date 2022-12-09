@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strtok.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:44 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/08 23:18:03 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2022/12/09 13:50:37 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int *create_delim_dict(char *delim)
 {
-	int *d = (int*)malloc(sizeof(int)*DICT_LEN);
+	int *d = (int*)(sizeof(int)*DICT_LEN);
+	if (!d)
+		return (d);
 	ft_memset((void*)d, 0, sizeof(int)*DICT_LEN);
 
 	int i;

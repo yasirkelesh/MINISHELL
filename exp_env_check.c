@@ -4,7 +4,7 @@ int exp_env_check(char *str)
 {
     t_list *tmp;
     char   **args;
-    printf("test\n");
+    printf("env test\n");
     tmp = g_env;
     tmp = tmp->next;
     if(str == NULL)
