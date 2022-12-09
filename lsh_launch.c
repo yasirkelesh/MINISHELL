@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 extern char **environ;
 int lsh_launch(char **args, t_builtin_str *str)
 {

@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 t_list *get_new_env(char **env)
 {
 	t_list *new_env;

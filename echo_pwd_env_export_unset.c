@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo_pwd_export.c                                  :+:      :+:    :+:   */
+/*   echo_pwd_env_export_unset.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:41:52 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/02 14:42:35 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/08 23:03:22 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
+//halloldu
 void pwd()
 {
 	char *str;
@@ -38,7 +38,7 @@ void echo(char **arr)
 		size++;
 	}
 	i = 1;
-	while (strncmp(arr[i], "-n", 3) == 0)
+	while (ft_strncmp(arr[i], "-n", 3) == 0)
 	{
 		n = 1;
 		i++;
@@ -76,7 +76,7 @@ void export(char **args)
 		if(exp_env_check(args[i + 1]))
 		{
 			//free(args[i]);
-			args[i] = strcat(args[i],args[i + 1]);
+			args[i] = ft_strcat(args[i],args[i + 1]);
 			
 			printf("export args: %s\n",args[i]);
 		}

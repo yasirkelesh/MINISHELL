@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 int dollar_query(char *tmp)
 {
     int i = 0;

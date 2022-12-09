@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 void	ft_free_str(char **str)
 {
 	int	i;

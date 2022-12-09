@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 char *q_dollar(char *tmp)
 {
     char *rst;

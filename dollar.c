@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 char *get_value(char *key)
 {
     char *value;
@@ -12,10 +12,10 @@ char *get_value(char *key)
     while (tmp)
     {
 
-        if (!strncmp(key, (char *)tmp->content, key_len) &&
+        if (!ft_strncmp(key, (char *)tmp->content, key_len) &&
             ((char *)(tmp->content))[key_len] == '=')
         {
-            value = strdup((char *)tmp->content + key_len + 1);
+            value = ft_strdup((char *)tmp->content + key_len + 1);
             return (value);
         }
         tmp = tmp->next;

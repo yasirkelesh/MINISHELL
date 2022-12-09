@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 int check_valid(char *line)
 {
 	int i = 0;

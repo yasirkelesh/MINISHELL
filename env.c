@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 void env()
 {
 	t_list *tmp;

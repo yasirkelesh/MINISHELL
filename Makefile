@@ -2,7 +2,7 @@ NAME =  minishell
 CC =    gcc -g
 FLAGS = -I /goinfre/homebrew/opt/readline/include
 RM =        rm -rf
-SOURCE =    $(wildcard *.c)
+SOURCE =    $(wildcard *.c Libft/*.c)
 READLINE = -lreadline -L /goinfre/homebrew/opt/readline/lib
 OBJECTS =   $(SOURCE:.c=.o)
 .c.o:

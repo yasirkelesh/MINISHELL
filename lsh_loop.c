@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+ //hallloldu
 void lsh_loop(t_builtin_str *str)
 {
   char *line;

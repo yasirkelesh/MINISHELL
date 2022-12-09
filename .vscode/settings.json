@@ -7,6 +7,14 @@
         "mini_shell.h": "c",
         "readline.h": "c",
         "iterator": "c",
-        "__config": "c"
+        "__config": "c",
+        "__bit_reference": "c",
+        "algorithm": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "unordered_map": "c",
+        "_null.h": "c",
+        "signal.h": "c",
+        "libft.h": "c"
     }
 }

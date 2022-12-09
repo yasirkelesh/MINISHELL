@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd_exit_unset.c                                    :+:      :+:    :+:   */
+/*   cd_exit_execute.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/21 11:09:44 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/08 23:01:55 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-
+//halloldu
 int lsh_num_builtins(t_builtin_str *str, char *args)
 {
   int i = 0;
@@ -21,7 +21,7 @@ int lsh_num_builtins(t_builtin_str *str, char *args)
   {
     //printf("args : %s\n, str : %s\n",args, str->builtin_str[i]);
     //printf("strcmp test %d \n ",strcmp(args, str->builtin_str[i]));
-    if (!strcmp(args, str->builtin_str[i]))
+    if (!ft_strcmp(args, str->builtin_str[i]))
         return i;
     i++;
   }
@@ -53,7 +53,7 @@ int lsh_execute(char **args, t_builtin_str *str)
 {
   int i = 8;
 
-  if (!strcmp(args[0],"echo") && args[1] == NULL)//sadece ilk argüman varsa
+  if (!ft_strcmp(args[0],"echo") && args[1] == NULL)//sadece ilk argüman varsa
     return 1;
   i = lsh_num_builtins(str,args[0]);  
   

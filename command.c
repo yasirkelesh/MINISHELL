@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 char *command(char *str, int *i)
 {
 	char *tmp;
@@ -22,7 +22,7 @@ char *command(char *str, int *i)
 			// k++;
 		}
 
-		if (str[j] == '$') // dollar geldiği zaman nerede biteceğini belirler mesala $HOME* ize düzgün çaşlışır
+		if (str[j] == '$') // dollar geldiği zaman nerede biteceğini belirler mesala $HOME* ise düzgün çalışır
 		{
 			(*i)++;
 

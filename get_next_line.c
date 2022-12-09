@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:37:10 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/22 17:43:04 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/08 19:47:20 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-char	*ft_strchr(const char *str, int ch)
+/* char	*ft_strchr(const char *str, int ch)
 {
 	if (!str)
 		return (0);
@@ -114,4 +114,4 @@ char	*get_next_line(int fd)
 	line = ft_get_one_line(left_str);
 	left_str = ft_new_left_str(left_str);
 	return (line);
-}
+}  */

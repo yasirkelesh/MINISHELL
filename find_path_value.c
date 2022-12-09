@@ -1,4 +1,5 @@
 #include "mini_shell.h"
+//halloldu
 char			*find_value(char *key)
 {
 	int	i;

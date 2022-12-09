@@ -1,4 +1,5 @@
 #include "mini_shell.h"
+//halloldu
 int get_cmd_num(const char *str)
 {
 	int i;

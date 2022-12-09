@@ -1,4 +1,5 @@
 #include "mini_shell.h"
+//halloldu
 char **lsh_split_line(char *line)
 {
   int i;

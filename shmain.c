@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   shmain.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 02:01:50 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/02 16:08:54 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:58:00 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
+//halloldu
 int main(int argc, char **argv, char **env)
 {
   t_builtin_str *str;

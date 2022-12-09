@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 int exp_check(char *str)
 {
 	int i = 0;

@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-
+//halloldu
 char *slash(char *str, int *i)
 {
     char *tmp;

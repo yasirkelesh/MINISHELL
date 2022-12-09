@@ -1,4 +1,5 @@
 #include "mini_shell.h"
+//halloldu
 char *parser(char *str)
 {
     int i;

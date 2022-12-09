@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:17 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/22 17:07:40 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/08 19:47:07 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-size_t	ft_strlen(const char *str)
+/* size_t	ft_strlen(const char *str)
 {
 	size_t	len;
 
@@ -49,4 +49,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	s3[index] = '\0';
 	//free(s1);
 	return (s3);
-}
+}  */

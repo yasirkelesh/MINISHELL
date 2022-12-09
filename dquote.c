@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dquote.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 13:27:48 by mukeles           #+#    #+#             */
-/*   Updated: 2022/10/25 23:13:12 by mukeles          ###   ########.fr       */
+/*   Updated: 2022/12/08 23:02:49 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void dq_loop(char **args)
 {
     char *newline;
     int fd;
-    if (!strcmp(args[0], "echo"))
+    if (!ft_strcmp(args[0], "echo"))
     {
         while (1)
         {
@@ -46,7 +46,7 @@ void dq_loop(char **args)
                 
                 line_write(newline);
                 fd = open("yasir.txt", O_RDWR, 0777);
-                get_next_line(fd);
+                //get_next_line(fd);
                 close(fd);
                 fd = open("yasir.txt", O_TRUNC, 0777);
                 close(fd);
