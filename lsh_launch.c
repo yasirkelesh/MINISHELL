@@ -1,5 +1,5 @@
 #include "mini_shell.h"
-//halloldu
+// halloldu
 extern char **environ;
 int lsh_launch(char **args, t_builtin_str *str)
 {
@@ -21,20 +21,24 @@ int lsh_launch(char **args, t_builtin_str *str)
     usleep(1000);
     if (k == 0)
     {
-      // printf(" benim pid %d\ngetpid() %d\n", pid, getpid());
       if (execve(str1, args, environ) == -1)
       {
         perror("");
       }
+      //printf("üst benim pid %d\ngetpid() %d\n", pid, getpid());
     }
     else
+    {
+
       return 1;
+    }
 
     exit(EXIT_FAILURE);
   }
   else if (pid < 0)
   {
     // Error forking
+    ft_free_str(args);
     perror("lsh");
   }
   else
@@ -42,7 +46,7 @@ int lsh_launch(char **args, t_builtin_str *str)
     wait(NULL);
     /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid());  */
     waitpid(pid, &status, WUNTRACED);
-    /*     while (!WIFEXITED(status) && !WIFSIGNALED(status))
+/*         while (!WIFEXITED(status) && !WIFSIGNALED(status))
         {
           printf("test");
           waitpid(pid, &status, WUNTRACED);

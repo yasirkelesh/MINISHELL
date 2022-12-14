@@ -12,17 +12,17 @@
 
 #include "mini_shell.h"
 
-//halloldu
+// halloldu
 int lsh_num_builtins(t_builtin_str *str, char *args)
 {
   int i = 0;
 
   while (i <= 6)
   {
-    //printf("args : %s\n, str : %s\n",args, str->builtin_str[i]);
-    //printf("strcmp test %d \n ",strcmp(args, str->builtin_str[i]));
+    // printf("args : %s\n, str : %s\n",args, str->builtin_str[i]);
+    // printf("strcmp test %d \n ",strcmp(args, str->builtin_str[i]));
     if (!ft_strcmp(args, str->builtin_str[i]))
-        return i;
+      return i;
     i++;
   }
   return -1;
@@ -36,6 +36,20 @@ void lsh_cd(char **arr)
     size++;
   if (size > 2)
     printf("arguments\n");
+  else if (size == 1)
+  {
+    char *str;
+    int i =0;
+    str = malloc(1000);
+    if (!str)
+      exit(0);
+    str = dollar("$HOME",&i);
+    
+    printf("str : %s\n", str);
+    chdir(str);
+    printf("test\n");
+  }
+
   else
   {
     if (chdir(arr[1]))
@@ -43,7 +57,7 @@ void lsh_cd(char **arr)
   }
 }
 
-int   lsh_exit(char **args)
+int lsh_exit(char **args)
 {
   (void)args;
   return 0;
@@ -53,10 +67,10 @@ int lsh_execute(char **args, t_builtin_str *str)
 {
   int i = 8;
 
-  if (!ft_strcmp(args[0],"echo") && args[1] == NULL)//sadece ilk argüman varsa
+  if (!ft_strcmp(args[0], "echo") && args[1] == NULL) // sadece ilk argüman varsa
     return 1;
-  i = lsh_num_builtins(str,args[0]);  
-  
+  i = lsh_num_builtins(str, args[0]);
+
   if (i == 0)
     lsh_cd(args);
   else if (i == 1)
@@ -72,9 +86,9 @@ int lsh_execute(char **args, t_builtin_str *str)
     pwd();
   else if (i == 4)
     env();
-  else if(i == 5)
+  else if (i == 5)
     export(args);
-  else if(i == 6)
+  else if (i == 6)
     unset(args);
 
   return lsh_launch(args, str);

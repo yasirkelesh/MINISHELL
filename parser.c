@@ -5,16 +5,11 @@ char *parser(char *str)
     int i;
     char *tmp;
 
-/*     while (str[i])
-    {
-        i++;
-    } */
-    tmp = malloc(sizeof(char *) * (i + 1));
-    if (!tmp)
-		return (tmp);
+
     tmp = str;
+    if(!tmp)
+        return str;   
     i = 0;
-    //printf("tmp  : %s\n", tmp[i]);
     while (tmp[i])
     {
 
@@ -46,8 +41,8 @@ char *parser(char *str)
 
         i++;
     }
-
-    /*     if (tmp[i] == '$')
+/*     i = 1;
+        if (tmp[i] == '$')
         {
             // printf("dolardan önce : %s\n", str);
             tmp = dollar(tmp, &i);
@@ -55,7 +50,7 @@ char *parser(char *str)
             // printf("dolardan sonra : %c\n", str[i]);
             if (tmp == NULL)
                 return 0;
-        } */
+        }  */
     // printf("tmp : %s\n", tmp);
 
     return tmp;

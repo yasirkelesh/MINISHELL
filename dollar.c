@@ -42,10 +42,7 @@ char *dollar(char *str, int *i)
 
     if (!value)
         return NULL;
-    //printf("value == %s\n", value);
-    //tmp = ft_strjoin(tmp, value);
-    //printf("tmp == %s\n", tmp);
-    //tmp = ft_strjoin(tmp, str + *i);
-    //printf("tmp == %s\n", tmp);
+    tmp = ft_strjoin(tmp, value);
+    tmp = ft_strjoin(tmp, str + *i);
     return (value);
 }

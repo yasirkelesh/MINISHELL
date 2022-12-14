@@ -1,23 +1,5 @@
 #include "mini_shell.h"
 
-char **mem_wide(char **arr, int size)
-{
-    char **tmp;
-    tmp = malloc(sizeof(char *) * (size * 2));
-    if (!tmp)
-        return (tmp);
-    if(!arr)
-        return arr;
-
-    int i = 0;
-    while (arr[i])
-    {
-        tmp[i] = arr[i];
-        i++;
-    }
-    free(arr);
-    return (tmp);
-}
 void *ft_realloc(void *ptr, size_t size)
 {
     void *new_data = NULL;

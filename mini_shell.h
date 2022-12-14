@@ -35,12 +35,6 @@
 #define EXIT_CMD_NOT_FOUND 127
 #define EXIT_CTRL_D 130
 
-typedef struct s_list
-{
-	void *content;
-	struct s_list *next;
-} b_list;
-
 t_list *g_env;
 typedef struct shelldup
 {
@@ -123,5 +117,7 @@ void ctrl_d(void);
 void ctrl_c(int sig);
 void sig_handler(int sig_num);
 void sig_handler_heredoc(int sig_num);
+
+int ft_argslen(char **args);
 
 #endif

@@ -33,6 +33,6 @@ int get_cmd_num(const char *str)
 			while (str[i] != ' ' && str[i] != '\0' && str[i] != '"' && str[i] != '\'')
 				i++;
 	}
-
+	//printf("count:  %d\n", count);
 	return count;
 }
