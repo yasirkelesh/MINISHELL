@@ -15,7 +15,7 @@
 
 #define LSH_TOK_BUFSIZE 64
 #define LSH_TOK_DELIM " \"\t\r\n\a"
-
+# define TMP_FILE "./text.txt"
 #define DICT_LEN 256
 
 #include <sys/wait.h>
@@ -119,5 +119,14 @@ void sig_handler(int sig_num);
 void sig_handler_heredoc(int sig_num);
 
 int ft_argslen(char **args);
+//dir
+int	redirect_out(char **str, int i);
+int	redirect_in(char **str, int i);
+int	check_dir(char **str);
+void	redir2_in_handle(char **str, int i, char **s);
+void	here_doc(char *file, char *eof);
+void	ft_putstrendl_fd(char *s, int fd);
+void	redir2_out_handle(char **str, int i, char **s);
+void	exec_fork(char **s, int fd, int i);
 
 #endif

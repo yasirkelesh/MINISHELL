@@ -1,9 +1,9 @@
 NAME =  minishell
-CC =    gcc -Wall -Wextra -g
-FLAGS = -I /Users/mukeles/homebrew/Cellar/readline/8.2.1/include
+CC =    gcc -Wall -Wextra -Werror -g
+FLAGS = -I /Users/nirankalyoncuoglu/homebrew/Cellar/readline/8.2.1/include
 RM =        rm -rf
 SOURCE =    $(wildcard *.c Libft/*.c)
-READLINE = -lreadline -L /Users/mukeles/homebrew/Cellar/readline/8.2.1/lib
+READLINE = -lreadline -L /Users/nirankalyoncuoglu/homebrew/Cellar/readline/8.2.1/lib
 OBJECTS =   $(SOURCE:.c=.o)
 .c.o:
 			$(CC) $(FLAGS) -c $< -o $(<:.c=.o)

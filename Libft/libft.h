@@ -23,6 +23,7 @@ typedef struct n_list
 	struct n_list	*next;
 }							t_list;
 
+//static int	cwords(const char *s, char c); kullanılmamış hatası veriyor
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		*ft_memset(void *b, int v, size_t len);
 void		ft_bzero(void *s, size_t n);

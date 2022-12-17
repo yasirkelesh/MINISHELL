@@ -25,15 +25,15 @@ char *get_value(char *key)
 char *dollar(char *str, int *i)
 {
     int j;
-    char *tmp;
+    //char *tmp;
     char *key;
     char *value;
     //printf("str dolar == %s\n", str);
     j = *i;
 
-    tmp = ft_substr(str, j + 1, *i - j - 1);
+   /*  tmp = ft_substr(str, j + 1, *i - j - 1); */
     //printf("tmp == %s\n", tmp);
-    while (str[++(*i)] && str[*i] != ' ')
+    while (str[++(*i)] && str[*i] != ' ' && ft_isalnum(str[*i]))
         ;
 
     key = ft_substr(str, j + 1, *i - j - 1);
@@ -42,7 +42,7 @@ char *dollar(char *str, int *i)
 
     if (!value)
         return NULL;
-    tmp = ft_strjoin(tmp, value);
-    tmp = ft_strjoin(tmp, str + *i);
+/*     tmp = ft_strjoin(tmp, value);
+    tmp = ft_strjoin(tmp, str + *i); */
     return (value);
 }

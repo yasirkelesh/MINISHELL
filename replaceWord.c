@@ -4,7 +4,6 @@ char *replaceWord(char *s, char *oldW, char *newW)
 {
 	char *result;
 	int i, cnt = 0;
-	int k = 0;
 	int newWlen = ft_strlen(newW);
 	int oldWlen = ft_strlen(oldW);
 

@@ -39,15 +39,8 @@ void lsh_cd(char **arr)
   else if (size == 1)
   {
     char *str;
-    int i =0;
-    str = malloc(1000);
-    if (!str)
-      exit(0);
-    str = dollar("$HOME",&i);
-    
-    printf("str : %s\n", str);
+    str = getenv("HOME");
     chdir(str);
-    printf("test\n");
   }
 
   else

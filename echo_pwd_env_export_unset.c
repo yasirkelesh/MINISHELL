@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-//halloldu
+// halloldu
 void pwd()
 {
 	char *str;
@@ -24,40 +24,6 @@ void pwd()
 		exit(0);
 	printf("%s\n", str);
 }
-void echo(char **arr)
-{
-
-	int size;
-	int i;
-	int n;
-	usleep(1000);
-	size = 0;
-	n = 0;
-	while (arr[size])
-	{
-		size++;
-	}
-	i = 1;
-	while (ft_strncmp(arr[i], "-n", 3) == 0)
-	{
-		n = 1;
-		i++;
-	}
- 	while (arr[i])
-	{
-/* 		if(arr[i][0] != '$') *///dolar gelirse atlasın diye
-		{
-			printf("%s", arr[i]);
- 			if (i != size - 1)
-				printf(" ");
-			i++;
-		}
-/* 		else
-			i++; */
-	} 
-	if (!n)
-		printf("\n");
-}
 
 void export(char **args)
 {
@@ -66,49 +32,48 @@ void export(char **args)
 
 	t_list *new;
 
-/* 	printf("args[%d]: %s\n",0,args[0]);
-	printf("args[%d]: %s\n",1,args[1]);
-	printf("args[%d]: %s\n",2,args[2]); */
-	while(args[i])
+	printf("args[%d]: %s\n", 0, args[0]);
+	printf("args[%d]: %s\n", 1, args[1]);
+	printf("args[%d]: %s\n", 2, args[2]);
+	while (args[i])
 	{
-		unset(ft_split(args[i], '='));//güncellemek için unsete yolla
-		printf("%d\n",exp_env_check(args[i + 1]));
-		if(exp_env_check(args[i + 1]))
+		unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
+		//printf("%d\n", exp_env_check(args[i + 1]));
+		if (exp_check(args[i]) == 1)
 		{
-			//free(args[i]);
-			args[i] = ft_strcat(args[i],args[i + 1]);
-			
-			printf("export args: %s\n",args[i]);
-		}
-		 
-		if(exp_check(args[i]) == 1)
-		{
+			printf("testenv \n");
 			new = ft_lstnew(args[i]);
+			printf("test new %s\n", (char *)new->content);
 			ft_lstadd_back(&g_env, new);
 		}
-		else if(exp_check(args[i]) == -1)
+/* 		if (exp_env_check(args[i + 1]) == 0)
+		{
+			// free(args[i]);
+			args[i] = ft_strcat(args[i], args[i + 1]);
+			printf("export args: %s\n", args[i]);
+
+		} */
+
+		else if (exp_check(args[i]) == -1)
 			printf("export: `%s': not a valid identifier", args[i]);
 		i++;
 	}
-	//printf("exportaki : %s\n", args[1]);
+	// printf("exportaki : %s\n", args[1]);
 
-	//uygun formatta olanları listeye ekle
-
-
+	// uygun formatta olanları listeye ekle
 }
 void unset(char **args)
 {
-  int i = 0;
-  t_list *new;
-
-  while(args[i])
-  {
-      if(exp_check(args[i]) == 0)
-      {
-        ft_list_remove_if(&g_env,args[i]);
-      }
-      else
-        printf("unset: `%s': not a valid identifier\n",args[i]);
-      i++;
-  } 
+	int i = 0;
+	
+	while (args[i])
+	{
+		if (exp_check(args[i]) == 0)
+		{
+			ft_list_remove_if(&g_env, args[i]);
+		}
+		else
+			printf("unset: `%s': not a valid identifier\n", args[i]);
+		i++;
+	}
 }
