@@ -30,8 +30,6 @@ void export(char **args)
 
 	int i = 1;
 
-	t_list *new;
-
 	printf("args[%d]: %s\n", 0, args[0]);
 	printf("args[%d]: %s\n", 1, args[1]);
 	printf("args[%d]: %s\n", 2, args[2]);
@@ -51,8 +49,6 @@ void export(char **args)
 void unset(char **args)
 {
 	int i = 0;
-	t_list *new;
-
 	while (args[i])
 	{
 		if (exp_check(args[i]) == 0)

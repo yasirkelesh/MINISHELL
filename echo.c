@@ -4,8 +4,6 @@ void echo(char **arr)
 {
 
     int size;
-    int j;
-    char **args;
     char *tmp;
     int i;
     int n;
@@ -48,8 +46,6 @@ void echo(char **arr)
                 }
                 else if (arr[i][k] == '$')
                 {
-
-                    j = k;
                     while (ft_isalnum(arr[i][k]) != 0 && arr[i])
                         k++;
                     tmp = dollar(arr[i], &k);
@@ -82,8 +78,6 @@ void echo(char **arr)
                     }
                     else if (arr[i][k] == '$')
                     {
-
-                        j = k;
                         while (ft_isalnum(arr[i][k]) != 0 && arr[i])
                             k++;
                         tmp = dollar(arr[i], &k);
@@ -105,7 +99,7 @@ void echo(char **arr)
             }
         }
     }
-    if(arr[1] == '\0')
+    if(arr[1] == NULL)
         printf("\n");
     if (!n)
         printf("\n");

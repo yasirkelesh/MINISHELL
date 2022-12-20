@@ -5,7 +5,6 @@ void lsh_loop(t_builtin_str *str)
   char *line;
   char **args;
   int i = 0;
-  int len = -1;
   int status = 1;
 
   while (status)
@@ -26,10 +25,6 @@ void lsh_loop(t_builtin_str *str)
     add_history(line);
     
     args = lsh_split_line(line);
-
-
-    int j = 0;
-
     i = 0;
 
     if (check_valid(line) && line)

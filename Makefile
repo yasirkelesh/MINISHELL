@@ -1,5 +1,5 @@
 NAME =  minishell
-CC =    gcc -Wall -Wextra -g
+CC =    gcc -Wall -Wextra -Werror -g
 FLAGS = -I /Users/mukeles/homebrew/Cellar/readline/8.2.1/include
 RM =        rm -rf
 SOURCE =    $(wildcard *.c Libft/*.c)

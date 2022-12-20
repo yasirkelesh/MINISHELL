@@ -3,7 +3,7 @@
 char *command(char *str, int *i)
 {
     int j;
-    char *tmp;
+    char *tmp=0;
     j = *i;
     while (str[*i])
     {

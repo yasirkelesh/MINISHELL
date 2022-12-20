@@ -15,6 +15,8 @@
 int main(int argc, char **argv, char **env)
 {
   t_builtin_str *str;
+  (void) argc;
+  (void) argv;
 
   str = malloc(sizeof(t_builtin_str));
   if (!str)
