@@ -90,6 +90,7 @@ char *find_path(char *cmdline);// find_path_value
 char *find_value(char *key);// find_path_value
 void ft_free_str(char **str);// ft_free_str
 int exp_check(char *str);// exp_check
+int ft_line_check(char *line);
 void env();// env
 
 //mem_wide

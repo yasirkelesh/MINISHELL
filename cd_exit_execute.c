@@ -12,7 +12,7 @@
 
 #include "mini_shell.h"
 
-// halloldu
+
 int lsh_num_builtins(t_builtin_str *str, char *args)
 {
   int i = 0;

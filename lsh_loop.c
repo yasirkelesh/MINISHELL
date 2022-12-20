@@ -15,16 +15,19 @@ void lsh_loop(t_builtin_str *str)
     line = readline("> ");
     if (!line)
     {
-      ("exit\n");
+      printf("exit\n");
       exit(1);
     }
+    if (ft_line_check(line) == 0)
+    {
+      free(line);
+      lsh_loop(str);
+    }
     add_history(line);
-
-    // args = ft_split(line, ' ');
+    
     args = lsh_split_line(line);
-    len = ft_argslen(args);
 
-    i = 0;
+
     int j = 0;
 
     i = 0;
@@ -39,7 +42,7 @@ void lsh_loop(t_builtin_str *str)
           args[i] = parser(args[i]);
           if (!args[i])
             perror("");
-          printf("pars args [%d]: %s\n", i, args[i]);
+          //printf("pars args [%d]: %s\n", i, args[i]);
           i++;
         }
       }

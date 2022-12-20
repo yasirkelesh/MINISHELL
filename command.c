@@ -12,7 +12,7 @@ char *command(char *str, int *i)
         if (*i == 0)
         {
             //printf("test1\n");
-            while (str[*i] != ' ' && str[*i])
+            while (str[*i] != ' ' && str[*i] != '\0')
                 (*i)++;
             tmp = ft_substr(str, j, *i - j);
             return tmp;
@@ -20,7 +20,7 @@ char *command(char *str, int *i)
         if (str[*i] == '$')
         {
             (*i)++;
-            while (ft_isalnum(str[*i]) && str[*i])
+            while (ft_isalnum(str[*i]) && str[*i] != '\0')
                 (*i)++;
             tmp = ft_substr(str, j, *i - j);
 
@@ -32,7 +32,7 @@ char *command(char *str, int *i)
             (*i)++;
             if (str[*i] != '\"')
             {
-                while (str[*i] != '\"' && str[*i])
+                while (str[*i] != '\"' && str[*i] != '\0')
                     (*i)++;
                 (*i)++;
                 tmp = ft_substr(str, j, *i - (j));
@@ -46,7 +46,7 @@ char *command(char *str, int *i)
             (*i)++;
             if (str[*i] != '\'')
             {
-                while (str[*i] != '\'' && str[*i])
+                while (str[*i] != '\'' && str[*i] != '\0')
                     (*i)++;
                 (*i)++;
                 tmp = ft_substr(str, j, *i - (j));
@@ -59,7 +59,7 @@ char *command(char *str, int *i)
 
         else
         {
-            while (str[*i] != ' ' && str[*i] != '\'' && str[*i] != '\"' && str[*i])
+            while (str[*i] != ' ' && str[*i] != '\'' && str[*i] != '\"' && str[*i] != '\0')
                 (*i)++;
             tmp = ft_substr(str, j, *i - (j));
             return tmp;

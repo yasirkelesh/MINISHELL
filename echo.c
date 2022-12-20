@@ -24,6 +24,7 @@ void echo(char **arr)
         n = 1;
         i++;
     }
+
     while (arr[i])
     {
         if (ft_strrchr(arr[i], '\'') == 0 && ft_strrchr(arr[i], '\"') == 0)
@@ -104,6 +105,8 @@ void echo(char **arr)
             }
         }
     }
+    if(arr[1] == '\0')
+        printf("\n");
     if (!n)
         printf("\n");
 }
