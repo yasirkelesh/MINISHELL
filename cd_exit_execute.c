@@ -39,6 +39,7 @@ void lsh_cd(char **arr)
   else if (size == 1)
   {
     char *str;
+    int i =0;
     str = getenv("HOME");
     chdir(str);
   }

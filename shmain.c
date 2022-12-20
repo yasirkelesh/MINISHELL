@@ -14,8 +14,6 @@
 //halloldu
 int main(int argc, char **argv, char **env)
 {
-  (void)argc;
-  (void)argv;
   t_builtin_str *str;
 
   str = malloc(sizeof(t_builtin_str));

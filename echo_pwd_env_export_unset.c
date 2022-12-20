@@ -37,35 +37,22 @@ void export(char **args)
 	printf("args[%d]: %s\n", 2, args[2]);
 	while (args[i])
 	{
-		unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
-		//printf("%d\n", exp_env_check(args[i + 1]));
+		//unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
 		if (exp_check(args[i]) == 1)
 		{
-			printf("testenv \n");
-			new = ft_lstnew(args[i]);
-			printf("test new %s\n", (char *)new->content);
-			ft_lstadd_back(&g_env, new);
+			ft_lstadd_back(&g_env, ft_lstnew(args[i]));
+			env();
 		}
-/* 		if (exp_env_check(args[i + 1]) == 0)
-		{
-			// free(args[i]);
-			args[i] = ft_strcat(args[i], args[i + 1]);
-			printf("export args: %s\n", args[i]);
-
-		} */
-
 		else if (exp_check(args[i]) == -1)
 			printf("export: `%s': not a valid identifier", args[i]);
 		i++;
 	}
-	// printf("exportaki : %s\n", args[1]);
-
-	// uygun formatta olanları listeye ekle
 }
 void unset(char **args)
 {
 	int i = 0;
-	
+	t_list *new;
+
 	while (args[i])
 	{
 		if (exp_check(args[i]) == 0)

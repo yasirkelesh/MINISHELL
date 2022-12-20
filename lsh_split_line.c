@@ -4,6 +4,7 @@ char **lsh_split_line(char *line)
 {
   int i;
   int j;
+  int k;
   int size;
   char **arr;
 
@@ -15,6 +16,7 @@ char **lsh_split_line(char *line)
     return NULL;
   j = 0;
   i = 0;
+  k = 0;
  
   while (line[i])
   {
@@ -25,6 +27,7 @@ char **lsh_split_line(char *line)
     
   }
   arr[j] = NULL;
+  k = 0;
 
 
   return (arr);

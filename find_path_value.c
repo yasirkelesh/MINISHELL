@@ -2,8 +2,10 @@
 //halloldu
 char			*find_value(char *key)
 {
+	int	i;
     t_list *envp;
     envp =g_env;
+	i = -1;
     envp = envp->next;
 	while (envp->next)
 	{

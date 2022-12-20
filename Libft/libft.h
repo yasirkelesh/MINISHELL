@@ -23,7 +23,7 @@ typedef struct n_list
 	struct n_list	*next;
 }							t_list;
 
-//static int	cwords(const char *s, char c); kullanılmamış hatası veriyor
+static int	cwords(const char *s, char c);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		*ft_memset(void *b, int v, size_t len);
 void		ft_bzero(void *s, size_t n);
@@ -39,6 +39,7 @@ char		*ft_strrchr(const char *s, int c);
 char		*ft_strnstr(const char *ha, const char *ne, size_t len);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *str);
+void		ft_putstr(char *str);
 int			ft_isalpha(int str);
 int			ft_isdigit(int str);
 int			ft_isalnum(int str);
@@ -48,6 +49,7 @@ int			ft_toupper(int str);
 int			ft_tolower(int str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
+char		*ft_strcpy(char *dest, char *src);
 
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);

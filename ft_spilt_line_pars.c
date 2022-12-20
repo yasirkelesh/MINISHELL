@@ -1,4 +1,4 @@
-/*  #include "mini_shell.h"
+ #include "mini_shell.h"
 
 char **ft_split_line_pars(char *line)
 {
@@ -13,4 +13,4 @@ char **ft_split_line_pars(char *line)
     i = 0;
 
 
-}  */
+} 

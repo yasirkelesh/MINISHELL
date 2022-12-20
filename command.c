@@ -62,6 +62,7 @@ char *command(char *str, int *i)
             while (str[*i] != ' ' && str[*i] != '\'' && str[*i] != '\"' && str[*i])
                 (*i)++;
             tmp = ft_substr(str, j, *i - (j));
+            return tmp;
         }
     }
     return tmp;

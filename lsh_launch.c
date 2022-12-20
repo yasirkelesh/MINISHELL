@@ -5,6 +5,7 @@ int lsh_launch(char **args, t_builtin_str *str)
 {
   pid_t pid;
   int status;
+  int i = 0;
   int k = 0;
   char *str1 = find_path(args[0]);
 

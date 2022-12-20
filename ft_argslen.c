@@ -2,7 +2,7 @@
 
 int ft_argslen(char **args)
 {
-    int i=0;
+    int i;
     if(!args[i])
         return -1;
     while(args[i])
