@@ -30,16 +30,17 @@ void export(char **args)
 
 	int i = 1;
 
-	printf("args[%d]: %s\n", 0, args[0]);
-	printf("args[%d]: %s\n", 1, args[1]);
-	printf("args[%d]: %s\n", 2, args[2]);
+
+	if(args[1] == NULL)
+			export_env();
+
 	while (args[i])
 	{
 		//unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
+		 
 		if (exp_check(args[i]) == 1)
 		{
 			ft_lstadd_back(&g_env, ft_lstnew(args[i]));
-			env();
 		}
 		else if (exp_check(args[i]) == -1)
 			printf("export: `%s': not a valid identifier", args[i]);

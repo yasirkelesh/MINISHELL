@@ -37,7 +37,6 @@ void lsh_loop(t_builtin_str *str)
           args[i] = parser(args[i]);
           if (!args[i])
             perror("");
-          //printf("pars args [%d]: %s\n", i, args[i]);
           i++;
         }
       }
