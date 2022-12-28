@@ -7,6 +7,7 @@ void lsh_loop(t_builtin_str *str)
   int i = 0;
   int status = 1;
 
+
   while (status)
   {
     signal(SIGQUIT, SIG_IGN);
@@ -43,9 +44,10 @@ void lsh_loop(t_builtin_str *str)
       i = 0;
       if (check_dir(args))
         status = lsh_execute(args, str);
-      ft_free_str(args);
-      free(line);
     }
+    //system("leaks minishell > leaks.txt");
+    ft_free_str(args);
+    free(line);
   }
   i = 0;
 }

@@ -14,43 +14,24 @@ int lsh_launch(char **args, t_builtin_str *str)
   }
   // printf("str1 : %s",str1);
   pid = fork();
-  if (pid == 0)
-  {
-    wait(NULL);
-    usleep(1000);
+ if (pid == 0)
+{
     if (k == 0)
     {
-      if (execve(str1, args, environ) == -1)
-      {
-        perror("");
-      }
-      //printf("üst benim pid %d\ngetpid() %d\n", pid, getpid());
+        if (execve(str1, args, environ) == -1)
+        {
+            perror("");
+        }
     }
     else
     {
-
-      return 1;
+        return 1;
     }
 
     exit(EXIT_FAILURE);
-  }
-  else if (pid < 0)
-  {
-    // Error forking
-    ft_free_str(args);
-    perror("lsh");
-  }
-  else
-  {
-    wait(NULL);
-    /* printf(" benim pid %d\ngetpid() %d\n", pid, getpid());  */
-    waitpid(pid, &status, WUNTRACED);
-/*         while (!WIFEXITED(status) && !WIFSIGNALED(status))
-        {
-          printf("test");
-          waitpid(pid, &status, WUNTRACED);
-        }  */
-  }
+}
+
+ waitpid(pid, &status, WUNTRACED);
 
   return 1;
 }

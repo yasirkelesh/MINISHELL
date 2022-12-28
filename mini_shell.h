@@ -65,7 +65,7 @@ t_list *get_new_env(char **env);// get_new_env
 void lsh_loop(t_builtin_str *str);// lsh_loop
 char **lsh_split_line(char *line);// lsh_split_line
 int get_cmd_num(const char *str);// get_cmd_num
-char *command(char *str, int *i);// command
+char *command(char *str, int *i, char *args, int j);// command
 char *q_dollar(char *tmp);// q_dollar
 int dollar_query(char *tmp);// dollar_query
 char *dollar(char *str, int *i);// dollar

@@ -12,7 +12,6 @@
 
 #include "mini_shell.h"
 
-
 int lsh_num_builtins(t_builtin_str *str, char *args)
 {
   int i = 0;
@@ -65,7 +64,10 @@ int lsh_execute(char **args, t_builtin_str *str)
   i = lsh_num_builtins(str, args[0]);
 
   if (i == 0)
+  {
     lsh_cd(args);
+    return 1;
+  }
   else if (i == 1)
   {
     lsh_exit(args);
@@ -74,15 +76,28 @@ int lsh_execute(char **args, t_builtin_str *str)
   else if (i == 2)
   {
     echo(args);
+    return 1;
   }
   else if (i == 3)
+  {
     pwd();
+    return 1;
+  }
   else if (i == 4)
+  {
     env();
+    return 1;
+  }
   else if (i == 5)
+  {
     export(args);
+    return 1;
+  }
   else if (i == 6)
+  {
     unset(args);
+    return 1;
+  }
 
   return lsh_launch(args, str);
 }

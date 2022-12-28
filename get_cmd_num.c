@@ -10,6 +10,8 @@ int get_cmd_num(const char *str)
 	count = 0;
 	while (str[i])
 	{
+		if(str[i] == ' ')
+			count++;
 		while (str[i] == ' ')
 			i++;
 		if (str[i])

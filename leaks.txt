@@ -1,0 +1,47 @@
+Process:         minishell [4699]
+Path:            /Users/USER/Desktop/*/minishell
+Load Address:    0x104fe0000
+Identifier:      minishell
+Version:         0
+Code Type:       ARM64
+Platform:        macOS
+Parent Process:  zsh [3458]
+
+Date/Time:       2022-12-28 18:50:27.169 +0300
+Launch Time:     2022-12-28 18:49:53.299 +0300
+OS Version:      macOS 12.5.1 (21G83)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 14.1 (14B47b)
+----
+
+leaks Report Version: 4.0
+Process 4699: 535 nodes malloced for 365 KB
+Process 4699: 24 leaks for 384 total leaked bytes.
+
+    24 (384 bytes) << TOTAL >>
+      1 (16 bytes) ROOT LEAK: 0x126608130 [16]
+      1 (16 bytes) ROOT LEAK: 0x126608140 [16]
+      1 (16 bytes) ROOT LEAK: 0x126608190 [16]
+      1 (16 bytes) ROOT LEAK: 0x1266081a0 [16]
+      1 (16 bytes) ROOT LEAK: 0x1266081f0 [16]
+      1 (16 bytes) ROOT LEAK: 0x126608200 [16]
+      1 (16 bytes) ROOT LEAK: 0x126608250 [16]
+      1 (16 bytes) ROOT LEAK: 0x126608260 [16]
+      1 (16 bytes) ROOT LEAK: 0x1266082b0 [16]
+      1 (16 bytes) ROOT LEAK: 0x1266082c0 [16]
+      1 (16 bytes) ROOT LEAK: 0x1266082d0 [16]
+      1 (16 bytes) ROOT LEAK: 0x1266082e0 [16]
+      1 (16 bytes) ROOT LEAK: 0x1266082f0 [16]
+      1 (16 bytes) ROOT LEAK: 0x126608310 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704130 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704140 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704160 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704170 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704200 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704210 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704220 [16]
+      1 (16 bytes) ROOT LEAK: 0x126704240 [16]
+      1 (16 bytes) ROOT LEAK: 0x1271040f0 [16]
+      1 (16 bytes) ROOT LEAK: 0x127104100 [16]
+
