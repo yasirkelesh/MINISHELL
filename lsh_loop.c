@@ -13,6 +13,7 @@ void lsh_loop(t_builtin_str *str)
     signal(SIGQUIT, SIG_IGN);
     signal(SIGINT, &ctrl_c);
     line = readline("> ");
+
     if (!line)
     {
       printf("exit\n");
@@ -45,7 +46,7 @@ void lsh_loop(t_builtin_str *str)
       if (check_dir(args))
         status = lsh_execute(args, str);
     }
-    //system("leaks minishell > leaks.txt");
+    system("leaks minishell > leaks.txt");
     ft_free_str(args);
     free(line);
   }

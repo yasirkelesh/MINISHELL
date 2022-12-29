@@ -28,28 +28,34 @@ void pwd()
 void export(char **args)
 {
 
-	int i = 1;
+    int i = 1;
 
+    if (args[1] == NULL)
+    {
+        export_env();
+        return;
+    }
+    t_list *tmp = malloc(sizeof(t_list));
 
-	if(args[1] == NULL)
-			export_env();
+    while (args[i])
+    {
+        tmp->content = ft_strdup(args[i]);
+        // unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
 
-	while (args[i])
-	{
-		//unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
-		 
-		if (exp_check(args[i]) == 1)
-		{
-			ft_lstadd_back(&g_env, ft_lstnew(args[i]));
-		}
-		else if (exp_check(args[i]) == -1)
-			printf("export: `%s': not a valid identifier", args[i]);
-		i++;
-	}
+        if (exp_check(args[i]) == 1)
+        {
+            //printf("args[%d] %s\n",i, tmp->content);
+            ft_lstadd_back(&g_env, tmp);
+        }
+        else if (exp_check(args[i]) == -1)
+            printf("export: `%s': not a valid identifier", args[i]);
+        i++;
+        
+    }
 }
 void unset(char **args)
 {
-	int i = 0;
+	int i = 1;
 	while (args[i])
 	{
 		if (exp_check(args[i]) == 0)
@@ -59,5 +65,6 @@ void unset(char **args)
 		else
 			printf("unset: `%s': not a valid identifier\n", args[i]);
 		i++;
+
 	}
 }

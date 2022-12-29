@@ -1,4 +1,4 @@
-#include "mini_shell.h"
+#include "libft.h"
 //halloldu
 void	ft_free_str(char **str)
 {

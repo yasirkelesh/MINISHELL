@@ -1,14 +1,14 @@
-Process:         minishell [14389]
+Process:         minishell [11406]
 Path:            /Users/USER/Desktop/*/minishell
-Load Address:    0x104eb8000
+Load Address:    0x102a2c000
 Identifier:      minishell
 Version:         0
 Code Type:       ARM64
 Platform:        macOS
-Parent Process:  zsh [13539]
+Parent Process:  zsh [4824]
 
-Date/Time:       2022-12-29 22:09:28.619 +0300
-Launch Time:     2022-12-29 22:09:20.946 +0300
+Date/Time:       2022-12-29 21:20:11.287 +0300
+Launch Time:     2022-12-29 21:19:06.928 +0300
 OS Version:      macOS 12.5.1 (21G83)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
@@ -16,6 +16,8 @@ Analysis Tool Version:  Xcode 14.1 (14B47b)
 ----
 
 leaks Report Version: 4.0
-Process 14389: 484 nodes malloced for 364 KB
-Process 14389: 0 leaks for 0 total leaked bytes.
+Process 11406: 488 nodes malloced for 364 KB
+Process 11406: 1 leak for 16 total leaked bytes.
+
+    1 (16 bytes) ROOT LEAK: 0x14b704120 [16]
 
