@@ -39,28 +39,29 @@ void export(char **args)
 
     while (args[i])
     {
+        printf("test\n");
         tmp->content = ft_strdup(args[i]);
-        // unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
+        unset(ft_split(args[i], '=')); // güncellemek için unsete yolla
 
         if (exp_check(args[i]) == 1)
         {
-            //printf("args[%d] %s\n",i, tmp->content);
-            ft_lstadd_back(&g_env, tmp);
+            ft_lstadd_back(&g_list.g_env, tmp);
         }
         else if (exp_check(args[i]) == -1)
             printf("export: `%s': not a valid identifier", args[i]);
         i++;
+
         
     }
 }
 void unset(char **args)
 {
-	int i = 1;
+	int i = 0;
 	while (args[i])
 	{
 		if (exp_check(args[i]) == 0)
 		{
-			ft_list_remove_if(&g_env, args[i]);
+			ft_list_remove_if(&g_list.g_env, args[i]);
 		}
 		else
 			printf("unset: `%s': not a valid identifier\n", args[i]);

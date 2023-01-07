@@ -28,8 +28,12 @@ void lsh_loop(t_builtin_str *str)
     
     args = lsh_split_line(line);
     i = 0;
+    if(count(line,'|') > 0)
+    {
+      pipe_handle(line,count(line,'|') );
+    }
 
-    if (check_valid(line) && line)
+    else if (check_valid(line) && line)
     {
       i = 0;
       if (ft_strncmp(args[0], "export", 7))
@@ -43,10 +47,10 @@ void lsh_loop(t_builtin_str *str)
         }
       }
       i = 0;
-      if (check_dir(args))
+      if (check_dir(args) &&  args[0] != NULL)
         status = lsh_execute(args, str);
     }
-    system("leaks minishell > leaks.txt");
+    //system("leaks minishell > leaks.txt");
     ft_free_str(args);
     free(line);
   }

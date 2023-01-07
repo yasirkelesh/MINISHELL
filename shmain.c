@@ -29,12 +29,12 @@ int main(int argc, char **argv, char **env)
     return (0);
   init(str);
 
-  g_env = get_new_env(env);
+  g_list.g_env = get_new_env(env);
 
   lsh_loop(str);
   
   free(str->builtin_str);
   free(str);
-  free(g_env);
+  free(g_list.g_env);
   return EXIT_SUCCESS;
 }

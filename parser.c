@@ -8,6 +8,11 @@ char *parser(char *str)
     tmp = str;
     if (!tmp)
         return str;
+    if(tmp[0] == '$')
+    {
+        if(tmp[1] == '\0')
+            return tmp;
+    }
     i = 0;
     while (tmp[i])
     {

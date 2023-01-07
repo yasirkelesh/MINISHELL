@@ -3,7 +3,7 @@
 char			*find_value(char *key)
 {
     t_list *envp;
-    envp =g_env;
+    envp =g_list.g_env;
     envp = envp->next;
 	while (envp->next)
 	{

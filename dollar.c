@@ -6,7 +6,7 @@ char *get_value(char *key)
     size_t key_len;
     t_list *tmp;
 
-    tmp = g_env;
+    tmp = g_list.g_env;
     tmp = tmp->next;
     key_len = ft_strlen(key);
     while (tmp)

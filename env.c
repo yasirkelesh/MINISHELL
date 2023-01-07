@@ -4,7 +4,7 @@ void env()
 {
 	t_list *tmp;
 
-	tmp = g_env;
+	tmp = g_list.g_env;
     tmp = tmp->next;
 	while(tmp)
 	{
@@ -16,7 +16,7 @@ void export_env()
 {
 	t_list *tmp;
 
-	tmp = g_env;
+	tmp = g_list.g_env;
     tmp = tmp->next;
 	while(tmp)
 	{

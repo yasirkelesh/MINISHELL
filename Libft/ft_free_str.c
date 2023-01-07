@@ -16,3 +16,19 @@ void	ft_free_str(char **str)
 	str = NULL;
 	
 }
+void	ft_lst_free(t_list **stackA)
+{
+	t_list	*temp;
+
+	temp = NULL;
+	while (*stackA)
+	{
+		temp = (*stackA)->next;
+		free(*stackA);
+		*stackA = NULL;
+		if (temp == NULL)
+			break ;
+		*stackA = temp;
+	}
+	free(stackA);
+}
