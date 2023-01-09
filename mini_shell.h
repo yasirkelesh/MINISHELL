@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 13:23:48 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:24:03 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,36 @@ typedef struct s_builtin_str
 	char **builtin_str;
 
 } t_builtin_str;
+
+typedef struct s_temp_var
+{
+	int		i;
+	int		j;
+	int		k;
+	int		t;
+	int		l;
+	int		flag;
+
+	char	*s;
+	char	*tmp;
+	char	*tmp1;
+	char	*tmp2;
+	char	*tmp3;
+	char	*tmp4;
+	char	*tmp5;
+	char	**tmp_2ar;
+}			t_temp_var;
+typedef struct s_redir_var
+{
+	char	*temp;
+	int		fd;
+	int		k;
+	int		flags;
+	char	*file;
+	int		j;
+	int		m;
+
+}			t_redir_var;
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 500
@@ -148,15 +178,27 @@ void sig_handler(int sig_num);
 void sig_handler_heredoc(int sig_num);
 
 int ft_argslen(char **args);
+
 // dir
-int redirect_out(char **str, int i);
-int redirect_in(char **str, int i);
-int check_dir(char **str);
-void redir2_in_handle(char **str, int i, char **s);
-void here_doc(char *file, char *eof);
-void ft_putstrendl_fd(char *s, int fd);
-void redir2_out_handle(char **str, int i, char **s);
-void exec_fork(char **s, int fd, int i);
+void	check_dir(char *str);
+int	redirect_in(char **str, int i);
+int	redirect_out(char **str, int i);
+void	redir2_out_handle(char **str, int i);
+void	redir_out_handle(char **str, int i);
+int	check_another_redir(char **str, int i);
+void	redir2_in_handle(char **str, int i);
+void	redir_in_handle(char **str, int i);
+void	mixed_redir(char *str, char *temp, int fd);
+void	mixed_redir2(char *str, char *temp, int fd);
+void	here_doc(char *file, char *eof);
+void	execute_dir(char *s, int fd, int i);
+void	exec_redir(char *s, int fd, int i);
+char	*sub_redir(char **str, int i);
+void	here_doc2(char *file, char *eof);
+void	ft_putstrendl_fd(char *s, int fd);
+void	execsimple(char **parse);
+
+void	no_input_redir(int fd);
 
 // pipes
 void	pipe_handle(char *str, int n_pipe);

@@ -7,7 +7,6 @@ void lsh_loop(t_builtin_str *str)
   int i = 0;
   int status = 1;
 
-
   while (status)
   {
     signal(SIGQUIT, SIG_IGN);
@@ -24,13 +23,17 @@ void lsh_loop(t_builtin_str *str)
       free(line);
       lsh_loop(str);
     }
+    if (count(line, '>') > 0 || count(line, '<') > 0)
+    {
+      check_dir(line);
+    }
     add_history(line);
-    
+
     args = lsh_split_line(line);
     i = 0;
-    if(count(line,'|') > 0)
+    if (count(line, '|') > 0)
     {
-      pipe_handle(line,count(line,'|') );
+      pipe_handle(line, count(line, '|'));
     }
 
     else if (check_valid(line) && line)
@@ -47,10 +50,10 @@ void lsh_loop(t_builtin_str *str)
         }
       }
       i = 0;
-      if (check_dir(args) &&  args[0] != NULL)
+      if ((count(line, '>') == 0 && count(line, '<') == 0) && (args[0] != NULL))
         status = lsh_execute(args, str);
     }
-    //system("leaks minishell > leaks.txt");
+    // system("leaks minishell > leaks.txt");
     ft_free_str(args);
     free(line);
   }
