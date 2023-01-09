@@ -1,42 +1,53 @@
-#include "mini_shell.h"
-// halloldu
-char *replaceWord(char *s, char *oldW, char *newW)
-{
-	char *result;
-	int i, cnt = 0;
-	int newWlen = ft_strlen(newW);
-	int oldWlen = ft_strlen(oldW);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   replaceWord.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/09 18:04:42 by nkalyonc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	for (i = 0; s[i] != '\0'; i++)
+#include "mini_shell.h"
+
+char	*replaceword(char *s, char *oldw, char *neww)
+{
+	char	*result;
+	int		i;
+	int		cnt;
+	int		newwlen;
+	int		oldwlen;
+
+	i = 0;
+	cnt = 0;
+	newwlen = ft_strlen(neww);
+	oldwlen = ft_strlen(oldw);
+	while (s[i] != '\0')
 	{
-		if (strstr(&s[i], oldW) == &s[i])
+		if (strstr(&s[i], oldw) == &s[i])
 		{
 			cnt++;
-
-			i += oldWlen - 1;
+			i += oldwlen - 1;
 		}
+		i++;
 	}
-
-	result = (char *)malloc(i + cnt * (newWlen - oldWlen) + 1);
+	result = (char *)malloc(i + cnt * (newwlen - oldwlen) + 1);
 	if (!result)
 		return (result);
-
 	i = 0;
 	while (*s)
 	{
-		if (strstr(s, oldW) == s)
+		if (strstr(s, oldw) == s)
 		{
-			strcpy(&result[i], newW);
-			i += newWlen;
-			s += oldWlen;
+			strcpy(&result[i], neww);
+			i += newwlen;
+			s += oldwlen;
 		}
 		else
 			result[i++] = *s++;
 	}
-
 	result[i] = '\0';
-
-	// free(s);
-
-	return result;
+	return (result);
 }

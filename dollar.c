@@ -1,48 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dollar.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/09 18:07:44 by nkalyonc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
-//halloldu
-char *get_value(char *key)
+
+char	*get_value(char *key)
 {
-    char *value;
-    size_t key_len;
-    t_list *tmp;
+	char	*value;
+	size_t	key_len;
+	t_list	*tmp;
 
-    tmp = g_list.g_env;
-    tmp = tmp->next;
-    key_len = ft_strlen(key);
-    while (tmp)
-    {
-
-        if (!ft_strncmp(key, (char *)tmp->content, key_len) &&
-            ((char *)(tmp->content))[key_len] == '=')
-        {
-            value = ft_strdup((char *)tmp->content + key_len + 1);
-            return (value);
-        }
-        tmp = tmp->next;
-    }
-    return (NULL);
+	tmp = g_list.g_env;
+	tmp = tmp->next;
+	key_len = ft_strlen(key);
+	while (tmp)
+	{
+		if (!ft_strncmp(key, (char *)tmp->content, key_len)
+			&& ((char *)(tmp->content))[key_len] == '=')
+		{
+			value = ft_strdup((char *)tmp->content + key_len + 1);
+			return (value);
+		}
+		tmp = tmp->next;
+	}
+	return (NULL);
 }
-char *dollar(char *str, int *i)
+
+char	*dollar(char *str, int *i)
 {
-    int j;
-    //char *tmp;
-    char *key;
-    char *value;
-    //printf("str dolar == %s\n", str);
-    j = *i;
+	int		j;
+	char	*key;
+	char	*value;
 
-   /*  tmp = ft_substr(str, j + 1, *i - j - 1); */
-    //printf("tmp == %s\n", tmp);
-    while (str[++(*i)] && str[*i] != ' ' && ft_isalnum(str[*i]))
-        ;
-
-    key = ft_substr(str, j + 1, *i - j - 1);
-
-    value = get_value(key);
-
-    if (!value)
-        return NULL;
-/*     tmp = ft_strjoin(tmp, value);
-    tmp = ft_strjoin(tmp, str + *i); */
-    return (value);
+	j = *i;
+	while (str[++(*i)] && str[*i] != ' ' && ft_isalnum(str[*i]))
+		;
+	key = ft_substr(str, j + 1, *i - j - 1);
+	value = get_value(key);
+	if (!value)
+		return (NULL);
+	return (value);
 }

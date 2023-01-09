@@ -1,31 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_quetes.c                                    :+:      :+:    :+:   */
+/*   signal2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:07:28 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:35:02 by nkalyonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-char	*double_quotes(char *str, int *i)
+static void	restore_prompt(int sig)
 {
-	int		j;
-	char	*tmp;
-	char	*tmp1;
-	char	*tmp2;
+	g_list.exit_status = 130;
+	write(1, "\n", 1);
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+	(void)sig;
+}
 
-	j = *i;
-	while (str[++(*i)] != '\"')
-		;
-	tmp = ft_substr(str, 0, j);
-	tmp1 = ft_substr(str, j + 1, *i - j - 1);
-	tmp2 = ft_strdup(str + *i + 1);
-	tmp = ft_strjoin(tmp, tmp1);
-	tmp = ft_strjoin(tmp, tmp2);
-	return (tmp);
+static void	back_slash(int sig)
+{
+	g_list.exit_status = 131;
+	ft_putnstr("Quit (core dumped)\n", 1);
+	(void)sig;
+}
+
+void	run_signals(int sig)
+{
+	if (sig == 1)
+	{
+		signal(SIGINT, restore_prompt);
+		signal(SIGQUIT, SIG_IGN);
+	}
+	if (sig == 2)
+	{
+		signal(SIGINT, restore_prompt);
+		signal(SIGQUIT, back_slash);
+	}
+	if (sig == 3)
+	{
+		printf(RED"You terminated the program with exit signal!\n");
+		exit(0);
+	}
 }

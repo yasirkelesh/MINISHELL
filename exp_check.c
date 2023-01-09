@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exp_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/09 18:06:40 by nkalyonc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
-//halloldu
+
 int exp_check(char *str)
 {
-	int i = 0;
-	while(str[i])
-	{
-		if(str[i] == '=')
-		{
-			//printf("export str : %s\ni: %d\n", str,i);
+	int	i;
 
- 			if(i == 0)//
-				return -1; 
-			return 1;
+	i=0;
+	while (str[i])
+	{
+		if (str[i] == '=')
+		{
+			if (i == 0) //
+				return (-1);
+			return (1);
 		}
 		i++;
 	}
-	return 0;
+	return (0);
 }
