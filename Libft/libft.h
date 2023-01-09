@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:52:27 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/08 23:12:44 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:11:11 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct n_list
 	struct n_list	*next;
 }							t_list;
 
-void	ft_free_str(char **str);
+void		ft_free_str(char **str);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		*ft_memset(void *b, int v, size_t len);
 void		ft_bzero(void *s, size_t n);
@@ -50,6 +50,7 @@ int			ft_tolower(int str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
 char		*ft_strcpy(char *dest, char *src);
+int			ft_isspace(char c);
 
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
@@ -61,7 +62,7 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
-size_t	    ft_strcat(char *dest, const char *src);
+size_t		ft_strcat(char *dest, const char *src);
 
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
@@ -74,11 +75,10 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char		*ft_strtok(char *str, char sepa);
-//int			get_next_line(int fd, char **line);
 int			is_newline(char *backup);
 int			split_line(char **backup, char **line, int cut_idx);
 int			return_all(char **backup, char **line, int read_size);
-void 		ft_list_remove_if(t_list **begin_list, void *data_ref);
-int 		ft_strcmp(char *s1, char *s2);
+void		ft_list_remove_if(t_list **begin_list, void *data_ref);
+int			ft_strcmp(char *s1, char *s2);
 
 #endif

@@ -35,17 +35,17 @@ static void	split_piped(t_pipe_var variables, int countpipe, t_list **mini)
 			ft_dups(variables, countpipe);
 		variables.temp = variables.temp->next;
 		variables.j++;
-	}
+	}//
 }
 void	execpiped(t_list **mini, int countpipe)
 {
 	t_pipe_var	variables;
 
 	variables.i = -1;
-	variables.fd = malloc(countpipe * 2);
+	variables.fd = malloc(countpipe * 2);//hem out hem in
 	while (++variables.i < countpipe)
 	{
-		if (pipe(variables.fd + variables.i * 2) < 0)
+		if (pipe(variables.fd + variables.i * 2) < 0)//0 ile 1, 2 ile 3, 4 ile 5
 			exit(1);
 	}
 	split_piped(variables, countpipe, mini);

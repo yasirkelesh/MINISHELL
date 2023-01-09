@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/09 12:21:23 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/09 13:23:48 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,4 +166,15 @@ void	pipe_handle(char *str, int n_pipe);
 //free
 void	ft_lst_free(t_list **stackA);
 void	run_signals(int sig);
+//echo_utils
+void print_double_quote(char **arr, int *i);
+void print_single_quote(char **arr, int *i);
+void print_mixed_quote(char **arr, int *i);
+//command_utils
+char *add_space();
+char *handle_end_of_string(char *str, int j, int i);
+char *handle_double_quotes(char *str, int j, int *i,char *tmp);
+char *handle_single_quotes(char *str, int j, int *i,char *tmp);
+char *handle_dollar_sign(char *str, int j, int *i);
+char *handle_other_cases(char *str, int j, int *i);
 #endif
