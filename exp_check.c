@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:06:40 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/09 20:31:08 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int exp_check(char *str)
 	{
 		if (str[i] == '=')
 		{
-			if (i == 0) //
+			if (i == 0)
 				return (-1);
 			return (1);
 		}

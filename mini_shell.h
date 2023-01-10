@@ -3,52 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   mini_shell.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:23:07 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:48:36 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINI_SHELL_H
-#define MINI_SHELL_H
+# define MINI_SHELL_H
 
-#define LSH_TOK_BUFSIZE 64
-#define LSH_TOK_DELIM " \"\t\r\n\a"
-#define TMP_FILE "./text.txt"
+# define LSH_TOK_BUFSIZE 64
+# define LSH_TOK_DELIM " \"\t\r\n\a"
+# define TMP_FILE "./text.txt"
 
 # define CYAN "\001\033[1;36m\002"
 # define WHITE "\001\033[0m\002"
 # define GREEN "\001\033[1;32m\002"
 # define RED "\033[0;31m"
-#define DICT_LEN 256
+# define DICT_LEN 256
 
-#include <sys/wait.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include <string.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <sys/stat.h>
-#include "Libft/libft.h"
+# include <sys/wait.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <string.h>
+# include <fcntl.h>
+# include <signal.h>
+# include <sys/stat.h>
+# include "Libft/libft.h"
 
-#define EXIT_SYNTAX_ERROR 258
-#define EXIT_CMD_NOT_FOUND 127
-#define EXIT_CTRL_D 130
+# define EXIT_SYNTAX_ERROR 258
+# define EXIT_CMD_NOT_FOUND 127
+# define EXIT_CTRL_D 130
 
 
-typedef struct shelldup
+typedef struct s_shelldup
 {
 	int std_in;
 	int std_out;
 	int f_in;
 	int f_out;
 
-} shelldup;
+} t_shelldup;
 
 typedef struct s_pipe_var
 {
@@ -105,14 +105,15 @@ typedef struct s_redir_var
 
 }			t_redir_var;
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 500
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 500
+# endif
 
 // utils
 int count(char *str, char c);
 t_list **add_list(char **str, t_list **mini);
 void	ft_putnstr(char *str, int n);
+char *line_edit(char *line);
 
 void lsh_loop(t_builtin_str *str);					  // lsh_loop
 int lsh_launch(char **args, t_builtin_str *str);	  // lsh_launch
@@ -197,6 +198,7 @@ char	*sub_redir(char **str, int i);
 void	here_doc2(char *file, char *eof);
 void	ft_putstrendl_fd(char *s, int fd);
 void	execsimple(char **parse);
+int 	process_string(char *str);
 
 void	no_input_redir(int fd);
 
@@ -219,4 +221,6 @@ char *handle_double_quotes(char *str, int j, int *i,char *tmp);
 char *handle_single_quotes(char *str, int j, int *i,char *tmp);
 char *handle_dollar_sign(char *str, int j, int *i);
 char *handle_other_cases(char *str, int j, int *i);
+
+
 #endif

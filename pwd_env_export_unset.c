@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo_pwd_env_export_unset.c                        :+:      :+:    :+:   */
+/*   pwd_env_export_unset.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:41:52 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:07:17 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:18:55 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void	pwd(void)
+void pwd(void)
 {
-	char	*str;
+	char *str;
 
 	str = malloc(1000);
 	if (!str)
@@ -24,36 +24,68 @@ void	pwd(void)
 		exit(0);
 	printf("%s\n", str);
 }
-
-void	export(char **args)
+static void lstadd_lst(t_list **lst, t_list **new)
 {
-	int	i;
+	t_list *tmp;
+	tmp = *lst;
 
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = *new;
+}
+t_list *new_lst_env(char **args)
+{
+	t_list *tmp;
+	int i;
 	i = 1;
+	tmp = malloc(sizeof(size_t));
+
+	
+
+	while (args[i])
+	{
+		printf("exp_check : %d\n", exp_check(args[i]));
+		if (exp_check(args[i]) == 0)
+		{
+			i++;
+		}
+		else if (exp_check(args[i]) == 1)
+		{
+			unset(ft_split(args[i], '='));
+			ft_lstadd_back(&tmp,ft_lstnew(ft_strdup(args[i])));
+			i++;
+		}
+		else if (exp_check(args[i]) == -1)
+		{
+			printf("export: `%s': not a valid identifier", args[i]);
+			i++;
+		}
+	}
+	tmp = tmp->next;
+	return tmp;
+}
+void export(char **args) // bozukk
+{
+	int i;
+	i = 1;
+	t_list *tmp;
 	if (args[1] == NULL)
 	{
 		export_env();
-		return ;
+		return;
 	}
-	t_list	*tmp = malloc(sizeof(t_list));
-	while (args[i])
-	{
-		printf("test\n");
-		tmp->content = ft_strdup(args[i]);
-		unset(ft_split(args[i], '='));
-		if (exp_check(args[i]) == 1)
-		{
-			ft_lstadd_back(&g_list.g_env, tmp);
-		}
-		else if (exp_check(args[i]) == -1)
-			printf("export: `%s': not a valid identifier", args[i]);
-		i++;
-	}
+	tmp = new_lst_env(args);
+	printf("tmp %s\n", tmp->content);
+	lstadd_lst(&g_list.g_env, &tmp);
+
+
+	
+	
 }
 
-void	unset(char **args)
+void unset(char **args)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (args[i])

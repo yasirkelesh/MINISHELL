@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:56:21 by mukeles           #+#    #+#             */
-/*   Updated: 2022/12/08 20:10:08 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:29:38 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,31 @@ int main(){
 	char str[100] = "elma,armut,karpuz";
 	char **p = ft_split(str, ',');
 	printf("%s\n%s\n%s\n", p[0],p[1],p[2]);
+	
+	t_list *new_lst_env(char **args)
+	{
+	
+	}
+		while (args[i])
+	{
+		printf("exp_check : %d\n",exp_check(args[i]));
+		
+		if (exp_check(args[i]) == 0)
+		{
+			i++;
+		}
+		else if (exp_check(args[i]) == 1)
+		{
+			if(i == 1)
+				tmp = ft_lstnew(args[i]);
+			else
+				
+		}
+		else if (exp_check(args[i]) == -1)
+		{
+			printf("export: `%s': not a valid identifier", args[i]);
+			i++;
+		}
+
+	}		
 }*/

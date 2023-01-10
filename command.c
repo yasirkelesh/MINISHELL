@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:07:52 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:08:30 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
 char	*command(char *str, int *i, char *args, int k)
 {
 	int j = *i;
 	char *tmp = 0;
+
 
 	if (ft_isspace(str[*i - 1])
 		&& strcmp(" ", args) && k != 1)
@@ -41,5 +41,6 @@ char	*command(char *str, int *i, char *args, int k)
 	}
 	handle_other_cases(str, j, i);
 	tmp = ft_substr(str, j, *i - (j));
+
 	return (tmp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_split_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:05:31 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:11:50 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,27 @@ char	**lsh_split_line(char *line)
 	int		j;
 	int		size;
 	char	**arr;
-
-	size = get_cmd_num(line);
+	char *tmp;
+	tmp = line;
+	
+	size = get_cmd_num(tmp);
 	arr = malloc(sizeof(char *) * (size));
 	if (!arr)
 		return (NULL);
 	j = 0;
 	i = 0;
-	while (line[i])
+	while (tmp[i])
 	{
-		while (line[i] == ' ' && line[i] != '\0')
+		while (tmp[i] == ' ' && tmp[i] != '\0')
 			i++;
-		arr[j] = command(line, &i, arr[j - 1], j);
+		system("leaks minishell > leaks5.txt");
+		arr[j] = command(tmp, &i, arr[j - 1], j);
+		system("leaks minishell > leaks4.txt");
 		j++;
-		while (line[i] == ' ' && line[i] != '\0')
+		while (tmp[i] == ' ' && tmp[i] != '\0')
 			i++;
 	}
 	arr[j] = NULL;
+	//free(tmp);
 	return (arr);
 }

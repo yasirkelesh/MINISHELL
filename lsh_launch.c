@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_launch.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:05:45 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:08:48 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	lsh_launch(char **args, t_builtin_str *str)
 		}
 		exit(EXIT_FAILURE);
 	}
+	free(str1);
 	waitpid(pid, &status, WUNTRACED);
 	return (1);
 }
