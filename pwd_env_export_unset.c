@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:41:52 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/10 14:18:55 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:37:42 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void pwd(void)
 	if (!str)
 		exit(0);
 	printf("%s\n", str);
+	free(str);
 }
 static void lstadd_lst(t_list **lst, t_list **new)
 {
@@ -40,17 +41,13 @@ t_list *new_lst_env(char **args)
 	i = 1;
 	tmp = malloc(sizeof(size_t));
 
-	
-
 	while (args[i])
 	{
-		printf("exp_check : %d\n", exp_check(args[i]));
 		if (exp_check(args[i]) == 0)
-		{
 			i++;
-		}
 		else if (exp_check(args[i]) == 1)
 		{
+					
 			unset(ft_split(args[i], '='));
 			ft_lstadd_back(&tmp,ft_lstnew(ft_strdup(args[i])));
 			i++;
@@ -74,8 +71,11 @@ void export(char **args) // bozukk
 		export_env();
 		return;
 	}
+/* 	system("leaks minishell");
+	printf("*****------*****\n"); */
 	tmp = new_lst_env(args);
-	printf("tmp %s\n", tmp->content);
+	/* system("leaks minishell"); */
+	
 	lstadd_lst(&g_list.g_env, &tmp);
 
 
@@ -98,4 +98,6 @@ void unset(char **args)
 			printf("unset: `%s': not a valid identifier\n", args[i]);
 		i++;
 	}
+
+	/* ft_free_str(args); */
 }

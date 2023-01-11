@@ -6,24 +6,28 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/10 18:08:30 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:07:07 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 char	*command(char *str, int *i, char *args, int k)
 {
+
 	int j = *i;
 	char *tmp = 0;
 
 
 	if (ft_isspace(str[*i - 1])
-		&& strcmp(" ", args) && k != 1)
+		&& ft_strcmp(" ", args) && k != 1)
 	{
-		return (add_space());
-	}
+		tmp = add_space();
+		return (tmp);
+	} 
 	if (str[*i] == '\0')
 	{
+		if(tmp)
+			free(tmp);
 		tmp = ft_substr(str, j, *i - j);
 		return (tmp);
 	}
@@ -32,15 +36,14 @@ char	*command(char *str, int *i, char *args, int k)
 		return (handle_dollar_sign(str, j, i));
 	}
 	if (str[*i] == '\"')
-	{
+	{		
 		handle_double_quotes(str, j, i, tmp);
 	}
 	if (str[*i] == '\'' && str[*i])
 	{
 		handle_single_quotes(str, j, i, tmp);
 	}
-	handle_other_cases(str, j, i);
-	tmp = ft_substr(str, j, *i - (j));
-
+	free(tmp);
+	tmp = handle_other_cases(str, j, i);
 	return (tmp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:05:13 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:18:38 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*parser(char *str)
 {
 	int		i;
 	char	*tmp;
+	char	*tmp2;
 
 	tmp = str;
 	if (!tmp)
@@ -31,13 +32,19 @@ char	*parser(char *str)
 		if (tmp[i] == '\"')
 		{
 			if (tmp[i + 2] == '"')
-				tmp = double_quotes(tmp, &i);
+			{
+				tmp2 = tmp;
+				tmp = double_quotes(tmp2, &i);
+				free(tmp2);
+			}
 		}
 		else if (tmp[i] == '$')
 		{
 			if (ft_strrchr(tmp, '\'') == 0 && ft_strrchr(tmp, '\"') == 0)
 			{
-				tmp = dollar(tmp, &i);
+				tmp2 = tmp;
+				tmp = dollar(tmp2, &i);
+				free(tmp2);
 				i = 0;
 			}
 			i++;
@@ -52,7 +59,9 @@ char	*parser(char *str)
 		{
 			if (tmp[i + 2] == '\'')
 			{
-				tmp = quotes(tmp, &i);
+				tmp2 = tmp;
+				tmp = quotes(tmp2, &i);
+				free(tmp2);
 			}
 		}
 		i++;

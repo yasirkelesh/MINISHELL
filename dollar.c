@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:07:44 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:44:14 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ char	*dollar(char *str, int *i)
 	j = *i;
 	while (str[++(*i)] && str[*i] != ' ' && ft_isalnum(str[*i]))
 		;
+
 	key = ft_substr(str, j + 1, *i - j - 1);
 	value = get_value(key);
+	free(key);
 	if (!value)
 		return (NULL);
 	return (value);

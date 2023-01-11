@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_handle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:05:04 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:39:22 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	pipe_handle(char *str, int n_pipe)
 {
 	char	**tmp;
 	t_list	**list;
-
+	//printf("str: %s\n", str);
 	tmp = ft_split(str, '|');
 	list = (t_list **)malloc(sizeof(t_list *));
 	*list = NULL;

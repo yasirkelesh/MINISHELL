@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/10 14:48:36 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/11 17:22:25 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ char *q_dollar(char *tmp);							  // q_dollar
 int dollar_query(char *tmp);						  // dollar_query
 char *dollar(char *str, int *i);					  // dollar
 char *get_value(char *key);							  // dollar
-char *replaceWord(char *s, char *oldW, char *newW);	  // replaceWord
 int check_valid(char *line);						  // check_valid
 char *parser(char *str);							  // parser
 char *double_quotes(char *str, int *i);				  // double_quetes

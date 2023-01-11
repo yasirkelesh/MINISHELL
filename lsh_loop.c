@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/10 18:02:40 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:02:56 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,24 @@ void lsh_loop(t_builtin_str *str)
     add_history(line);
   
     //line = line_edit(line);
-    system("leaks minishell > leaks3.txt");
+    //system("leaks minishell > leaks3.txt");
     args = lsh_split_line(line);
-    system("leaks minishell > leaks2.txt");
+  
     if (ft_line_check(line) == 0 && ft_strlen(line) == 0)
     {
       free(line);
       ft_free_str(args);
-      system("leaks minishell > leaks.txt");
       lsh_loop(str);
     }
     if (count(line, '>') > 0 || count(line, '<') > 0)
     {
       check_dir(line);
     }
-    
+
     if (count(line, '|') > 0)
     {
       pipe_handle(line, count(line, '|'));
     }
-
     else if (check_valid(line) && line)
     {
       i = 0;
@@ -67,11 +65,12 @@ void lsh_loop(t_builtin_str *str)
         }
       }
       i = 0;
+
       if ((count(line, '>') == 0 && count(line, '<') == 0) && (args[0] != NULL))
         status = lsh_execute(args, str);
-    }
     ft_free_str(args);
     free(line);
+    }
   }
   i = 0;
 }

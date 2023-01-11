@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/10 17:53:52 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:38:22 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char *line_edit(char *line)
 	while(line[i] <= 32 && line[i])
 		i++;
 	tmp = ft_substr(line,i,ft_strlen(line));
-	system("leaks minishell > leaks5.txt");
 	return tmp;
 	
 }

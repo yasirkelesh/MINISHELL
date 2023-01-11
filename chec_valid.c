@@ -3,20 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   chec_valid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:08:27 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:50:32 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-
-int	check_valid(char *line)
+int chek_q(int q)
 {
-	int	i;
-	int	q;
-	int	q2;
+	if (q == 0)
+		q++;
+	else
+		q--;
+	return (q);
+}
+int chek_q2(int q2)
+{
+	if (q2 == 0)
+		q2++;
+	else
+		q2--;
+	return (q2);
+}
+int check_valid(char *line)
+{
+	int i;
+	int q;
+	int q2;
 
 	i = 0;
 	q = 0;
@@ -25,17 +40,11 @@ int	check_valid(char *line)
 	{
 		if (line[i] == '\"' && q2 == 0)
 		{
-			if (q == 0)
-				q++;
-			else
-				q--;
+			chek_q(q);
 		}
 		if (line[i] == '\'' && q == 0)
 		{
-			if (q2 == 0)
-				q2++;
-			else
-				q2--;
+			chek_q2(q2);
 		}
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:08:02 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:08:17 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*handle_end_of_string(char *str, int j, int i)
 
 char	*handle_double_quotes(char *str, int j, int *i, char *tmp)
 {
+	(void)j;
 	(*i)++;
 	if (str[*i] != '\"')
 	{
@@ -36,17 +37,22 @@ char	*handle_double_quotes(char *str, int j, int *i, char *tmp)
 			(*i)++;
 		}
 		(*i)++;
-		tmp = ft_substr(str, j, *i - (j));
+		if(tmp)
+			free(tmp);
+		/* tmp = ft_substr(str, j, *i - (j)); */
 	}
 	else
 	{
-		tmp = ft_substr(str, j, *i - (j + 1));
+		if(tmp)
+			free(tmp);
+	/* 	tmp = ft_substr(str, j, *i - (j + 1)); */
 	}
 	return (tmp);
 }
 
 char	*handle_single_quotes(char *str, int j, int *i, char *tmp)
 {
+	(void)j;
 	(*i)++;
 	if (str[*i] != '\'')
 	{
@@ -55,11 +61,15 @@ char	*handle_single_quotes(char *str, int j, int *i, char *tmp)
 			(*i)++;
 		}
 		(*i)++;
-		tmp = ft_substr(str, j, *i - (j));
+		if(tmp)
+			free(tmp);
+/* 		tmp = ft_substr(str, j, *i - (j)); */
 	}
 	else
 	{
-		tmp = ft_substr(str, j, *i - (j + 1));
+		if(tmp)
+			free(tmp);
+/* 		tmp = ft_substr(str, j, *i - (j + 1)); */
 	}
 	return (tmp);
 }
@@ -76,10 +86,13 @@ char	*handle_dollar_sign(char *str, int j, int *i)
 
 char	*handle_other_cases(char *str, int j, int *i)
 {
+
 	while (str[*i] != ' ' && str[*i] != '\''
 		&& str[*i] != '\"' && str[*i] != '\0')
 	{
 		(*i)++;
 	}
+	
+
 	return (ft_substr(str, j, *i - j));
 }
