@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 19:02:56 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 01:41:54 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,14 @@ void lsh_loop(t_builtin_str *str)
     signal(SIGQUIT, SIG_IGN);
     signal(SIGINT, &ctrl_c);
     line = readline("> ");
-    if (!line )
+    if (!line)
     {
       printf("exit\n");
       exit(1);
     }
 
     add_history(line);
-  
-    //line = line_edit(line);
-    //system("leaks minishell > leaks3.txt");
+
     args = lsh_split_line(line);
   
     if (ft_line_check(line) == 0 && ft_strlen(line) == 0)
@@ -68,9 +66,9 @@ void lsh_loop(t_builtin_str *str)
 
       if ((count(line, '>') == 0 && count(line, '<') == 0) && (args[0] != NULL))
         status = lsh_execute(args, str);
+    }
     ft_free_str(args);
     free(line);
-    }
   }
   i = 0;
 }

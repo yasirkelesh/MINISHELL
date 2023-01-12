@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 21:01:40 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 00:55:47 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	print_mixed_quote(char **arr, int *i)
 {
 	int		k;
 	char	*tmp;
+	char	*tmp1;
 	int		len;
 
 	k = 0;
@@ -90,11 +91,14 @@ void	print_mixed_quote(char **arr, int *i)
 			}
 		}
 		(*i)++;
+		free(tmp);
 	}
 	else if (arr[(*i)][k] == '\'')
 	{
 		len = ft_strlen(arr[(*i)]);
-		arr[(*i)] = ft_substr(arr[(*i)], 1, len - 2);
+		tmp1=arr[(*i)];
+		arr[(*i)] = ft_substr(tmp1, 1, len - 2);
+		free(tmp1);
 		if (arr[(*i)])
 			printf("%s", arr[(*i)]);
 		(*i)++;

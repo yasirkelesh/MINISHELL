@@ -23,6 +23,7 @@ void	redir_out_handle(char **str, int i)
 	}
 	variables.temp[variables.j - 1] = '\0';
 	variables.fd = open(variables.file, variables.flags | O_TRUNC, 0777);
+	ft_putstr_fd(variables.file,1);
 	execute_dir(variables.temp, variables.fd, 1);
 	free(variables.file);
 	free(variables.temp);
