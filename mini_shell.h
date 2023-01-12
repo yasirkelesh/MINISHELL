@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 21:51:11 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 22:20:24 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ void ctrl_d(void);
 void ctrl_c(int sig);
 void sig_handler(int sig_num);
 void sig_handler_heredoc(int sig_num);
+void	signals(int signum);
 
 int ft_argslen(char **args);
 

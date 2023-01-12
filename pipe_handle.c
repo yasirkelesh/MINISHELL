@@ -6,66 +6,78 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 22:08:31 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 22:18:41 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-static void	ft_dups(t_pipe_var variables, int countpipe)
+void	execute_pipe(int *fd, int j, t_list *temp)
 {
-    extern char **environ;
-	if (variables.j != 0)
-		if (dup2(variables.fd[(variables.j - 1) * 2], 0) < 0)
+	extern char **environ;
+	int		i;
+	char	**cmd;
+	char	*path;
+
+	if (j != 0)
+		if (dup2(fd[(j - 1) * 2], 0) < 0)
 			exit(1);
-	if (variables.temp->next)
-		if (dup2(variables.fd[variables.j * 2 + 1], 1) < 0)
+	if (temp->next)
+		if (dup2(fd[j * 2 + 1], 1) < 0)
 			exit(1);
-	variables.i = -1;
-	while (++variables.i < 2 * countpipe)
-		close(variables.fd[variables.i]);
-	variables.cmd = ft_split(variables.temp->content, ' ');
-	variables.path = find_path(variables.cmd[0]);
-	if (execve(variables.path, variables.cmd, environ) < 0)
+	i = -1;
+	while (fd[++i])
+		close(fd[i]);
+	cmd = ft_split(temp->content, ' ');
+	path = find_path(cmd[0]);
+	if (execve(path, cmd, environ) != 0)
 	{
 		g_list.exit_status = 127;
-		free(variables.path);
-		ft_free_str(variables.cmd);
-		exit(1);
+		ft_putstr_fd("Could not execute command", 1);
+		exit(g_list.exit_status);
 	}
-	free(variables.path);
-	ft_free_str(variables.cmd);
-	kill(variables.pid, SIGKILL);
+	free(path);
+	ft_free_str(cmd);
+	exit(g_list.exit_status);
 }
-static void	split_piped(t_pipe_var variables, int countpipe, t_list **mini)
+
+static void	split_piped(int *fd, t_list *mini)
 {
-	variables.j = 0;
-	variables.temp = (*mini);
-	while (variables.temp)
+	int		j;
+	int		pid;
+	t_list	*temp;
+
+	j = 0;
+	temp = mini;
+	while (temp)
 	{
-		variables.pid = fork();
-		run_signals(2);
-		if (variables.pid == 0)
-			ft_dups(variables, countpipe);
-		variables.temp = variables.temp->next;
-		variables.j++;
+		signals(1);
+		pid = fork();
+		if (pid == 0)
+		{
+			signals(2);
+			execute_pipe(fd, j, temp);
+		}
+		temp = temp->next;
+		j++;
 	}
-	free(variables.temp);
+	free(temp);
 }
 void	execpiped(t_list **mini, int countpipe)
 {
-	t_pipe_var	variables;
+	int	i;
+	int	*fd;
 
-	variables.i = -1;
-	variables.fd = malloc(countpipe * 2);//hem out hem in
-	while (++variables.i < countpipe)
+	i = -1;
+	fd = (int *)malloc(sizeof(int) * countpipe * 2);
+	while (++i < countpipe)
 	{
-		if (pipe(variables.fd + variables.i * 2) < 0)//0 ile 1, 2 ile 3, 4 ile 5
+		if (pipe(fd + i * 2) < 0)
 			exit(1);
 	}
-	split_piped(variables, countpipe, mini);
-	variables.i = -1;
-	while (++variables.i < 2 * countpipe)
-		close(variables.fd[variables.i]);
+	split_piped(fd, (*mini));
+	i = -1;
+	while (++i < 2 * countpipe)
+		close(fd[i]);
 	countpipe++;
 	while (countpipe--)
 		waitpid(0, &g_list.exit_status, WUNTRACED);
@@ -73,8 +85,8 @@ void	execpiped(t_list **mini, int countpipe)
 		g_list.exit_status = WEXITSTATUS(g_list.exit_status);
 	else
 		g_list.exit_status = 0;
-	if (variables.fd[0] != '\0')
-		free(variables.fd);
+	if (fd[0] != '\0')
+		free(fd);
 }
 void	pipe_handle(char *str, int n_pipe)
 {
