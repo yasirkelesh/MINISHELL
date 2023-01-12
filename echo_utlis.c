@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 19:12:16 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 21:01:40 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	print_double_quote(char **arr, int *i)
 
 void	print_single_quote(char **arr, int *i)
 {
-	system("leaks minishell");
+	//system("leaks minishell");
 	int	len;
 	char	*tmp;
 	len = ft_strlen(arr[(*i)]);

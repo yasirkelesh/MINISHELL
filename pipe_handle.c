@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 19:39:22 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 22:08:31 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	ft_dups(t_pipe_var variables, int countpipe)
 	if (execve(variables.path, variables.cmd, environ) < 0)
 	{
 		g_list.exit_status = 127;
+		free(variables.path);
 		ft_free_str(variables.cmd);
 		exit(1);
 	}
@@ -47,7 +48,8 @@ static void	split_piped(t_pipe_var variables, int countpipe, t_list **mini)
 			ft_dups(variables, countpipe);
 		variables.temp = variables.temp->next;
 		variables.j++;
-	}//
+	}
+	free(variables.temp);
 }
 void	execpiped(t_list **mini, int countpipe)
 {
@@ -78,12 +80,13 @@ void	pipe_handle(char *str, int n_pipe)
 {
 	char	**tmp;
 	t_list	**list;
-	//printf("str: %s\n", str);
+	
+
 	tmp = ft_split(str, '|');
 	list = (t_list **)malloc(sizeof(t_list *));
 	*list = NULL;
 	add_list(tmp, list);
 	execpiped(list, n_pipe);
+	ft_free_list(list);
 	ft_free_str(tmp);
-	ft_lst_free(list);
 }

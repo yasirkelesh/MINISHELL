@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:10:55 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:52:15 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,24 @@ void	ft_free_str(char **str)
 	free(str);
 	str = NULL;
 }
-
-void	ft_lst_free(t_list **stackA)
+static void	ft_listdelone(t_list *lst)
 {
-	t_list	*temp;
+	free(lst->content);
+	free(lst);
+	lst = NULL;
+}
+void	ft_free_list(t_list **list)
+{
+	t_list	*tmp;
 
-	temp = NULL;
-	while (*stackA)
+	if (list)
 	{
-		temp = (*stackA)->next;
-		free(*stackA);
-		*stackA = NULL;
-		if (temp == NULL)
-			break ;
-		*stackA = temp;
+		while (*list)
+		{
+			tmp = (*list)->next;
+			ft_listdelone(*list);
+			*list = tmp;
+		}
+		free(list);
 	}
-	free(stackA);
 }

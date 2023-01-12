@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 17:22:25 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 21:51:11 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ int lsh_launch(char **args, t_builtin_str *str);	  // lsh_launch
 char *find_path(char *cmdline);						  // find_path_value
 char *find_value(char *key);						  // find_path_value
 void ft_free_str(char **str);						  // ft_free_str
-int exp_check(char *str);							  // exp_check
+int exp_check(char *str);
+void unset_exp(char **args);					  // exp_check
 int ft_line_check(char *line);						  //
 void export_env();
 void env(); // env
@@ -207,7 +208,7 @@ void	pipe_handle(char *str, int n_pipe);
 
 
 //free
-void	ft_lst_free(t_list **stackA);
+void	ft_free_list(t_list **list);
 void	run_signals(int sig);
 //echo_utils
 void print_double_quote(char **arr, int *i);

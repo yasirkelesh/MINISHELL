@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:41:52 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 19:37:42 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 20:55:10 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ static void lstadd_lst(t_list **lst, t_list **new)
 t_list *new_lst_env(char **args)
 {
 	t_list *tmp;
+	t_list *p;
+	char **tmp1;
+	
 	int i;
 	i = 1;
-	tmp = malloc(sizeof(size_t));
 
 	while (args[i])
 	{
@@ -47,9 +49,19 @@ t_list *new_lst_env(char **args)
 			i++;
 		else if (exp_check(args[i]) == 1)
 		{
-					
-			unset(ft_split(args[i], '='));
-			ft_lstadd_back(&tmp,ft_lstnew(ft_strdup(args[i])));
+			if (i == 1)
+			{
+				tmp1 = ft_split(args[i], '=');
+				unset_exp(tmp1);
+				tmp = ft_lstnew(ft_strdup(args[i]));
+			}
+			else
+			{
+				p = tmp;
+				tmp1 = ft_split(args[i], '=');				
+				unset_exp(tmp1);
+				ft_lstadd_back(&tmp, ft_lstnew(ft_strdup(args[i])));
+			}
 			i++;
 		}
 		else if (exp_check(args[i]) == -1)
@@ -58,10 +70,10 @@ t_list *new_lst_env(char **args)
 			i++;
 		}
 	}
-	tmp = tmp->next;
 	return tmp;
 }
-void export(char **args) // bozukk
+
+void export(char **args) // 
 {
 	int i;
 	i = 1;
@@ -71,16 +83,8 @@ void export(char **args) // bozukk
 		export_env();
 		return;
 	}
-/* 	system("leaks minishell");
-	printf("*****------*****\n"); */
 	tmp = new_lst_env(args);
-	/* system("leaks minishell"); */
-	
 	lstadd_lst(&g_list.g_env, &tmp);
-
-
-	
-	
 }
 
 void unset(char **args)
@@ -90,6 +94,7 @@ void unset(char **args)
 	i = 0;
 	while (args[i])
 	{
+		
 		if (exp_check(args[i]) == 0)
 		{
 			ft_list_remove_if(&g_list.g_env, args[i]);
@@ -98,6 +103,16 @@ void unset(char **args)
 			printf("unset: `%s': not a valid identifier\n", args[i]);
 		i++;
 	}
+}
+void unset_exp(char **args)
+{
+	int i;
 
-	/* ft_free_str(args); */
+	i = 0;
+
+	if (exp_check(args[i]) == 0)
+	{
+		ft_list_remove_if(&g_list.g_env, args[i]);
+	}
+	ft_free_str(args);
 }

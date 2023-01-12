@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 18:38:22 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 21:47:54 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,20 @@ char *line_edit(char *line)
 t_list	**add_list(char **str, t_list **mini)
 {
 	int		i;
-	t_list	*new;
+	char	*temp;
+	t_list	*temp2;
 
 	i = 0;
 	while (str[i])
 	{
-		new = ft_lstnew(str[i]);
-		ft_lstadd_back(mini, new);
+		temp = ft_strtrim(str[i], " ");
+		temp2 = ft_lstnew(temp);
+		ft_lstadd_back(mini, temp2);
+		temp = NULL;
+		temp2 = NULL;
 		i++;
 	}
+	free (temp);
+	free (temp2);
 	return (mini);
 }

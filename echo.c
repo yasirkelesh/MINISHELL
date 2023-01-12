@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 19:13:45 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/12 21:02:43 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	echo(char **arr)
 		i++;
 	while (arr[i])
 	{
-		printf("arr i %s\n", arr[i]);
 		if (ft_strrchr(arr[i], '\'') == 0 && ft_strrchr(arr[i], '\"') == 0)
 		{
 			printf("%s", arr[i]);
