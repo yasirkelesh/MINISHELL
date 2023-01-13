@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/13 19:49:29 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 20:13:02 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void lsh_loop(t_builtin_str *str)
     }
     args = lsh_split_line(line);
 
-    if (count(line, '|') > 0)
-    {
-      pipe_handle(line, count(line, '|'));
-    }
     if (count(line, '>') > 0 || count(line, '<') > 0)
     {
       check_dir(line);
+    }
+    else if (count(line, '|') > 0)
+    {
+      pipe_handle(line, count(line, '|'));
     }
     else if (check_valid(line) && line)
     {
