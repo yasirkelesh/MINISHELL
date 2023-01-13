@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/13 15:20:21 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:06:57 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ char *command(char *str, int *i, char *args, int k)
     if (str[*i] == '$')
     {
         (*i)++;
+        if(str[*i -1] == '$' && str[*i] == '?')
+        {
+
+            (*i)++;
+            tmp = ft_substr(str, j, *i - j);
+            return tmp;
+        }
         while (ft_isalnum(str[*i]) && str[*i] != '\0')
         {
             (*i)++;

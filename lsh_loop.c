@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/13 13:20:55 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:49:29 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void lsh_loop(t_builtin_str *str)
 {
   char *line;
   char **args;
+  char *tmp;
   int i = 0;
   int status = 1;
 
@@ -32,20 +33,23 @@ void lsh_loop(t_builtin_str *str)
 
     add_history(line);
 
+    tmp = line;
+    line = line_edit(tmp);
+    free(tmp);
     if (ft_line_check(line) == 0 || ft_strlen(line) == 0)
     {
       free(line);
       lsh_loop(str);
     }
     args = lsh_split_line(line);
-    if (count(line, '>') > 0 || count(line, '<') > 0)
-    {
-      check_dir(line);
-    }
 
     if (count(line, '|') > 0)
     {
       pipe_handle(line, count(line, '|'));
+    }
+    if (count(line, '>') > 0 || count(line, '<') > 0)
+    {
+      check_dir(line);
     }
     else if (check_valid(line) && line)
     {
@@ -60,9 +64,13 @@ void lsh_loop(t_builtin_str *str)
           i++;
         }
       }
+/*       else
+      {
+        
+      } */
       i = 0;
 
-      if ((count(line, '>') == 0 && count(line, '<') == 0) && (args[0] != NULL))
+      if ((count(line, '>') == 0 && count(line, '<') == 0) && count(line, '|') == 0 && (args[0] != NULL))
         status = lsh_execute(args, str);
     }
     ft_free_str(args);

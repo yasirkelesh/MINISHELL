@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/13 15:24:27 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 16:49:09 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,19 @@ void	echo(char **arr)
 	{
 		if (ft_strrchr(arr[i], '\'') == 0 && ft_strrchr(arr[i], '\"') == 0)
 		{
-
 			printf("%s", arr[i]);
 			i++;
 		}
 		else if (ft_strrchr(arr[i], '\'') == 0 && ft_strrchr(arr[i], '\"') != 0)
 		{
-
 			print_double_quote(arr, &i);
 		}
 		else if (ft_strrchr(arr[i], '\'') != 0 && ft_strrchr(arr[i], '\"') == 0)
 		{
-
-
 			print_single_quote(arr, &i);
 		}
 		else if (ft_strrchr(arr[i], '\'') != 0 && ft_strrchr(arr[i], '\"') != 0)
 		{
-
-
 			print_mixed_quote(arr, &i);
 		}
 	}

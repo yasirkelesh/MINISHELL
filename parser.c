@@ -6,17 +6,17 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 19:18:38 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:07:00 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-char	*parser(char *str)
+char *parser(char *str)
 {
-	int		i;
-	char	*tmp;
-	char	*tmp2;
+	int i;
+	char *tmp;
+	char *tmp2;
 
 	tmp = str;
 	if (!tmp)
@@ -42,6 +42,11 @@ char	*parser(char *str)
 		{
 			if (ft_strrchr(tmp, '\'') == 0 && ft_strrchr(tmp, '\"') == 0)
 			{
+				if (tmp[0] == '$' && tmp[1] == '?')
+				{
+					tmp = ft_strdup(ft_itoa(g_list.exit_status));
+					continue;
+				}
 				tmp2 = tmp;
 				tmp = dollar(tmp2, &i);
 				free(tmp2);

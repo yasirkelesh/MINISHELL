@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 17:50:32 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:39:10 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int check_valid(char *line)
 	{
 		if (line[i] == '\"' && q2 == 0)
 		{
-			chek_q(q);
+			q = chek_q(q);
 		}
 		if (line[i] == '\'' && q == 0)
 		{
-			chek_q2(q2);
+			q2 = chek_q2(q2);
 		}
 		i++;
 	}
