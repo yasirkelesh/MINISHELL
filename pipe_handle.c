@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/13 11:15:09 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 20:21:21 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void execute_pipe(int *fd, int j, t_list *temp)
 	i = -1;
 	while (fd[++i])
 		close(fd[i]);
-	printf("fd : %d\n", fd[i]);
 	cmd = ft_split(temp->content, ' ');
 	path = find_path(cmd[0]);
 	if (execve(path, cmd, environ) != 0)
@@ -68,7 +67,6 @@ void	execpiped(t_list **mini, int countpipe)
 	int	i;
 	int	*fd;
 
-	printf("countpipe : %d\n",countpipe);
 	i = -1;
 	fd = (int *)malloc(sizeof(int) * countpipe * 2);
 	while (++i < countpipe)
