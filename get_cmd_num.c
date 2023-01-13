@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_num.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:06:09 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:22:19 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_cmd_num(const char *str)
 			count++;
 		while (str[i] == ' ')
 			i++;
-		if (str[i])
+ 		if (str[i])
 			count++;
 		if (str[i] == '"' || str[i] == '\'' || str[i] == '$')
 		{

@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/13 01:41:54 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 13:20:55 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,12 @@ void lsh_loop(t_builtin_str *str)
 
     add_history(line);
 
-    args = lsh_split_line(line);
-  
-    if (ft_line_check(line) == 0 && ft_strlen(line) == 0)
+    if (ft_line_check(line) == 0 || ft_strlen(line) == 0)
     {
       free(line);
-      ft_free_str(args);
       lsh_loop(str);
     }
+    args = lsh_split_line(line);
     if (count(line, '>') > 0 || count(line, '<') > 0)
     {
       check_dir(line);

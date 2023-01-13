@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 21:02:43 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/13 15:24:27 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	echo(char **arr)
 	int	i;
 	int	n;
 
-	usleep(1000);
 	size = 0;
 	n = 0;
 	while (arr[size])
@@ -31,25 +30,31 @@ void	echo(char **arr)
 		n = 1;
 		i++;
 	}
-	if (!ft_strcmp(arr[i], " "))
+	if (!ft_strcmp(arr[i], " "))//!
 		i++;
 	while (arr[i])
 	{
 		if (ft_strrchr(arr[i], '\'') == 0 && ft_strrchr(arr[i], '\"') == 0)
 		{
+
 			printf("%s", arr[i]);
 			i++;
 		}
 		else if (ft_strrchr(arr[i], '\'') == 0 && ft_strrchr(arr[i], '\"') != 0)
 		{
+
 			print_double_quote(arr, &i);
 		}
 		else if (ft_strrchr(arr[i], '\'') != 0 && ft_strrchr(arr[i], '\"') == 0)
 		{
+
+
 			print_single_quote(arr, &i);
 		}
 		else if (ft_strrchr(arr[i], '\'') != 0 && ft_strrchr(arr[i], '\"') != 0)
 		{
+
+
 			print_mixed_quote(arr, &i);
 		}
 	}
