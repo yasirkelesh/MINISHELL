@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:06:08 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 19:40:49 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 21:26:48 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,11 +185,15 @@ int		pwd_env(int i);
 int		cd_exit_echo(char **args, int i);
 //exit_cd
 void	dollar_mixed_quote(char **arr, int *i, int *k);
-
 //is_echo
 char	*check(char *s, int i);
 int		is_echo(char *s);
 
-void exec_builtin(char *str);
-int is_builtin(char *tmp);
+void	exec_builtin(char *str);
+void	exec_builtin2(char **args);
+char	**cmd_split_content(char *content);
+int		is_builtin(char *tmp);
+
+//error
+void	execve_error(void);
 #endif

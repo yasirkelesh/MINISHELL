@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 18:17:42 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 21:20:03 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ void	execsimple(char **parse)
 	if (pid == 0)
 	{
 		if (execve(path, parse, environ) != 0)
-		{
-			g_list.exit_status = 127;
-			printf(RED "This command not executed command!\n");
-			exit(g_list.exit_status);
-		}
+			execve_error();
 		free(path);
 		kill(getpid(), SIGTERM);
 	}

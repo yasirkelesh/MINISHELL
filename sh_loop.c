@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 12:29:30 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 19:40:47 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 21:53:02 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	executive_sh(char **args, char *line, t_builtin_str *str)
 		pipe_handle(line, count(line, '|'));
 	else if (check_valid(line) && line)
 		sh_run(args, line, str);
+	else if (!(check_valid(line)) || line)
+		printf("quote error\n");
 }
 
 void	lsh_loop(t_builtin_str *str)

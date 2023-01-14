@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 16:24:53 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 21:20:13 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	lsh_launch(char **args, t_builtin_str *str)
 		if (k == 0)
 		{
 			if (execve(str1, args, environ) == -1)
-				perror("");
+				execve_error();
 		}
 		else
 			return (1);

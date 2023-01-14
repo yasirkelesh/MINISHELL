@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:19:48 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 19:40:35 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 20:00:56 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	lsh_num_builtins(t_builtin_str *str, char *args)
 	}
 	return (-1);
 }
-
-
 
 int	lsh_execute(char **args, t_builtin_str *str)
 {

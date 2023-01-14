@@ -6,18 +6,18 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 19:41:01 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 21:29:17 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-void execute_pipe(int *fd, int j, t_list *temp)
+void	execute_pipe(int *fd, int j, t_list *temp)
 {
-	extern char **environ;
-	int i;
-	char **cmd;
-	char *path;
+	extern char	**environ;
+	int			i;
+	char		**cmd;
+	char		*path;
 
 	if (j != 0)
 		if (dup2(fd[(j - 1) * 2], 0) < 0)
@@ -28,43 +28,39 @@ void execute_pipe(int *fd, int j, t_list *temp)
 	i = -1;
 	while (fd[++i])
 		close(fd[i]);
-	cmd = lsh_split_line(temp->content);
-	int k;
-
-	k = 0;
-
-	while (cmd[k])
-	{
-		cmd[k] = parser(cmd[k]);
-		if (!cmd[k])
-			perror("");
-		k++;
-	}
-	for (int f = 0; cmd[f]; f++)
-		printf("cmd : %s\n", cmd[f]);
-
+	cmd = cmd_split_content(temp->content);
 	path = find_path(cmd[0]);
 	if (is_builtin(cmd[0]))
-	{
-		printf("TEST\n");
-		exec_builtin(temp->content);
-	}
+		exec_builtin2(cmd);
 	else if (execve(path, cmd, environ) != 0)
-	{
-		g_list.exit_status = 127;
-		ft_putstr_fd("Could not execute command", 1);
-		exit(g_list.exit_status);
-	}
+		execve_error();
 	free(path);
 	ft_free_str(cmd);
 	exit(g_list.exit_status);
 }
 
-static void split_piped(int *fd, t_list *mini)
+char	**cmd_split_content(char *content)
 {
-	int j;
-	int pid;
-	t_list *temp;
+	char	**tmp;
+	int		k;
+
+	tmp = lsh_split_line(content);
+	k = 0;
+	while (tmp[k])
+	{
+		tmp[k] = parser(tmp[k]);
+		if (!tmp[k])
+			perror("");
+		k++;
+	}
+	return (tmp);
+}
+
+static void	split_piped(int *fd, t_list *mini)
+{
+	int		j;
+	int		pid;
+	t_list	*temp;
 
 	j = 0;
 	temp = mini;
@@ -83,10 +79,10 @@ static void split_piped(int *fd, t_list *mini)
 	free(temp);
 }
 
-void execpiped(t_list **mini, int countpipe)
+void	execpiped(t_list **mini, int countpipe)
 {
-	int i;
-	int *fd;
+	int	i;
+	int	*fd;
 
 	i = -1;
 	fd = (int *)malloc(sizeof(int) * countpipe * 2);
@@ -110,10 +106,10 @@ void execpiped(t_list **mini, int countpipe)
 		free(fd);
 }
 
-void pipe_handle(char *str, int n_pipe)
+void	pipe_handle(char *str, int n_pipe)
 {
-	char **tmp;
-	t_list **list;
+	char	**tmp;
+	t_list	**list;
 
 	tmp = ft_split(str, '|');
 	list = (t_list **)malloc(sizeof(t_list *));
