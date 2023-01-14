@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 21:47:54 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 12:26:34 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*line_edit(char *line)
 	while (line[i] <= 32 && line[i])
 		i++;
 	tmp = ft_substr(line, i, ft_strlen(line));
+	free(line);
 	return (tmp);
 }
 

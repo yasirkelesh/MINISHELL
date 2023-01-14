@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 22:21:24 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:06:13 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,6 @@ void	ctrl_c(int sig)
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
-}
-
-void	sig_handler(int sig_num)
-{
-	if (sig_num == SIGINT)
-	{
-		printf("\n");
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
-	}
-	return ;
-}
-
-void	sig_handler_heredoc(int sig_num)
-{
-	if (sig_num == SIGINT)
-		exit(1);
 }
 
 static void	handler_child(int signum)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 14:40:07 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 22:20:24 by mukeles          ###   ########.fr       */
+/*   Created: 2023/01/14 17:06:08 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/14 19:40:49 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_env
 }	t_env;
 
 t_env	g_list;
+
 typedef struct s_builtin_str
 {
 	char	**builtin_str;
@@ -106,6 +107,8 @@ typedef struct s_redir_var
 # endif
 
 int		count(char *str, char c);
+void	sh_run(char **args, char *line, t_builtin_str *str);
+void	executive_sh(char **args, char *line, t_builtin_str *str);
 t_list	**add_list(char **str, t_list **mini);
 void	ft_putnstr(char *str, int n);
 char	*line_edit(char *line);
@@ -114,22 +117,14 @@ int		lsh_launch(char **args, t_builtin_str *str);
 char	**lsh_split_line(char *line);
 void	init(t_builtin_str *str);
 t_list	*get_new_env(char **env);
-void	lsh_loop(t_builtin_str *str);
-char	**lsh_split_line(char *line);
 int		get_cmd_num(const char *str);
 char	*command(char *str, int *i, char *args, int j);
-char	*q_dollar(char *tmp);
-int		dollar_query(char *tmp);
 char	*dollar(char *str, int *i);
 char	*get_value(char *key);
 int		check_valid(char *line);
 char	*parser(char *str);
-char	*double_quotes(char *str, int *i);
-char	*slash(char *str, int *i);
-char	*quotes(char *str, int *i);
-char	*get_value(char *key);
 void	lsh_cd(char **arr);
-int		lsh_exit(char **args);
+int		lsh_exit(void);
 int		lsh_execute(char **args, t_builtin_str *str);
 int		lsh_num_builtins(t_builtin_str *str, char *args);
 void	export(char **args);
@@ -139,34 +134,22 @@ void	unset(char **args);
 int		lsh_launch(char **args, t_builtin_str *str);
 char	*find_path(char *cmdline);
 char	*find_value(char *key);
+int		find_path2(char *cmdline);
 void	ft_free_str(char **str);
 int		exp_check(char *str);
 void	unset_exp(char **args);
 void	export_env(void);
 void	env(void);
-
-char	**mem_wide(char **arr, int size);
-void	*ft_realloc(void *ptr, size_t size);
 char	*ft_new_left_str(char *left_str);
 char	*ft_search_n_str(int fd, char *left_str);
 char	*ft_get_one_line(char *left_str);
-void	*ft_realloc(void *ptr, size_t size);
-// char *get_next_line(int fd);
-char	*dolar_sp(char *arr);
-char	*env_find_value(char *key);
-char	*my_strtok(char *str, char *delim);
-char	*eq_cut(char *s1);
-int		exp_env_check(char *str);
 int		ft_line_check(char *line);
-void	dq_loop(char **args);
-void	line_write(char *line);
 // signal
 void	ctrl_d(void);
 void	ctrl_c(int sig);
 void	sig_handler(int sig_num);
 void	sig_handler_heredoc(int sig_num);
 void	signals(int signum);
-int		ft_argslen(char **args);
 // dir
 void	check_dir(char *str);
 int		redirect_in(char **str, int i);
@@ -196,12 +179,17 @@ void	run_signals(int sig);
 void	print_double_quote(char **arr, int *i);
 void	print_single_quote(char **arr, int *i);
 void	print_mixed_quote(char **arr, int *i);
-//command_utils
-char	*add_space(void);
-char	*handle_end_of_string(char *str, int j, int i);
-char	*handle_double_quotes(char *str, int j, int *i, char *tmp);
-char	*handle_single_quotes(char *str, int j, int *i, char *tmp);
-char	*handle_dollar_sign(char *str, int j, int *i);
-char	*handle_other_cases(char *str, int j, int *i);
+//lsh_execute_ctrl
+int		export_unset(char **args, int i);
+int		pwd_env(int i);
+int		cd_exit_echo(char **args, int i);
+//exit_cd
+void	dollar_mixed_quote(char **arr, int *i, int *k);
 
+//is_echo
+char	*check(char *s, int i);
+int		is_echo(char *s);
+
+void exec_builtin(char *str);
+int is_builtin(char *tmp);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   redir_out.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 21:47:54 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 16:31:47 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	redir_out_handle(char **str, int i)
 	}
 	variables.temp[variables.j - 1] = '\0';
 	variables.fd = open(variables.file, variables.flags | O_TRUNC, 0777);
-	ft_putstr_fd(variables.file, 1);
 	execute_dir(variables.temp, variables.fd, 1);
 	free(variables.file);
 	free(variables.temp);

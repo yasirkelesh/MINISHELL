@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/13 18:34:19 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:05:19 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	print_double_quote(char **arr, int *i)
 {
 	int		k;
 	int		len;
-	char	*tmp;
 	char	*tmp2;
 
 	k = 0;
@@ -27,29 +26,35 @@ void	print_double_quote(char **arr, int *i)
 	while (arr[(*i)][k] && arr[(*i)])
 	{
 		if (arr[(*i)][k] != '$' && arr[(*i)][k] != '\'' && arr[(*i)][k] != '\"')
-		{
-			printf("%c", arr[(*i)][k]);
-			k++;
-		}
+			printf("%c", arr[(*i)][k++]);
 		else if (arr[(*i)][k] == '$')
-		{
-			if (arr[(*i)][k] == '$' && arr[(*i)][k + 1] == '?')
-			{
-				tmp = ft_strdup(ft_itoa(g_list.exit_status));
-				k = k + 2;
-			}
-			else
-			{
-				while (ft_isalnum(arr[(*i)][k]) != 0 && arr[(*i)])
-					k++;
-				tmp = dollar(arr[(*i)], &k);
-			}
-			if (tmp)
-				printf("%s", tmp);
-			free(tmp);
-		}
+			dollar_mixed_quote(arr, i, &k);
 	}
 	(*i)++;
+}
+
+void	dollar_mixed_quote(char **arr, int *i, int *k)
+{
+	char	*tmp;
+	char	*tmp2;
+
+	if (arr[(*i)][(*k)] == '$'
+			&& arr[(*i)][(*k) + 1] == '?')
+	{
+		tmp2 = ft_itoa(g_list.exit_status);
+		tmp = ft_strdup(tmp2);
+		free(tmp2);
+		(*k) = (*k) + 2;
+	}
+	else
+	{
+		while (ft_isalnum(arr[(*i)][(*k)]) != 0 && arr[(*i)])
+			(*k)++;
+		tmp = dollar(arr[(*i)], k);
+	}
+	if (tmp)
+		printf("%s", tmp);
+	free(tmp);
 }
 
 void	print_single_quote(char **arr, int *i)
@@ -69,53 +74,22 @@ void	print_single_quote(char **arr, int *i)
 void	print_mixed_quote(char **arr, int *i)
 {
 	int		k;
-	char	*tmp;
-	char	*tmp1;
-	int		len;
 
 	k = 0;
-	if (arr[(*i)][k] == '\"')
+	if (arr[(*i)][k] && arr[(*i)][k] == '\"')
 	{
 		k++;
 		while (arr[(*i)][k])
 		{
-			if (arr[(*i)][k] != '$' && arr[(*i)][k] != '\"')
-			{
-				printf("%c", arr[(*i)][k]);
-				k++;
-			}
+			if (arr[(*i)][k] && arr[(*i)][k] != '$' && arr[(*i)][k] != '\"')
+				printf("%c", arr[(*i)][k++]);
 			else if (arr[(*i)][k] == '$')
-			{
-				if (arr[(*i)][k] == '$' && arr[(*i)][k + 1] == '?')
-				{
-					tmp = ft_strdup(ft_itoa(g_list.exit_status));
-					k = k + 2;
-				}
-				else
-				{
-					while (ft_isalnum(arr[(*i)][k]) != 0 && arr[(*i)])
-						k++;
-					tmp = dollar(arr[(*i)], &k);
-				}
-				if (tmp)
-					printf("%s", tmp);
-			}
+				dollar_mixed_quote(arr, i, &k);
 			else
-			{
 				k++;
-			}
 		}
 		(*i)++;
-		free(tmp);
 	}
 	else if (arr[(*i)][k] == '\'')
-	{
-		len = ft_strlen(arr[(*i)]);
-		tmp1 = arr[(*i)];
-		arr[(*i)] = ft_substr(tmp1, 1, len - 2);
-		free(tmp1);
-		if (arr[(*i)])
-			printf("%s", arr[(*i)]);
-		(*i)++;
-	}
+		print_single_quote(arr, i);
 }

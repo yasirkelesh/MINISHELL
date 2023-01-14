@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_quetes.c                                    :+:      :+:    :+:   */
+/*   exit_cd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/11 14:52:40 by mukeles          ###   ########.fr       */
+/*   Created: 2023/01/14 16:44:44 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/14 18:39:39 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-char	*double_quotes(char *str, int *i)
+void	lsh_cd(char **arr)
 {
-	int		j;
-	char	*tmp;
-	char	*tmp1;
-	char	*tmp2;
-	char	*tmp3;
-	char	*tmp4;
+	int		size;
+	char	*str;
 
-	j = *i;
-	while (str[++(*i)] != '\"')
-		;
-	tmp3 = ft_substr(str, 0, j);
-	tmp1 = ft_substr(str, j + 1, *i - j - 1);
-	tmp2 = ft_strdup(str + *i + 1);
-	tmp4 = ft_strjoin(tmp3, tmp1);
-	free(tmp3);
-	free(tmp1);
-	tmp = ft_strjoin(tmp4, tmp2);
-	free(tmp2);
-	free(tmp4);
-	return (tmp);
+	size = 0;
+	while (arr[size])
+		size++;
+	if (size > 2)
+		printf("arguments\n");
+	else if (size == 1)
+	{
+		str = getenv("HOME");
+		chdir(str);
+	}
+	else
+	{
+		if (chdir(arr[1]))
+			printf("error\n");
+	}
+}
+
+int	lsh_exit(void)
+{
+	return (0);
 }

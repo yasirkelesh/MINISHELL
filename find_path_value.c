@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   find_path_value.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalyonc <nkalyonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/09 18:06:33 by nkalyonc         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:20:59 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
+
+static int	is_executable(char *cmd_path)
+{
+	if (access(cmd_path, 0) == 0)
+		return (1);
+	return (0);
+}
 
 char	*find_value(char *key)
 {
@@ -25,6 +32,35 @@ char	*find_value(char *key)
 		envp = envp->next;
 	}
 	return ("");
+}
+
+int	find_path2(char *cmdline)
+{
+	t_temp_var	a;
+	struct stat	s;
+
+	if (cmdline == NULL)
+		return (0);
+	if (is_executable(cmdline) == 1)
+		return (1);
+	a.tmp = find_value("PATH");
+	a.tmp_2ar = ft_split(a.tmp, ':');
+	a.i = -1;
+	while (a.tmp_2ar[++a.i])
+	{
+		a.tmp = ft_strjoin("/", cmdline);
+		a.tmp2 = ft_strjoin(a.tmp_2ar[a.i], a.tmp);
+		free(a.tmp);
+		if (stat(a.tmp2, &s) == 0)
+		{
+			free(a.tmp2);
+			ft_free_str(a.tmp_2ar);
+			return (1);
+		}
+		free(a.tmp2);
+	}
+	ft_free_str(a.tmp_2ar);
+	return (0);
 }
 
 char	*find_path(char *cmdline)
