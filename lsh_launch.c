@@ -6,19 +6,18 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 21:20:13 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/15 02:27:09 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_shell.h"
 
-extern char	**environ;
-
 int	lsh_launch(char **args, t_builtin_str *str)
 {
-	pid_t	pid;
-	int		k;
-	char	*str1;
+	pid_t		pid;
+	int			k;
+	char		*str1;
+	extern char	**environ;
 
 	str1 = find_path(args[0]);
 	k = 0;

@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 21:30:11 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/15 02:26:19 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ char	*sub_redir(char **str, int i)
 
 void	exec_redir(char *s, int fd, int i)
 {
-	int	n_pipe;
+	int		n_pipe;
+	char	**tmp;
 
 	run_signals(2);
 	n_pipe = count(s, '|');
@@ -52,9 +53,10 @@ void	exec_redir(char *s, int fd, int i)
 	if (n_pipe)
 		pipe_handle(s, n_pipe);
 	else if (is_builtin(s))
-	{
-		printf("TEST****\n");
-		exec_builtin(s);
+	{	
+		tmp = cmd_split_content(s);
+		exec_builtin(tmp);
+		free(tmp);
 	}
 	else
 		process_string(s);

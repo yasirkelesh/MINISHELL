@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 18:03:46 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 22:02:41 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*dollar_query(char *tmp, char *tmp2, int i)
 					free(tmp);
 					tmp = ft_strdup(tmp2);
 					free(tmp2);
-					continue ;
+					return (tmp);
 				}
 				tmp = tmp_dollar(tmp, tmp2, &i);
 			}

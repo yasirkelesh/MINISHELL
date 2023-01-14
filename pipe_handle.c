@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 21:29:17 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/15 02:08:49 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	execute_pipe(int *fd, int j, t_list *temp)
 	cmd = cmd_split_content(temp->content);
 	path = find_path(cmd[0]);
 	if (is_builtin(cmd[0]))
-		exec_builtin2(cmd);
+		exec_builtin(cmd);
 	else if (execve(path, cmd, environ) != 0)
 		execve_error();
 	free(path);

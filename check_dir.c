@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 21:20:03 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/14 23:01:44 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	process_string(char *str)
 	else
 	{
 		g_list.exit_status = 127;
-		printf(RED "This command not executed command!\n");
+		printf("This command not executed command!\n");
 	}
 	ft_free_str(commands);
 	return (0);

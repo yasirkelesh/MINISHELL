@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:28:56 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 21:30:19 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/15 02:08:45 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,7 @@ int	is_builtin(char *tmp)
 	return (0);
 }
 
-void	exec_builtin(char *str)
-{
-	char	**tmp;
-	char	*tmp2;
-	int		i;
-
-	tmp = ft_split(str, ' ');
-	tmp2 = ft_strtrim(str, " ");
-	i = is_builtin(*tmp);
-	if (i == 1)
-		echo(tmp);
-	else if (i == 2)
-		lsh_cd(tmp);
-	else if (i == 3)
-		pwd();
-	else if (i == 4)
-		export(tmp);
-	else if (i == 5)
-		unset(tmp);
-	else if (i == 6)
-		env();
-	else if (i == 7)
-		lsh_exit();
-	ft_free_str(tmp);
-}
-
-void	exec_builtin2(char **args)
+void	exec_builtin(char **args)
 {
 	int		i;
 

@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:06:08 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/14 21:26:48 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/15 02:08:58 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,9 +188,7 @@ void	dollar_mixed_quote(char **arr, int *i, int *k);
 //is_echo
 char	*check(char *s, int i);
 int		is_echo(char *s);
-
-void	exec_builtin(char *str);
-void	exec_builtin2(char **args);
+void	exec_builtin(char **args);
 char	**cmd_split_content(char *content);
 int		is_builtin(char *tmp);
 
