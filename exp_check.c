@@ -12,11 +12,11 @@
 
 #include "mini_shell.h"
 
-int exp_check(char *str)
+int	exp_check(char *str)
 {
 	int	i;
 
-	i=0;
+	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '=')

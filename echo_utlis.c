@@ -12,12 +12,12 @@
 
 #include "mini_shell.h"
 
-void print_double_quote(char **arr, int *i)
+void	print_double_quote(char **arr, int *i)
 {
-	int k;
-	int len;
-	char *tmp;
-	char *tmp2;
+	int		k;
+	int		len;
+	char	*tmp;
+	char	*tmp2;
 
 	k = 0;
 	len = ft_strlen(arr[(*i)]);
@@ -33,7 +33,6 @@ void print_double_quote(char **arr, int *i)
 		}
 		else if (arr[(*i)][k] == '$')
 		{
-
 			if (arr[(*i)][k] == '$' && arr[(*i)][k + 1] == '?')
 			{
 				tmp = ft_strdup(ft_itoa(g_list.exit_status));
@@ -53,11 +52,11 @@ void print_double_quote(char **arr, int *i)
 	(*i)++;
 }
 
-void print_single_quote(char **arr, int *i)
+void	print_single_quote(char **arr, int *i)
 {
-	// system("leaks minishell");
-	int len;
-	char *tmp;
+	int		len;
+	char	*tmp;
+
 	len = ft_strlen(arr[(*i)]);
 	tmp = arr[(*i)];
 	arr[(*i)] = ft_substr(tmp, 1, len - 2);
@@ -67,12 +66,12 @@ void print_single_quote(char **arr, int *i)
 	free(tmp);
 }
 
-void print_mixed_quote(char **arr, int *i)
+void	print_mixed_quote(char **arr, int *i)
 {
-	int k;
-	char *tmp;
-	char *tmp1;
-	int len;
+	int		k;
+	char	*tmp;
+	char	*tmp1;
+	int		len;
 
 	k = 0;
 	if (arr[(*i)][k] == '\"')

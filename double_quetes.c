@@ -20,7 +20,6 @@ char	*double_quotes(char *str, int *i)
 	char	*tmp2;
 	char	*tmp3;
 	char	*tmp4;
-	
 
 	j = *i;
 	while (str[++(*i)] != '\"')
@@ -33,6 +32,6 @@ char	*double_quotes(char *str, int *i)
 	free(tmp1);
 	tmp = ft_strjoin(tmp4, tmp2);
 	free(tmp2);
-	free(tmp4);	
+	free(tmp4);
 	return (tmp);
 }

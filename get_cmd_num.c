@@ -26,7 +26,7 @@ int	get_cmd_num(const char *str)
 			count++;
 		while (str[i] == ' ')
 			i++;
- 		if (str[i])
+		if (str[i])
 			count++;
 		if (str[i] == '"' || str[i] == '\'' || str[i] == '$')
 		{

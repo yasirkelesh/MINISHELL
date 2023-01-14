@@ -30,7 +30,7 @@ void	echo(char **arr)
 		n = 1;
 		i++;
 	}
-	if (!ft_strcmp(arr[i], " "))//!
+	if (!ft_strcmp(arr[i], " "))
 		i++;
 	while (arr[i])
 	{
@@ -52,7 +52,6 @@ void	echo(char **arr)
 			print_mixed_quote(arr, &i);
 		}
 	}
-
 	if (arr[1] == NULL)
 		printf("\n");
 	if (!n)

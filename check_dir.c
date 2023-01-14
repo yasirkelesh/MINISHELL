@@ -1,14 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/13 18:06:57 by mukeles          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
-static int is_executable(char *cmd_path)
+
+static int	is_executable(char *cmd_path)
 {
 	if (access(cmd_path, 0) == 0)
 		return (1);
 	return (0);
 }
-static int find_path2(char *cmdline)
+
+static int	find_path2(char *cmdline)
 {
-	t_temp_var a;
-	struct stat s;
+	t_temp_var	a;
+	struct stat	s;
 
 	if (cmdline == NULL)
 		return (0);
@@ -33,12 +47,14 @@ static int find_path2(char *cmdline)
 	ft_free_str(a.tmp_2ar);
 	return (0);
 }
-void execsimple(char **parse)
+
+void	execsimple(char **parse)
 {
-	int pid;
-	char *path;
-	int res;
-	extern char **environ;
+	int			pid;
+	char		*path;
+	int			res;
+	extern char	**environ;
+
 	path = find_path(parse[0]);
 	pid = fork();
 	if (pid == 0)
@@ -58,9 +74,9 @@ void execsimple(char **parse)
 		g_list.exit_status = WEXITSTATUS(res);
 }
 
-int process_string(char *str)
+int	process_string(char *str)
 {
-	char **commands;
+	char	**commands;
 
 	if (!str[0])
 		return (0);
@@ -79,9 +95,9 @@ int process_string(char *str)
 	return (0);
 }
 
-void execute_dir(char *s, int fd, int i)
+void	execute_dir(char *s, int fd, int i)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	pid = fork();
 	if (pid < 0)
@@ -98,25 +114,26 @@ void execute_dir(char *s, int fd, int i)
 		g_list.exit_status = 0;
 }
 
-void check_dir(char *str)
+void	check_dir(char *str)
 {
-	int i;
-	char **commands;
+	int		i;
+	char	**commands;
 
 	i = 0;
 	commands = ft_split(str, ' ');
 	while (commands[i])
 	{
-		if ((!ft_strcmp(commands[i], ">") || !ft_strcmp(commands[i], ">>")))
+		if ((!ft_strcmp(commands[i], ">")
+				|| !ft_strcmp(commands[i], ">>")))
 		{
 			redirect_out(commands, i);
-			break;
+			break ;
 		}
-		else if ((!ft_strcmp(commands[i], "<") ||
-				  !ft_strcmp(commands[i], "<<")))
+		else if ((!ft_strcmp(commands[i], "<")
+				|| !ft_strcmp(commands[i], "<<")))
 		{
 			redirect_in(commands, i);
-			break;
+			break ;
 		}
 		i++;
 	}

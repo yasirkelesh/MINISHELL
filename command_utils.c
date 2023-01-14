@@ -37,15 +37,13 @@ char	*handle_double_quotes(char *str, int j, int *i, char *tmp)
 			(*i)++;
 		}
 		(*i)++;
-		if(tmp)
+		if (tmp)
 			free(tmp);
-		/* tmp = ft_substr(str, j, *i - (j)); */
 	}
 	else
 	{
-		if(tmp)
+		if (tmp)
 			free(tmp);
-	/* 	tmp = ft_substr(str, j, *i - (j + 1)); */
 	}
 	return (tmp);
 }
@@ -61,15 +59,13 @@ char	*handle_single_quotes(char *str, int j, int *i, char *tmp)
 			(*i)++;
 		}
 		(*i)++;
-		if(tmp)
+		if (tmp)
 			free(tmp);
-/* 		tmp = ft_substr(str, j, *i - (j)); */
 	}
 	else
 	{
-		if(tmp)
+		if (tmp)
 			free(tmp);
-/* 		tmp = ft_substr(str, j, *i - (j + 1)); */
 	}
 	return (tmp);
 }
@@ -86,13 +82,10 @@ char	*handle_dollar_sign(char *str, int j, int *i)
 
 char	*handle_other_cases(char *str, int j, int *i)
 {
-
 	while (str[*i] != ' ' && str[*i] != '\''
 		&& str[*i] != '\"' && str[*i] != '\0')
 	{
 		(*i)++;
 	}
-	
-
 	return (ft_substr(str, j, *i - j));
 }

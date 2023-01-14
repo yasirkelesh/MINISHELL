@@ -12,11 +12,11 @@
 
 #include "mini_shell.h"
 
-char *parser(char *str)
+char	*parser(char *str)
 {
-	int i;
-	char *tmp;
-	char *tmp2;
+	int		i;
+	char	*tmp;
+	char	*tmp2;
 
 	tmp = str;
 	if (!tmp)
@@ -45,7 +45,7 @@ char *parser(char *str)
 				if (tmp[0] == '$' && tmp[1] == '?')
 				{
 					tmp = ft_strdup(ft_itoa(g_list.exit_status));
-					continue;
+					continue ;
 				}
 				tmp2 = tmp;
 				tmp = dollar(tmp2, &i);

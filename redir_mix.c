@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dollar.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/13 14:25:17 by mukeles          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
 
 void	no_input_redir(int fd)
@@ -6,6 +18,7 @@ void	no_input_redir(int fd)
 	g_list.exit_status = 1;
 	close(fd);
 }
+
 char	*sub_redir(char **str, int i)
 {
 	char	*temp;
@@ -27,9 +40,10 @@ char	*sub_redir(char **str, int i)
 	temp[j - 1] = '\0';
 	return (temp);
 }
+
 void	exec_redir(char *s, int fd, int i)
 {
-	int		n_pipe;
+	int	n_pipe;
 
 	run_signals(2);
 	n_pipe = count(s, '|');
@@ -41,10 +55,11 @@ void	exec_redir(char *s, int fd, int i)
 		process_string(s);
 	exit(g_list.exit_status);
 }
+
 void	mixed_redir2(char *str, char *temp, int fd)
 {
-	int		fdd;
-	int		stdout_copy;
+	int	fdd;
+	int	stdout_copy;
 
 	stdout_copy = dup(1);
 	fdd = open(str, O_WRONLY | O_CREAT | O_APPEND, 0777);
@@ -54,10 +69,11 @@ void	mixed_redir2(char *str, char *temp, int fd)
 	dup2(stdout_copy, 1);
 	close(stdout_copy);
 }
+
 void	mixed_redir(char *str, char *temp, int fd)
 {
-	int		fdd;
-	int		stdout_copy;
+	int	fdd;
+	int	stdout_copy;
 
 	stdout_copy = dup(1);
 	fdd = open(str, O_WRONLY | O_CREAT | O_TRUNC, 0777);
@@ -67,15 +83,16 @@ void	mixed_redir(char *str, char *temp, int fd)
 	dup2(stdout_copy, 1);
 	close(stdout_copy);
 }
+
 int	check_another_redir(char **str, int i)
 {
-	int		pos;
+	int	pos;
 
 	pos = i + 2;
 	while (str[pos])
 	{
-		if (str[pos + 1] && (ft_strncmp(str[pos], ">", 1) == 0 || \
-			ft_strncmp(str[pos], ">>", 2) == 0))
+		if (str[pos + 1] && (ft_strncmp(str[pos], ">", 1) == 0
+				|| ft_strncmp(str[pos], ">>", 2) == 0))
 		{
 			open(str[pos - 1], O_CREAT, 0777);
 			if (str[pos + 2] == NULL)

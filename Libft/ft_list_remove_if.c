@@ -34,7 +34,7 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref)
 
 	eq = '=';
 	current = *begin_list;
-	if(!current->content)
+	if (!current->content)
 		current = current->next;
 	last = NULL;
 	eq_env = NULL;

@@ -44,6 +44,7 @@ void	sig_handler_heredoc(int sig_num)
 	if (sig_num == SIGINT)
 		exit(1);
 }
+
 static void	handler_child(int signum)
 {
 	if (signum == SIGINT)
@@ -68,6 +69,7 @@ static void	handler_main(int signum)
 	rl_redisplay();
 	(void)signum;
 }
+
 void	signals(int signum)
 {
 	if (signum == 1)
@@ -81,6 +83,3 @@ void	signals(int signum)
 		signal(SIGQUIT, handler_child);
 	}
 }
-
-
-

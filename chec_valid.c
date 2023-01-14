@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-int chek_q(int q)
+
+int	chek_q(int q)
 {
 	if (q == 0)
 		q++;
@@ -19,7 +20,8 @@ int chek_q(int q)
 		q--;
 	return (q);
 }
-int chek_q2(int q2)
+
+int	chek_q2(int q2)
 {
 	if (q2 == 0)
 		q2++;
@@ -27,11 +29,12 @@ int chek_q2(int q2)
 		q2--;
 	return (q2);
 }
-int check_valid(char *line)
+
+int	check_valid(char *line)
 {
-	int i;
-	int q;
-	int q2;
+	int	i;
+	int	q;
+	int	q2;
 
 	i = 0;
 	q = 0;

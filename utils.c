@@ -29,7 +29,7 @@ int	count(char *str, char c)
 
 void	ft_putnstr(char *str, int n)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	if (n < 0)
@@ -44,16 +44,16 @@ void	ft_putnstr(char *str, int n)
 	}
 }
 
-char *line_edit(char *line)
+char	*line_edit(char *line)
 {
-	int i;
-	char *tmp;
+	int		i;
+	char	*tmp;
+
 	i = 0;
-	while(line[i] <= 32 && line[i])
+	while (line[i] <= 32 && line[i])
 		i++;
-	tmp = ft_substr(line,i,ft_strlen(line));
-	return tmp;
-	
+	tmp = ft_substr(line, i, ft_strlen(line));
+	return (tmp);
 }
 
 t_list	**add_list(char **str, t_list **mini)
@@ -72,7 +72,7 @@ t_list	**add_list(char **str, t_list **mini)
 		temp2 = NULL;
 		i++;
 	}
-	free (temp);
-	free (temp2);
+	free(temp);
+	free(temp2);
 	return (mini);
 }

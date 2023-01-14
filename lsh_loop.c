@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-// hallloldu
+
 void lsh_loop(t_builtin_str *str)
 {
   char *line;
   char **args;
   char *tmp;
-  int i = 0;
-  int status = 1;
+  int i;
+  int status;
 
+  i = 0;
+  status = 1;
   while (status)
   {
     signal(SIGQUIT, SIG_IGN);
@@ -30,9 +32,7 @@ void lsh_loop(t_builtin_str *str)
       printf("exit\n");
       exit(1);
     }
-
     add_history(line);
-
     tmp = line;
     line = line_edit(tmp);
     free(tmp);
@@ -42,7 +42,6 @@ void lsh_loop(t_builtin_str *str)
       lsh_loop(str);
     }
     args = lsh_split_line(line);
-
     if (count(line, '>') > 0 || count(line, '<') > 0)
     {
       check_dir(line);
@@ -64,12 +63,7 @@ void lsh_loop(t_builtin_str *str)
           i++;
         }
       }
-/*       else
-      {
-        
-      } */
       i = 0;
-
       if ((count(line, '>') == 0 && count(line, '<') == 0) && count(line, '|') == 0 && (args[0] != NULL))
         status = lsh_execute(args, str);
     }

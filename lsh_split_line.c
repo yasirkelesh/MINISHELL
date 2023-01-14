@@ -12,14 +12,14 @@
 
 #include "mini_shell.h"
 
-char **lsh_split_line(char *line)
+char	**lsh_split_line(char *line)
 {
-	int i;
-	int j;
-	int size;
-	char **arr;
-	char *tmp;
-	
+	int		i;
+	int		j;
+	int		size;
+	char	**arr;
+	char	*tmp;
+
 	tmp = line;
 	size = get_cmd_num(tmp);
 	arr = malloc(sizeof(char *) * (size));
@@ -27,20 +27,15 @@ char **lsh_split_line(char *line)
 		return (NULL);
 	j = 0;
 	i = 0;
-
 	while (tmp[i])
 	{
 		while (tmp[i] == ' ' && tmp[i] != '\0')
 			i++;
 		arr[j] = command(tmp, &i, arr[j - 1], j);
-		
 		j++;
 		while (tmp[i] == ' ' && tmp[i] != '\0')
 			i++;
 	}
 	arr[j] = NULL;
-
-
 	return (arr);
-
 }

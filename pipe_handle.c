@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "mini_shell.h"
-void execute_pipe(int *fd, int j, t_list *temp)
+
+void	execute_pipe(int *fd, int j, t_list *temp)
 {
-	extern char **environ;
-	int i;
-	char **cmd;
-	char *path;
+	extern char	**environ;
+	int			i;
+	char		**cmd;
+	char		*path;
 
 	if (j != 0)
 		if (dup2(fd[(j - 1) * 2], 0) < 0)
@@ -40,11 +41,11 @@ void execute_pipe(int *fd, int j, t_list *temp)
 	exit(g_list.exit_status);
 }
 
-static void split_piped(int *fd, t_list *mini)
+static void	split_piped(int *fd, t_list *mini)
 {
-	int j;
-	int pid;
-	t_list *temp;
+	int		j;
+	int		pid;
+	t_list	*temp;
 
 	j = 0;
 	temp = mini;
@@ -62,6 +63,7 @@ static void split_piped(int *fd, t_list *mini)
 	}
 	free(temp);
 }
+
 void	execpiped(t_list **mini, int countpipe)
 {
 	int	i;
@@ -88,10 +90,11 @@ void	execpiped(t_list **mini, int countpipe)
 	if (fd[0] != '\0')
 		free(fd);
 }
-void pipe_handle(char *str, int n_pipe)
+
+void	pipe_handle(char *str, int n_pipe)
 {
-	char **tmp;
-	t_list **list;
+	char	**tmp;
+	t_list	**list;
 
 	tmp = ft_split(str, '|');
 	list = (t_list **)malloc(sizeof(t_list *));

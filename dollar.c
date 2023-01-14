@@ -43,7 +43,6 @@ char	*dollar(char *str, int *i)
 	j = *i;
 	while (str[++(*i)] && str[*i] != ' ' && ft_isalnum(str[*i]))
 		;
-
 	key = ft_substr(str, j + 1, *i - j - 1);
 	value = get_value(key);
 	free(key);

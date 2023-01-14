@@ -12,9 +12,9 @@
 
 #include "mini_shell.h"
 
-void pwd(void)
+void	pwd(void)
 {
-	char *str;
+	char	*str;
 
 	str = malloc(1000);
 	if (!str)
@@ -25,24 +25,23 @@ void pwd(void)
 	printf("%s\n", str);
 	free(str);
 }
-static void lstadd_lst(t_list **lst, t_list **new)
-{
-	t_list *tmp;
-	tmp = *lst;
 
+static void	lstadd_lst(t_list **lst, t_list **new)
+{
+	t_list	*tmp;
+
+	tmp = *lst;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = *new;
 }
-t_list *new_lst_env(char **args)
-{
-	t_list *tmp;
-	t_list *p;
-	char **tmp1;
-	
-	int i;
-	i = 1;
 
+t_list	*new_lst_env(char **args)
+{
+	t_list	*tmp;
+	char	**tmp1;
+	int		i;
+	i = 1;
 	while (args[i])
 	{
 		if (exp_check(args[i]) == 0)
@@ -57,8 +56,7 @@ t_list *new_lst_env(char **args)
 			}
 			else
 			{
-				p = tmp;
-				tmp1 = ft_split(args[i], '=');				
+				tmp1 = ft_split(args[i], '=');
 				unset_exp(tmp1);
 				ft_lstadd_back(&tmp, ft_lstnew(ft_strdup(args[i])));
 			}
@@ -70,31 +68,29 @@ t_list *new_lst_env(char **args)
 			i++;
 		}
 	}
-	return tmp;
+	return (tmp);
 }
 
-void export(char **args) // 
+void	export(char **args)
 {
-	int i;
-	i = 1;
-	t_list *tmp;
+	t_list	*tmp;
+
 	if (args[1] == NULL)
 	{
 		export_env();
-		return;
+		return ;
 	}
 	tmp = new_lst_env(args);
 	lstadd_lst(&g_list.g_env, &tmp);
 }
 
-void unset(char **args)
+void	unset(char **args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (args[i])
 	{
-		
 		if (exp_check(args[i]) == 0)
 		{
 			ft_list_remove_if(&g_list.g_env, args[i]);
@@ -104,12 +100,11 @@ void unset(char **args)
 		i++;
 	}
 }
-void unset_exp(char **args)
+void	unset_exp(char **args)
 {
-	int i;
+	int	i;
 
 	i = 0;
-
 	if (exp_check(args[i]) == 0)
 	{
 		ft_list_remove_if(&g_list.g_env, args[i]);

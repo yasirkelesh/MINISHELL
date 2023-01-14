@@ -27,12 +27,14 @@ void	ft_free_str(char **str)
 	free(str);
 	str = NULL;
 }
+
 static void	ft_listdelone(t_list *lst)
 {
 	free(lst->content);
 	free(lst);
 	lst = NULL;
 }
+
 void	ft_free_list(t_list **list)
 {
 	t_list	*tmp;

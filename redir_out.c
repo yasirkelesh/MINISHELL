@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
+/*   Updated: 2023/01/12 21:47:54 by mukeles          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_shell.h"
 
 void	redir_out_handle(char **str, int i)
@@ -23,11 +35,12 @@ void	redir_out_handle(char **str, int i)
 	}
 	variables.temp[variables.j - 1] = '\0';
 	variables.fd = open(variables.file, variables.flags | O_TRUNC, 0777);
-	ft_putstr_fd(variables.file,1);
+	ft_putstr_fd(variables.file, 1);
 	execute_dir(variables.temp, variables.fd, 1);
 	free(variables.file);
 	free(variables.temp);
 }
+
 void	redir2_out_handle(char **str, int i)
 {
 	char	*temp;
@@ -47,10 +60,11 @@ void	redir2_out_handle(char **str, int i)
 	if (file[0] != '\0')
 		free(file);
 }
+
 int	redirect_out(char **str, int i)
 {
-	if (str[i + 1] == NULL || str[i + 1][0] == '>' || str[i + 1][0] == '<'
-		|| str[i + 1][0] == '\0')
+	if (str[i + 1] == NULL || str[i + 1][0] == '>'
+			|| str[i + 1][0] == '<' || str[i + 1][0] == '\0')
 		return (0);
 	if (!ft_strcmp(str[i], ">>"))
 	{
@@ -64,4 +78,3 @@ int	redirect_out(char **str, int i)
 	}
 	return (1);
 }
-
