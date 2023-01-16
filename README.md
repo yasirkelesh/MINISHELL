@@ -2,7 +2,6 @@
 Overview
 Bu proje, Bash programının bir taklidi olarak yazılmıştır. Proje, C dili kullanılarak Ecoles 42'de geliştirilmiştir. Projenin amacı, Bash programlarının temel fonksiyonlarını taklit etmek ve execve fonksiyonunu kullanarak diğer programları çalıştırmaktır. Ayrıca proje, pipe ve redir mantığının kullanıldığını ve komutların parser edildiğini içermektedir.
 
-####Features
 **Projemiz, aşağıdaki Bash komutlarının taklitlerini içermektedir**
 
 - cd: Dizin değiştirmek için kullanılır.
@@ -11,6 +10,7 @@ Bu proje, Bash programının bir taklidi olarak yazılmıştır. Proje, C dili k
 - export: Sistem değişkenlerini oluşturmak veya değiştirmek için kullanılır.
 - unset: Sistem değişkenlerini silmek için kullanılır.
 - env: Sistem değişkenlerini listelemek için kullanılır.
+
 **Ayrıca projemiz, aşağıdaki fonksiyonları kullanmaktadır**
 
 - pipe: Bir komutun çıktısını başka bir komutun girdisi olarak kullanmayı sağlar.
