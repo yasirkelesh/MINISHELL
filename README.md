@@ -2,8 +2,8 @@
 Overview
 Bu proje, Bash programının bir taklidi olarak yazılmıştır. Proje, C dili kullanılarak Ecoles 42'de geliştirilmiştir. Projenin amacı, Bash programlarının temel fonksiyonlarını taklit etmek ve execve fonksiyonunu kullanarak diğer programları çalıştırmaktır. Ayrıca proje, pipe ve redir mantığının kullanıldığını ve komutların parser edildiğini içermektedir.
 
-Features
-Projemiz, aşağıdaki Bash komutlarının taklitlerini içermektedir:
+**Features**
+*Projemiz, aşağıdaki Bash komutlarının taklitlerini içermektedir*
 
 - cd: Dizin değiştirmek için kullanılır.
 - echo: Konsola bir metin yazdırmak için kullanılır.
@@ -11,16 +11,16 @@ Projemiz, aşağıdaki Bash komutlarının taklitlerini içermektedir:
 - export: Sistem değişkenlerini oluşturmak veya değiştirmek için kullanılır.
 - unset: Sistem değişkenlerini silmek için kullanılır.
 - env: Sistem değişkenlerini listelemek için kullanılır.
-- Ayrıca projemiz, aşağıdaki fonksiyonları kullanmaktadır:
+*Ayrıca projemiz, aşağıdaki fonksiyonları kullanmaktadır*
 
-pipe: Bir komutun çıktısını başka bir komutun girdisi olarak kullanmayı sağlar.
-dup: Bir dosya tanıtıcısının çiftine yönlendirme yapar.
-dup2: Bir dosya tanıtıcısının çiftine yönlendirme yapar ve eski çifti kapatır.
-readline: Kullanıcıdan satır bazlı girdi almak için kullanılır.
-execve: Bir programı çalıştırmak için kullanılır.
-heredoc: Komut satırından okunan veriyi belirli bir formatta yazdırmak için kullanılır.
-Installation and Usage
-Projemizi kurmak ve kullanmak için aşağıdaki adımları izleyin:
+- pipe: Bir komutun çıktısını başka bir komutun girdisi olarak kullanmayı sağlar.
+- dup: Bir dosya tanıtıcısının çiftine yönlendirme yapar.
+- dup2: Bir dosya tanıtıcısının çiftine yönlendirme yapar ve eski çifti kapatır.
+- readline: Kullanıcıdan satır bazlı girdi almak için kullanılır.
+- execve: Bir programı çalıştırmak için kullanılır.
+- heredoc: Komut satırından okunan veriyi belirli bir formatta yazdırmak için kullanılır.
+- Installation and Usage
+- Projemizi kurmak ve kullanmak için aşağıdaki adımları izleyin:
 
 1. Projenin kaynak kodlarını GitHub sayfasından indirin veya klonlayın.
 2. Projenin klasörüne gidin ve makefile kullanarak projeyi derleyin: make
