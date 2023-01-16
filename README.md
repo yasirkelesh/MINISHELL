@@ -1,6 +1,6 @@
 # MINISHELL
 
-Bu proje, Bash programının bir taklidi olarak yazılmıştır. Proje, C dili kullanılarak Ecole 42'de geliştirilmiştir. Projenin amacı, Bash programlarının temel fonksiyonlarını taklit etmek ve execve fonksiyonunu kullanarak diğer programları çalıştırmaktır. Ayrıca proje, pipe ve redir mantığının kullanıldığını ve komutların parser edildiğini içermektedir.
+Bu proje, Bash programının bir taklidi olarak yazılmıştır. Proje, C dili kullanılarak Ecole 42'de geliştirilmiştir. Projenin amacı, Bash programlarının temel fonksiyonlarını taklit etmek ve execve fonksiyonunu kullanarak diğer programları çalıştırmaktır.
 
 **Proje, aşağıdaki Bash komutlarının taklitlerini içermektedir**
 
