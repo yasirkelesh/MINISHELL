@@ -20,7 +20,7 @@ Bu proje, Bash programının bir taklidi olarak yazılmıştır. Proje, C dili k
 - execve: Bir programı çalıştırmak için kullanılır.
 - heredoc: Komut satırından okunan veriyi belirli bir formatta yazdırmak için kullanılır.
 - Installation and Usage
-- Projemizi kurmak ve kullanmak için aşağıdaki adımları izleyin:
+**Projemizi kurmak ve kullanmak için aşağıdaki adımları izleyin:
 
 1. Projenin kaynak kodlarını GitHub sayfasından indirin veya klonlayın.
 2. Projenin klasörüne gidin ve makefile kullanarak projeyi derleyin: make
