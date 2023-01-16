@@ -6,7 +6,7 @@
 /*   By: mukeles <mukeles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:59:46 by mukeles           #+#    #+#             */
-/*   Updated: 2023/01/12 20:59:17 by mukeles          ###   ########.fr       */
+/*   Updated: 2023/01/16 22:48:45 by mukeles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_list_remove_if2(t_list *last, t_list *current)
 		last->next = current->next;
 	else
 		current = current->next;
-	free(current->content);
 	free(current);
 	current = NULL;
 }
